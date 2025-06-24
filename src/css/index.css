@@ -1,0 +1,34 @@
+:root {
+  --Background-Color: #181A1B;
+  --Forground-Color: #242627;
+  --Border-Color: #2F3233;
+  --Primary-Color: #00C978;
+  --Secondary-Color: #3A3B3C;
+  --Accent-Color: #7ED957;
+  --Text-Primary-Color: #F1F1F1;
+  --Text-Muted-Color: #A8A8A8;
+}
+
+*{ 
+    font-size: 18px;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+h2{
+    font-size: 2.5rem;
+}
+
+h3{
+    font-size: 2rem;
+}
+
+h4{
+    font-size: 1.5rem;
+}
+
+body{
+    background-color: var(--Background-Color);
+}
