@@ -1,0 +1,47 @@
+.Header{
+    display: flex;
+    background-color: var(--Background-color);
+}
+
+.Header-Nav{
+    background-color: var(--Background-color);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--Primary-Color);
+    padding: .5rem;
+}
+
+.Header-Nav-Center{
+    grid-column: 2;
+    justify-self: center;
+}
+
+.Header-Nav-Right{
+    grid-column: 3;
+    justify-self: right;
+}
+
+.Header-Nav-Center,
+.Header-Nav-Right{
+    display: flex;
+    gap: 2rem;
+}
+
+.Header-Nav button,
+.Header-Nav a{
+    text-decoration: none;
+    color: var(--Primary-Text-Color);
+    background: none;
+    border: none;
+}
+
+.Header-Nav button:hover,
+.Header-Nav a:hover{
+    cursor: pointer;
+    color: var(--Accent-Color);
+}
+
+.Header-Nav .active{
+    color: var(--Primary-Color);
+}

@@ -10,7 +10,10 @@
 }
 
 *{ 
+    font-family: sans-serif;
     font-size: 18px;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1{
@@ -32,3 +35,4 @@ h4{
 body{
     background-color: var(--Background-Color);
 }
+
