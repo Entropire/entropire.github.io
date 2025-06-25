@@ -1,0 +1,29 @@
+.Footer{
+    display: flex;
+    background-color: var(--Forground-Color);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: .5rem;
+}
+
+.Footer-Left{
+    grid-column: 1;
+    justify-self: left;
+    align-self: center;
+}
+
+.Footer-Right{
+    grid-column: 3;
+    justify-self: right;
+    display: flex;
+    gap: 1rem;
+}
+
+.Footer img{
+    height: 1.5rem;
+    width: auto;
+}
+
+.Footer img:hover{
+    cursor: pointer;
+}

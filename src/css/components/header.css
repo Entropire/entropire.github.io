@@ -1,10 +1,12 @@
 .Header{
     display: flex;
-    background-color: var(--Background-color);
+    position: sticky;
+    top: 0;
+
 }
 
 .Header-Nav{
-    background-color: var(--Background-color);
+    background-color: var(--Background-Color);
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
