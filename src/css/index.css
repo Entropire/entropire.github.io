@@ -46,4 +46,6 @@ body{
 #root main{
     flex: 1;
     display: flex;
+    width: 80vw;
+    align-self: center;
 }
