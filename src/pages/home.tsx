@@ -1,9 +1,8 @@
-import "../css/pages/home.css";
+import "../css/pages/Home.css";
 
 export const Home = () => {
     return(
         <>
-
         </>
     );
 }
