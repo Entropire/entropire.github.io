@@ -1,14 +1,17 @@
 .Home-Page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     padding-top: 10rem;
     padding-bottom: 10rem;
+    gap: 10rem;
 }
 
 .Banner{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10rem;
 }
 
 .Banner-Text{
@@ -26,6 +29,50 @@
 .Banner-Icon{
     border-radius: 100%;
 }
+
+.Arrow{
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    margin: -20px 0 0 -20px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-left: none;
+    border-top: none;
+    border-right: 2px var(--Primary-Color) solid;
+    border-bottom: 2px var(--Primary-Color) solid;
+    cursor: pointer;
+}
+
+.Arrow:before{
+    position: absolute;
+    left: 50%;
+    content: '';
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    margin: -10px 0 0 -10px;
+    border-left: none;
+    border-top: none;
+    border-right: 1px var(--Accent-Color) solid;
+    border-bottom: 1px var(--Accent-Color) solid;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: arrow;
+}
+
+@keyframes arrow{
+  0%{
+        opacity: 1;
+  }
+  100%{
+        opacity: 0;
+        transform: translate(-10px, -10px);
+  }
+
+}
+
 
 .Projects{
     display: flex;
@@ -96,7 +143,7 @@
     z-index: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.4s ease;

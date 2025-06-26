@@ -4,7 +4,7 @@ export const Footer = () => {
     return(
         <>
             <footer className='Footer'>
-                <p className='Footer-Left'>© {new Date().getFullYear()} Quinten Duijsyer - All rights reserved</p>
+                <p className='Footer-Left'>© {new Date().getFullYear()} Quinten Duijster - All rights reserved</p>
                 <nav className='Footer-Right'>
                     <a href=''><img src="./icons/CV.png" alt="CV" /></a>
                     <a href='mailto:qduyster14@gmail.com'><img src="./icons/E-mail.png" alt="E-mail" /></a>
