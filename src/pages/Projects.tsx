@@ -45,10 +45,28 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
     return(
         <>
             <div className={ProjectsCSS["Projects-Page"]}>
-                <h1>Projects</h1>
+                <nav className={ProjectsCSS["Projects-Nav"]}>
+                  <select
+                  >
+                    <option value="all">All Categories</option>
+                    <option value="web">Web</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="game">Game</option>
+                    {/* Add more categories as needed */}
+                  </select>
+                  <label>
+                    <input
+                      type="checkbox"
+                    />
+                    Featured Only
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Search projects..."
+                  />
+                </nav>
                 <div className={ProjectsCSS["Card-Container"]}>
                     { useJsonElements("./json/Projects.json") || <p>Loading projects...</p> }
-
                 </div>
             </div>
         </>

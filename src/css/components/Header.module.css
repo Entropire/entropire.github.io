@@ -11,7 +11,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-bottom: 1px solid var(--Primary-Color);
-    padding: .5rem;
+    padding: .75rem;
 }
 
 .Header-Nav-Center{
@@ -44,6 +44,6 @@
     color: var(--Accent-Color);
 }
 
-.Header-Nav .active{
-    color: var(--Primary-Color);
+a.active {
+    color: var(--Accent-Color);
 }

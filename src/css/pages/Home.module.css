@@ -3,8 +3,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
     gap: 10rem;
 }
 
@@ -114,6 +112,7 @@
     left: 50%;
     transform: translate(-75%, -75%) rotate(-45deg);
 }
+
 
 .Show-All:hover{
     box-shadow: 0 0.1rem 0.3rem var(--Accent-Color);

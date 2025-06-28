@@ -7,11 +7,31 @@ export const Header = () => {
             <header className={HeaderCSS.Header}>
                 <nav className={HeaderCSS['Header-Nav']}>
                     <div className={HeaderCSS['Header-Nav-Center']}>
-                        <NavLink to="/" className={HeaderCSS['Nav-Link']}>Home</NavLink>
-                        <NavLink to="/projects" className={HeaderCSS['Nav-Link']}>Projects</NavLink>
-                        <NavLink to="/About" className={HeaderCSS['Nav-Link']}>About</NavLink>
-                        <NavLink to="/Contact" className={HeaderCSS['Nav-Link']}>Contact</NavLink>
-                        <NavLink to="/Blog" className={HeaderCSS['Nav-Link']}>Blog</NavLink>
+                        <NavLink to="/" className={({ isActive }) =>
+                                isActive
+                                    ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
+                                    : HeaderCSS['Nav-Link']
+                            }>Home</NavLink>
+                        <NavLink to="/projects" className={({ isActive }) =>
+                                isActive
+                                    ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
+                                    : HeaderCSS['Nav-Link']
+                            }>Projects</NavLink>
+                        <NavLink to="/About" className={({ isActive }) =>
+                                isActive
+                                    ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
+                                    : HeaderCSS['Nav-Link']
+                            }>About</NavLink>
+                        <NavLink to="/Contact" className={({ isActive }) =>
+                                isActive
+                                    ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
+                                    : HeaderCSS['Nav-Link']
+                            }>Contact</NavLink>
+                        <NavLink to="/Blog" className={({ isActive }) =>
+                                isActive
+                                    ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
+                                    : HeaderCSS['Nav-Link']
+                            }>Blog</NavLink>
                     </div>
                     {/* <div className={HeaderCSS["Header-Nav-Right"]}>
                         <button>dark</button>

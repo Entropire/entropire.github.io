@@ -3,7 +3,7 @@
     background-color: var(--Forground-Color);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: .5rem;
+    padding: .75rem;
 }
 
 .Footer-Left{
