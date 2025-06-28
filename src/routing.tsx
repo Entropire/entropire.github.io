@@ -7,6 +7,7 @@ import { Contact } from "./pages/Contact.tsx"
 import { Blog } from "./pages/Blog.tsx"
 import { NotFound } from "./pages/NotFound.tsx"
 import { Projects } from "./pages/Projects.tsx"
+import './css/Global.css'
 
 export const Routing = () => {
 

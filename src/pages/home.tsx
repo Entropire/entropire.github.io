@@ -1,7 +1,7 @@
 import { useEffect, useState, type JSX } from "react";
-import "../css/pages/Home.css";
-import "../css/components/Card.css";
 import { NavLink } from "react-router-dom";
+import HomeCSS from "../css/pages/Home.module.css";
+import CardCSS from "../css/components/Card.module.css";
 
 export const Home = () => {
   const handleScroll = () => {
@@ -39,12 +39,12 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
       .then((res) => res.json())
       .then((data: Item[]) => {
         const firstThree = data.slice(0, 3).map((item, index) => (
-            <NavLink to={`/Projects/${item.title}`} className="Card" key={item.id}>
-              <div className="Card-Top" style={{ backgroundImage: `url(${item.image})` }}>
-                <div className="Card-Icons">
+            <NavLink to={`/Projects/${item.title}`} className={CardCSS.Card} key={item.id}>
+              <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${item.image})` }}>
+                <div className={CardCSS["Card-Icons"]}>
                 </div>
               </div>
-              <div className="Card-Bottom">
+              <div className={CardCSS["Card-Bottom"]}>
                 <b>{item.title}</b>
                 <p>{item.description}</p>
               </div>
@@ -63,28 +63,28 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
 
     return(
         <>
-            <div className="Home-Page">
-                <div className="Banner">
-                    <div className="Banner-Text">
+            <div className={HomeCSS["Home-Page"]}>
+                <div className={HomeCSS["Banner"]}>
+                    <div className={HomeCSS["Banner-Text"]}>
                         <h1>Quinten Duijster</h1>   
                         <h3>A energetic software/game developer</h3>     
                     </div>
-                    <img className="Banner-Icon" src="./favicon.png" alt="profile picture" />
+                    <img className={HomeCSS["Banner-Icon"]} src="./favicon.png" alt="profile picture" />
                 </div>   
-                <button className="Arrow" id="Arrow" style={{opacity, transition: "opacity 0.1s ease-out"}} onClick={handleScroll}></button>
+                <button className={HomeCSS["Arrow"]} id="Arrow" style={{opacity, transition: "opacity 0.1s ease-out"}} onClick={handleScroll}></button>
 
-                <div className="Projects-Preview">
+                <div className={HomeCSS["Projects-Preview"]}>
                     <h3>Projects Preview</h3>
-                    <div className="Card-Container">    
+                    <div className={HomeCSS["Card-Container"]}>    
                         { useJsonElements("./json/Projects.json") || <p>Loading projects...</p> }
-                        <NavLink to="/Projects" className="Show-All" />
+                        <NavLink to="/Projects" className={HomeCSS["Show-All"]} />
                     </div>
                 </div>
-                <div className="Posts-Preview">
+                <div className={HomeCSS["Posts-Preview"]}>
                     <h3>Post Preview</h3>
-                    <div className="Card-Container">
+                    <div className={HomeCSS["Card-Container"]}>
                         { useJsonElements("./json/Posts.json") || <p>Loading posts...</p> }
-                        <NavLink to="/Blog" className="Show-All" />
+                        <NavLink to="/Blog" className={HomeCSS["Show-All"]} />
                     </div>
                 </div>
             </div>
