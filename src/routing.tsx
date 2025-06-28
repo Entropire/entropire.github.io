@@ -6,6 +6,7 @@ import { About } from "./pages/About.tsx"
 import { Contact } from "./pages/Contact.tsx"
 import { Blog } from "./pages/Blog.tsx"
 import { NotFound } from "./pages/NotFound.tsx"
+import { Projects } from "./pages/Projects.tsx"
 
 export const Routing = () => {
 
@@ -15,6 +16,7 @@ export const Routing = () => {
             <main>
                 <Routes>
                     <Route path={"/"} element={<Home/>} />
+                    <Route path={"/projects"} element={<Projects/>} />
                     <Route path={"/about"} element={<About/>} />
                     <Route path={"/contact"} element={<Contact/>} />
                     <Route path={"/blog"} element={<Blog/>} />

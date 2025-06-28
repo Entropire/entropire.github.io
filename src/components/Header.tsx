@@ -8,6 +8,7 @@ export const Header = () => {
                 <nav className="Header-Nav">
                     <div className="Header-Nav-Center">
                         <NavLink to="/" className="Nav-Link">Home</NavLink>
+                        <NavLink to="/projects" className="Nav-Link">Projects</NavLink>
                         <NavLink to="/About" className="Nav-Link">About</NavLink>
                         <NavLink to="/Contact" className="Nav-Link">Contact</NavLink>
                         <NavLink to="/Blog" className="Nav-Link">Blog</NavLink>
