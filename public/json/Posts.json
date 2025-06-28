@@ -3,21 +3,21 @@
         "id": 1,
         "title": "Getting Started with React",
         "description": "A beginner's guide to building web apps with React.",
-        "image": "/images/react-getting-started.jpg",
+        "image": "./404.jpg",
         "link": "/posts/getting-started-with-react"
     },
     {
         "id": 2,
         "title": "Understanding Async/Await in JavaScript",
         "description": "Learn how to handle asynchronous operations in JavaScript using async/await.",
-        "image": "/images/js-async-await.jpg",
+        "image": "./favicon.png",
         "link": "/posts/understanding-async-await"
     },
     {
         "id": 3,
         "title": "Styling in CSS: Tips and Tricks",
         "description": "Improve your CSS skills with these practical tips and tricks.",
-        "image": "/images/css-tips-tricks.jpg",
+        "image": "./404.jpg",
         "link": "/posts/css-tips-and-tricks"
     }
 ]

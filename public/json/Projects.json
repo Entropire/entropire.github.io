@@ -3,21 +3,21 @@
         "id": 1,
         "title": "Personal Portfolio Website",
         "description": "A responsive portfolio website to showcase my projects and skills.",
-        "image": "/images/portfolio1.png",
+        "image": "./404.jpg",
         "link": "https://yourportfolio.com"
     },
     {
         "id": 2,
         "title": "Weather App",
         "description": "A simple weather application that displays current weather information using an external API.",
-        "image": "/images/weatherapp.png",
+        "image": "./favicon.png",
         "link": "https://yourweatherapp.com"
     },
     {
         "id": 3,
         "title": "Task Manager",
         "description": "A web-based task manager to organize daily activities and track progress.",
-        "image": "/images/taskmanager.png",
+        "image": "./404.jpg",
         "link": "https://yourtaskmanager.com"
     }
 ]

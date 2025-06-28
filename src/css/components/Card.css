@@ -1,0 +1,55 @@
+.Card{
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  height: 22rem;
+  background-color: var(--Forground-Color);
+  border-radius: 1rem;
+  border: 0.2rem solid var(--Border-Color);
+  transition: all 0.3s ease;
+  box-sizing: border-box; 
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.Card:hover{
+  box-shadow: 0 0.1rem 0.3rem var(--Accent-Color);
+  transform: translateY(-10px)
+}
+
+.Card-Top {
+  background-position: center; 
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  width: 100%;
+  height: 50%;
+  border-radius: 1rem 1rem 0 0;
+  position: relative;
+}
+
+.Card-Bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+  background-color: var(--Forground-Color);
+  border-top: 0.2rem solid var(--Border-Color);
+}
+
+.Card-Bottom b {
+  font-weight: bold;
+  color: var(--Primary-Color); /* Accent color */
+}
+
+.Card-Image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

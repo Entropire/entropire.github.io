@@ -1,9 +1,11 @@
 import { useEffect, useState, type JSX } from "react";
 import "../css/pages/Home.css";
+import "../css/components/Card.css";
+import { NavLink } from "react-router-dom";
 
 export const Home = () => {
   const handleScroll = () => {
-    document.getElementById("Projects-Preview")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("Arrow")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
     const [opacity, setOpacity] = useState(1);
@@ -37,8 +39,16 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
       .then((res) => res.json())
       .then((data: Item[]) => {
         const firstThree = data.slice(0, 3).map((item, index) => (
-            <div className="Project-Cart" key={item.id}>
-            </div>
+            <NavLink to="/Projects" className="Card" key={item.id}>
+              <div className="Card-Top" style={{ backgroundImage: `url(${item.image})` }}>
+                <div className="Card-Icons">
+                </div>
+              </div>
+              <div className="Card-Bottom">
+                <b>{item.title}</b>
+                <p>{item.description}</p>
+              </div>
+            </NavLink>
         ));
         setElements(firstThree);
       })
@@ -61,16 +71,20 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
                     </div>
                     <img className="Banner-Icon" src="./favicon.png" alt="profile picture" />
                 </div>   
-                <button className="Arrow" style={{opacity, transition: "opacity 0.1s ease-out"}} onClick={handleScroll}></button>
-                <div className="Projects-Preview" id="Projects-Preview">
-                    <h3>Projects Preview</h3>
-                    <div className="Projects-Container">    
+                <button className="Arrow" id="Arrow" style={{opacity, transition: "opacity 0.1s ease-out"}} onClick={handleScroll}></button>
+
+                <div className="Projects-Preview">
+                    <h3 id="Projects-Preview">Projects Preview</h3>
+                    <div className="Card-Container">    
                         { useJsonElements("./json/Projects.json") || <p>Loading projects...</p> }
+                        <div className="Show-All-Projects">
+                  
+                        </div>
                     </div>
                 </div>
                 <div className="Posts-Preview">
                     <h3>Post Preview</h3>
-                    <div className="Posts-Container">
+                    <div className="Card-Container">
                         { useJsonElements("./json/Posts.json") || <p>Loading posts...</p> }
                     </div>
                 </div>
