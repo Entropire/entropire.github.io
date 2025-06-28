@@ -39,7 +39,7 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
       .then((res) => res.json())
       .then((data: Item[]) => {
         const firstThree = data.slice(0, 3).map((item, index) => (
-            <NavLink to="/Projects" className="Card" key={item.id}>
+            <NavLink to={`/Projects/${item.title}`} className="Card" key={item.id}>
               <div className="Card-Top" style={{ backgroundImage: `url(${item.image})` }}>
                 <div className="Card-Icons">
                 </div>
@@ -74,18 +74,17 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
                 <button className="Arrow" id="Arrow" style={{opacity, transition: "opacity 0.1s ease-out"}} onClick={handleScroll}></button>
 
                 <div className="Projects-Preview">
-                    <h3 id="Projects-Preview">Projects Preview</h3>
+                    <h3>Projects Preview</h3>
                     <div className="Card-Container">    
                         { useJsonElements("./json/Projects.json") || <p>Loading projects...</p> }
-                        <div className="Show-All-Projects">
-                  
-                        </div>
+                        <NavLink to="/Projects" className="Show-All" />
                     </div>
                 </div>
                 <div className="Posts-Preview">
                     <h3>Post Preview</h3>
                     <div className="Card-Container">
                         { useJsonElements("./json/Posts.json") || <p>Loading posts...</p> }
+                        <NavLink to="/Blog" className="Show-All" />
                     </div>
                 </div>
             </div>
