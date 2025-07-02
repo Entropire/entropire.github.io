@@ -27,11 +27,11 @@ export const Header = () => {
                                     ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
                                     : HeaderCSS['Nav-Link']
                             }>Contact</NavLink>
-                        <NavLink to="/Blog" className={({ isActive }) =>
+                        {/* <NavLink to="/Blog" className={({ isActive }) =>
                                 isActive
                                     ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
                                     : HeaderCSS['Nav-Link']
-                            }>Blog</NavLink>
+                            }>Blog</NavLink> */}
                     </div>
                     {/* <div className={HeaderCSS["Header-Nav-Right"]}>
                         <button>dark</button>

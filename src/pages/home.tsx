@@ -80,13 +80,13 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
                         <NavLink to="/Projects" className={HomeCSS["Show-All"]} />
                     </div>
                 </div>
-                <div className={HomeCSS["Posts-Preview"]}>
+                {/* <div className={HomeCSS["Posts-Preview"]}>
                     <h3>Post Preview</h3>
                     <div className={HomeCSS["Card-Container"]}>
                         { useJsonElements("./json/Posts.json") || <p>Loading posts...</p> }
                         <NavLink to="/Blog" className={HomeCSS["Show-All"]} />
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );
