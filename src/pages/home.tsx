@@ -38,7 +38,7 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
     fetch(filePath)
       .then((res) => res.json())
       .then((data: Item[]) => {
-        const firstThree = data.slice(0, 4).map((item, index) => (
+        const firstThree = data.slice(0, 4).map((item) => (
             <NavLink to={`/Projects/${item.title}`} className={CardCSS.Card} key={item.id}>
               <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${item.image})` }}>
                 <div className={CardCSS["Card-Icons"]}>
