@@ -4,125 +4,251 @@
         "title": "Personal Portfolio Website",
         "description": "A responsive portfolio website to showcase my projects and skills.",
         "image": "./404.jpg",
-        "link": "https://yourportfolio.com"
+        "link": "https://yourportfolio.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["HTML", "CSS", "TypeScript"],
+            "Software": ["React"],
+            "Type": "Personal"
+        }
     },
     {
         "id": 2,
         "title": "Weather App",
         "description": "A simple weather application that displays current weather information using an external API.",
         "image": "./favicon.png",
-        "link": "https://yourweatherapp.com"
+        "link": "https://yourweatherapp.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
     {
         "id": 3,
         "title": "Task Manager",
         "description": "A web-based task manager to organize daily activities and track progress.",
         "image": "./404.jpg",
-        "link": "https://yourtaskmanager.com"
-    },
+        "link": "https://yourtaskmanager.com",
+        "Tags": 
         {
+            "Status": "Done",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
+    },
+    {
         "id": 4,
         "title": "Personal Portfolio Website",
         "description": "A responsive portfolio website to showcase my projects and skills.",
         "image": "./404.jpg",
-        "link": "https://yourportfolio.com"
+        "link": "https://yourportfolio.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["HTML", "CSS", "TypeScript"],
+            "Software": ["React"],
+            "Type": "Personal"
+        }
     },
     {
         "id": 5,
         "title": "Weather App",
         "description": "A simple weather application that displays current weather information using an external API.",
         "image": "./favicon.png",
-        "link": "https://yourweatherapp.com"
+        "link": "https://yourweatherapp.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
     {
         "id": 6,
         "title": "Task Manager",
         "description": "A web-based task manager to organize daily activities and track progress.",
         "image": "./404.jpg",
-        "link": "https://yourtaskmanager.com"
+        "link": "https://yourtaskmanager.com",
+        "Tags": 
+        {
+            "Status": "Done",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
         {
         "id": 7,
         "title": "Personal Portfolio Website",
         "description": "A responsive portfolio website to showcase my projects and skills.",
         "image": "./404.jpg",
-        "link": "https://yourportfolio.com"
+        "link": "https://yourportfolio.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["HTML", "CSS", "TypeScript"],
+            "Software": ["React"],
+            "Type": "Personal"
+        }
     },
     {
         "id": 8,
         "title": "Weather App",
         "description": "A simple weather application that displays current weather information using an external API.",
         "image": "./favicon.png",
-        "link": "https://yourweatherapp.com"
+        "link": "https://yourweatherapp.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
     {
         "id": 9,
         "title": "Task Manager",
         "description": "A web-based task manager to organize daily activities and track progress.",
         "image": "./404.jpg",
-        "link": "https://yourtaskmanager.com"
+        "link": "https://yourtaskmanager.com",
+        "Tags": 
+        {
+            "Status": "Done",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
         {
         "id": 10,
         "title": "Personal Portfolio Website",
         "description": "A responsive portfolio website to showcase my projects and skills.",
         "image": "./404.jpg",
-        "link": "https://yourportfolio.com"
+        "link": "https://yourportfolio.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["HTML", "CSS", "TypeScript"],
+            "Software": ["React"],
+            "Type": "Personal"
+        }
     },
     {
         "id": 11,
         "title": "Weather App",
         "description": "A simple weather application that displays current weather information using an external API.",
         "image": "./favicon.png",
-        "link": "https://yourweatherapp.com"
+        "link": "https://yourweatherapp.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
     {
-        "id": 12,
+        "id": 13,
         "title": "Task Manager",
         "description": "A web-based task manager to organize daily activities and track progress.",
         "image": "./404.jpg",
-        "link": "https://yourtaskmanager.com"
+        "link": "https://yourtaskmanager.com",
+        "Tags": 
+        {
+            "Status": "Done",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
         {
-        "id": 13,
+        "id": 14,
         "title": "Personal Portfolio Website",
         "description": "A responsive portfolio website to showcase my projects and skills.",
         "image": "./404.jpg",
-        "link": "https://yourportfolio.com"
-    },
-    {
-        "id": 14,
-        "title": "Weather App",
-        "description": "A simple weather application that displays current weather information using an external API.",
-        "image": "./favicon.png",
-        "link": "https://yourweatherapp.com"
+        "link": "https://yourportfolio.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["HTML", "CSS", "TypeScript"],
+            "Software": ["React"],
+            "Type": "Personal"
+        }
     },
     {
         "id": 15,
-        "title": "Task Manager",
-        "description": "A web-based task manager to organize daily activities and track progress.",
-        "image": "./404.jpg",
-        "link": "https://yourtaskmanager.com"
-    },
-        {
-        "id": 16,
-        "title": "Personal Portfolio Website",
-        "description": "A responsive portfolio website to showcase my projects and skills.",
-        "image": "./404.jpg",
-        "link": "https://yourportfolio.com"
-    },
-    {
-        "id": 17,
         "title": "Weather App",
         "description": "A simple weather application that displays current weather information using an external API.",
         "image": "./favicon.png",
-        "link": "https://yourweatherapp.com"
+        "link": "https://yourweatherapp.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
     },
     {
-        "id": 18,
+        "id": 16,
         "title": "Task Manager",
         "description": "A web-based task manager to organize daily activities and track progress.",
         "image": "./404.jpg",
-        "link": "https://yourtaskmanager.com"
+        "link": "https://yourtaskmanager.com",
+        "Tags": 
+        {
+            "Status": "Done",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Personal"
+        }    
+    },
+        {
+        "id": 17,
+        "title": "Personal Portfolio Website",
+        "description": "A responsive portfolio website to showcase my projects and skills.",
+        "image": "./404.jpg",
+        "link": "https://yourportfolio.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["HTML", "CSS", "TypeScript"],
+            "Software": ["React"],
+            "Type": "Personal"
+        }
+    },
+    {
+        "id": 18,
+        "title": "Weather App",
+        "description": "A simple weather application that displays current weather information using an external API.",
+        "image": "./favicon.png",
+        "link": "https://yourweatherapp.com",
+        "Tags": 
+        {
+            "Status": "In Progress",
+            "Language": ["C#", "Axaml"],
+            "Software": ["Avalonia"],
+            "Type": "Client"
+        }    
+    },
+    {
+        "id": 19,
+        "title": "Task Manager",
+        "description": "A web-based task manager to organize daily activities and track progress.",
+        "image": "./404.jpg",
+        "link": "https://yourtaskmanager.com",
+        "Tags": 
+        {
+            "Status": "Done",
+            "Language": ["C#", "Xaml"],
+            "Software": ["Windows Forms"],
+            "Type": "School"
+        }    
     }
 ]
