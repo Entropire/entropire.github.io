@@ -1,11 +1,36 @@
 .Projects-Page {
     width: 100%;
-    
+ 	display: flex;
+    flex-direction: row;
+
+}
+
+.Filter-Container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--Forground-Color);
+    align-self: flex-start;
+}
+
+.Filter-Group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.Filter-Options{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .Card-Container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
 }
+
+ 

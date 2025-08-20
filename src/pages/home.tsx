@@ -27,8 +27,11 @@ type Item = {
   id: number;
   title: string;
   description: string;
-  image: string; 
-  link: string; 
+  image: string;
+  link: string;
+  Tags: {
+    [key: string]: string | string[];
+  };
 };
 
 function useJsonElements(filePath: string): JSX.Element[] | null {
@@ -80,13 +83,6 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
                         <NavLink to="/Projects" className={HomeCSS["Show-All"]} />
                     </div>
                 </div>
-                {/* <div className={HomeCSS["Posts-Preview"]}>
-                    <h3>Post Preview</h3>
-                    <div className={HomeCSS["Card-Container"]}>
-                        { useJsonElements("./json/Posts.json") || <p>Loading posts...</p> }
-                        <NavLink to="/Blog" className={HomeCSS["Show-All"]} />
-                    </div>
-                </div> */}
             </div>
         </>
     );

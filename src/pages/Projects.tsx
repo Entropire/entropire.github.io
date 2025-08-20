@@ -4,71 +4,104 @@ import ProjectsCSS from "../css/pages/Projects.module.css";
 import CardCSS from "../css/components/Card.module.css";
 
 export const Projects = () => {
- type Item = {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [filters, setFilters] = useState<Record<string, string[]>>({});
+  const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>({});
+
+
+ type Project = {
   id: number;
   title: string;
   description: string;
-  image: string; 
-  link: string; 
+  image: string;
+  link: string;
+  tags: { [key: string]: string[]};
 };
 
-function useJsonElements(filePath: string): JSX.Element[] | null {
-  const [elements, setElements] = useState<JSX.Element[] | null>(null);
-
   useEffect(() => {
-    fetch(filePath)
+    fetch("./json/Projects.json")
       .then((res) => res.json())
-      .then((data: Item[]) => {
-        const Projects = data.map((item) => (
-            <NavLink to={`/Projects/${item.title}`} className={CardCSS.Card} key={item.id}>
-              <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${item.image})` }}>
-                <div className={CardCSS["Card-Icons"]}>
-                </div>
-              </div>
-              <div className={CardCSS["Card-Bottom"]}>
-                <b>{item.title}</b>
-                <p>{item.description}</p>
-              </div>
-            </NavLink>
-        ));
-        setElements(Projects);
+      .then((data: Project[]) => {
+        setProjects(data);
+
+        const tagFilters: Record<string, string[]> = {};
+        data.forEach((project) => {
+          Object.keys(project.tags).forEach((key) => {
+            if (!tagFilters[key]) {
+              tagFilters[key] = [];
+            }
+            project.tags[key].forEach((tag) => {
+              if (!tagFilters[key].includes(tag)){
+                tagFilters[key].push(tag);
+              }
+            });
+          });
+        });
+        setFilters(tagFilters);
       })
-      .catch((err) => {
-        console.error("Failed to load JSON:", err);
-        setElements([]);
-      });
-  }, [filePath]);
+      .catch((err) => console.error("Failed to load projects:", err));
+  }, []);
 
-  return elements;
-}   
-
-    return(
-        <>
-            <div className={ProjectsCSS["Projects-Page"]}>
-                <nav className={ProjectsCSS["Projects-Nav"]}>
-                  <select
-                  >
-                    <option value="all">All Categories</option>
-                    <option value="web">Web</option>
-                    <option value="mobile">Mobile</option>
-                    <option value="game">Game</option>
-                    {/* Add more categories as needed */}
-                  </select>
-                  <label>
-                    <input
-                      type="checkbox"
-                    />
-                    Featured Only
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Search projects..."
-                  />
-                </nav>
-                <div className={ProjectsCSS["Card-Container"]}>
-                    { useJsonElements("./json/Projects.json") || <p>Loading projects...</p> }
-                </div>
+ function LoadProjectCards(): JSX.Element[] | null {
+          const cards = projects.map((project) => (
+          <NavLink to={`/Projects/${project.title}`} className={CardCSS.Card} key={project.id}>
+            <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${project.image})` }}>
+              <div className={CardCSS["Card-Icons"]}></div>
             </div>
-        </>
-    );
-}
+            <div className={CardCSS["Card-Bottom"]}>
+              <b>{project.title}</b>
+              <p>{project.description}</p>
+            </div>
+          </NavLink>
+        ));
+      return cards;
+ }
+
+const handleCheckboxChange = (key: string, option: string, checked: boolean) => {
+  setActiveFilters(prev => {
+    const prevOptions = prev[key] || [];
+
+    let newOptions;
+    if (checked) {
+      newOptions = [...prevOptions, option];
+    } else {
+      newOptions = prevOptions.filter(item => item !== option);
+    }
+
+    return {
+      ...prev,
+      [key]: newOptions
+    };
+  });
+};
+
+
+
+  return (
+    <div className={ProjectsCSS["Projects-Page"]}>
+      <div className={ProjectsCSS["Filter-Container"]}>
+        {Object.keys(filters).map((key) => (
+          <div key={key} className={ProjectsCSS["Filter-Group"]}>
+            <h4>{key}</h4>
+            <div className={ProjectsCSS["Filter-Options"]}>
+              {filters[key].map((option) => (
+              <label key={option}>
+                <input
+                  type="checkbox"
+                  checked={activeFilters[key]?.includes(option) || false} 
+                  onChange={(e) => handleCheckboxChange(key, option, e.target.checked)}
+                />
+                {option}
+              </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className={ProjectsCSS["Card-Container"]}>
+        {LoadProjectCards() || <p>Loading projects...</p>}
+      </div>
+    </div>
+  );
+};

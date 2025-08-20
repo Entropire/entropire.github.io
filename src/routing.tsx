@@ -4,7 +4,6 @@ import { Header } from "./components/Header.tsx"
 import { Footer } from "./components/Footer.tsx"
 import { About } from "./pages/About.tsx"
 import { Contact } from "./pages/Contact.tsx"
-import { Blog } from "./pages/Blog.tsx"
 import { NotFound } from "./pages/NotFound.tsx"
 import { Projects } from "./pages/Projects.tsx"
 import './css/Global.css'
@@ -20,7 +19,6 @@ export const Routing = () => {
                     <Route path={"/projects"} element={<Projects/>} />
                     <Route path={"/about"} element={<About/>} />
                     <Route path={"/contact"} element={<Contact/>} />
-                    <Route path={"/blog"} element={<Blog/>} />
                     <Route path={"*"} element={<NotFound/>} />
                 </Routes>
             </main>
