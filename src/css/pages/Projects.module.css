@@ -1,23 +1,31 @@
 .Projects-Page {
     width: 100%;
- 	display: flex;
+ 	  display: flex;
     flex-direction: row;
-
+    gap: 1rem;
 }
 
 .Filter-Container {
+    padding: .75rem;
     display: flex;
     flex-direction: column;
-    padding: 20px;
     background-color: var(--Forground-Color);
     align-self: flex-start;
-}
+    background-color: var(--Forground-Color);
+    border-radius: 1rem;
+    border: 0.2rem solid var(--Border-Color);
+}   
 
 .Filter-Group{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
     border-top: 1px solid #ccc;
+    gap: 1rem;
+}
+
+.Filter-Group h4 {
+    color: var(--Primary-Color);
 }
 
 .Filter-Options{
@@ -26,11 +34,64 @@
     gap: 10px;
 }
 
+.Filter-Option *,
+.Filter-Option ::after,
+.Filter-Option ::before {
+  box-sizing: border-box;
+}
+
+.Filter-Option {
+  user-select: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.Filter-Option input[type="checkbox"] {
+  display: none;
+  visibility: hidden;
+}
+
+.Checkmark {
+  position: relative;
+  display: block;
+  float: left;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background-color: var(--Forground-Color);
+  box-shadow: var(--Border-Color) 0 0 0 1px inset;
+  transition: all 0.15s ease;
+}
+
+.Checkmark svg {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--Primary-Color);
+  stroke-width: 2;
+  stroke-dasharray: 17;
+  stroke-dashoffset: 17;
+  transform: translate3d(0, 0, 0);
+}
+
+.Filter-Option input[type="checkbox"]:checked + .Checkmark svg {
+  stroke-dashoffset: 0;
+  transition: all 0.15s ease;
+}
+
+.Checkmark + span {
+  float: left;
+  margin-left: 6px;
+  color: var(--Text-Primary-Color);
+  size: 1rem;
+}
+
 .Card-Container {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 1rem;
 }
-
- 
