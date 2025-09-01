@@ -6,6 +6,7 @@ import { About } from "./pages/About.tsx"
 import { Contact } from "./pages/Contact.tsx"
 import { NotFound } from "./pages/NotFound.tsx"
 import { Projects } from "./pages/Projects.tsx"
+import Background from './assets/Background.png'
 import './css/Global.css'
 
 export const Routing = () => {
@@ -13,7 +14,7 @@ export const Routing = () => {
     return (
         <>
             <Header/>
-            <main>
+            <main style={{ backgroundImage: `url(${Background})` }}>
                 <Routes>
                     <Route path={"/"} element={<Home/>} />
                     <Route path={"/projects"} element={<Projects/>} />

@@ -1,0 +1,16 @@
+.AboutPage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+}
+
+.ProfilePicture {
+    width: auto;
+    height: 200px;
+    
+    border-radius: 100px;
+    margin-right: 20px;
+}
