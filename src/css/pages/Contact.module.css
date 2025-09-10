@@ -34,3 +34,28 @@
 .ContactInfo img:hover{
     cursor: pointer;
 }
+
+.InputBox {
+  background-color: var(--Forground-Color);
+  border-radius: 1rem;
+  border: 0.2rem solid var(--Border-Color);
+}
+
+.InputBox:focus {
+    outline: none;
+    border: 0.2rem solid var(--Primary-Color);
+}
+
+.SubmitButton{
+    background-color: var(--Forground-Color);
+    border: 0.2rem solid var(--Border-Color);
+      border-radius: 1rem;
+}
+
+.SubmitButton:hover{
+    border-left: none;
+    border-top: none;
+    border-right: 2px var(--Primary-Color) solid;
+    border-bottom: 2px var(--Primary-Color) solid;
+    cursor: pointer;
+}

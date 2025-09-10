@@ -1,26 +1,25 @@
 import ContactCSS from "../css/pages/Contact.module.css";
-import CV_Icon from '../assets/icons/CV.png'
 import Email_Icon from '../assets/icons/E-mail.png'
 import Linkedin_Icon from '../assets/icons/Linkedin.png'
-import Github_Icon from '../assets/icons/Github.png'
 
 export const Contact = () => {
     return(
         <div className={ContactCSS.ContectPage}>
             <div className={ContactCSS.ContactForm}>
+                <h2>Send a Message</h2>
                 <label>
                     <span>Name</span>
-                    <input type="text" />
+                    <input className={ContactCSS.InputBox} type="text" />
                 </label>
                 <label>
                     <span>Email</span>
-                    <input type="text" />
+                    <input className={ContactCSS.InputBox} type="text" />
                 </label>
                 <label>
                     <span>Message</span>
-                    <input type="text" className={ContactCSS.Message}/>
+                    <input className={ContactCSS.InputBox} type="text"/>
                 </label>
-                <button>Send</button>
+                <button className={ContactCSS.SubmitButton} type="submit">Submit</button>
             </div>
             <div className={ContactCSS.ContactInfo}>
                 <h2>Contact me</h2>

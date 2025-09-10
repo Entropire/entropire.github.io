@@ -37,7 +37,14 @@ export const Projects = () => {
                 });
             });
 
-            setFilters(tagFilters);
+            const cleanedFilters: Record<string, string[]> = {};
+            Object.entries(tagFilters).forEach(([key, values]) => {
+            if (values.length > 1) {
+                cleanedFilters[key] = values;
+            }
+            });
+
+            setFilters(cleanedFilters);
         })
         .catch((err) => console.error("Failed to load projects:", err));
 
