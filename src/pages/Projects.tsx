@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, type JSX } from "react";
+import { useRef, useEffect, useState, type JSX, use } from "react";
 import { NavLink } from "react-router-dom";
 import ProjectsCSS from "../css/pages/Projects.module.css";
 import CardCSS from "../css/components/Card.module.css";
@@ -18,7 +18,8 @@ export const Projects = () => {
         tags: { [key: string]: string[] };
     };
 
-    fetch("./json/Projects.json")
+    useEffect(() => {
+        fetch("./json/Projects.json")
         .then((res) => res.json())
         .then((data: Project[]) => {
             setProjects(data);
@@ -47,6 +48,7 @@ export const Projects = () => {
             setFilters(cleanedFilters);
         })
         .catch((err) => console.error("Failed to load projects:", err));
+    }, []);
 
     function LoadProjectCards(): JSX.Element[] | null {
         const cards = projects.map((project) => (
