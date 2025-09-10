@@ -24,7 +24,7 @@ ghpages.publish(
     repo: 'git@github.com:entropire/Portfolio.git',
     message: 'Deploy via deploy.js',
     dotfiles: true,
-    cname: 'entropire.com',
+    cname: 'quintenduijster.nl',
   },
   (err) => {
     if (err) {

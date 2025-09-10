@@ -7,15 +7,15 @@ export const Contact = () => {
         <div className={ContactCSS.ContectPage}>
             <div className={ContactCSS.ContactForm}>
                 <h2>Send a Message</h2>
-                <label>
+                <label className={ContactCSS.InputLable}>
                     <span>Name</span>
                     <input className={ContactCSS.InputBox} type="text" />
                 </label>
-                <label>
+                <label className={ContactCSS.InputLable}>
                     <span>Email</span>
                     <input className={ContactCSS.InputBox} type="text" />
                 </label>
-                <label>
+                <label className={ContactCSS.InputLable}>
                     <span>Message</span>
                     <input className={ContactCSS.InputBox} type="text"/>
                 </label>

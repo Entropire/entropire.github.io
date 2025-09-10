@@ -35,10 +35,23 @@
     cursor: pointer;
 }
 
+.InputLable{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.InputLable span{
+    margin-left: .5rem;
+}
+
 .InputBox {
   background-color: var(--Forground-Color);
   border-radius: 1rem;
   border: 0.2rem solid var(--Border-Color);
+  width: 20rem;
+  height: 1.5rem;
+  padding: 0.2rem 0.75rem 0.2rem 0.75rem;
 }
 
 .InputBox:focus {
