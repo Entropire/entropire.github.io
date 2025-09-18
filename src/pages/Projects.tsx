@@ -113,36 +113,35 @@ export const Projects = () => {
 
     return (
         <div className={ProjectsCSS["Projects-Page"]}>
-            <div className={ProjectsCSS["Filter-Container"]}>
-                {Object.keys(filters).map((key) => (
-                    <div key={key} className={ProjectsCSS["Filter-Group"]}>
-                        <h4>{key}</h4>
-                        <div className={ProjectsCSS["Filter-Options"]}>
-                            {filters[key].map((option) => (
-                                <label key={option} className={ProjectsCSS["Filter-Option"]}>
-                                    <input
-                                        type="checkbox"
-                                        checked={activeFilters[key]?.includes(option) || false}
-                                        onChange={(e) =>
-                                            handleCheckboxChange(key, option, e.target.checked)
-                                        }
-                                    />
-                                    <span className={ProjectsCSS["Checkmark"]}>
-                                        <svg width="12px" height="12px" viewBox="0 0 12 11">
-                                            <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
-                                        </svg>
-                                    </span>
-                                    <span>{option}</span>
-                                </label>
-                            ))}
+                <div className={ProjectsCSS["Filter-Container"]}>
+                    {Object.keys(filters).map((key) => (
+                        <div key={key} className={ProjectsCSS["Filter-Group"]}>
+                            <h4>{key}</h4>
+                            <div className={ProjectsCSS["Filter-Options"]}>
+                                {filters[key].map((option) => (
+                                    <label key={option} className={ProjectsCSS["Filter-Option"]}>
+                                        <input
+                                            type="checkbox"
+                                            checked={activeFilters[key]?.includes(option) || false}
+                                            onChange={(e) =>
+                                                handleCheckboxChange(key, option, e.target.checked)
+                                            }
+                                        />
+                                        <span className={ProjectsCSS["Checkmark"]}>
+                                            <svg width="12px" height="12px" viewBox="0 0 12 11">
+                                                <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+                                            </svg>
+                                        </span>
+                                        <span>{option}</span>
+                                    </label>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
-
-            <div className={ProjectsCSS["Card-Container"]}>
-                {LoadProjectCards() || <p>Loading projects...</p>}
-            </div>
+                    ))}
+                </div>
+                <div className={ProjectsCSS["Card-Container"]}>
+                    {LoadProjectCards() || <p>Loading projects...</p>}
+                </div>
         </div>
     );
 };
