@@ -89,14 +89,24 @@
     gap: 1rem;
 }
 
-.Show-All{
+ .Show-All {
     position: relative;
-    width: 3.5rem;
-    height: 21.8rem;
+    width: 15rem;
+    height: 22rem;
     background-color: var(--Forground-Color);
-    border: 0.2rem solid var(--Border-Color);
     border-radius: 1rem;
+    border: 0.2rem solid var(--Border-Color);
     transition: all 0.3s ease;
+    box-sizing: border-box; 
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Show-All h4 {
+    color: var(--Primary-Color);
 }
 
 .Show-All::before {
@@ -106,13 +116,13 @@
     height: 2rem;
     border-right: 0.2rem var(--Primary-Color) solid;
     border-bottom: 0.2rem var(--Primary-Color) solid;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-75%, -75%) rotate(-45deg);
 }
 
-
 .Show-All:hover{
-    box-shadow: 0 0.1rem 0.3rem var(--Accent-Color);
-    transform: translateY(-10px)
+  box-shadow: 0 0.1rem 0.3rem var(--Accent-Color);
+  transform: translateY(-10px)
 }
+
