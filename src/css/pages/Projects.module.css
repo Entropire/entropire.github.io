@@ -1,8 +1,7 @@
 .Projects-Page {
     width: 100%;
  	  display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -91,9 +90,7 @@
 }
 
 .Card-Container {
-    display: inline-flex;
-    flex-wrap: wrap;
-    width: fit-content;
-    justify-content: flex-start;
-    gap: 1rem;   
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
 }

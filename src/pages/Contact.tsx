@@ -1,32 +1,36 @@
 import ContactCSS from "../css/pages/Contact.module.css";
 import Email_Icon from '../assets/icons/E-mail.png'
 import Linkedin_Icon from '../assets/icons/Linkedin.png'
+import Discord_Icon from '../assets/icons/Discord.svg'
 
 export const Contact = () => {
     return(
         <div className={ContactCSS.ContectPage}>
-            <div className={ContactCSS.ContactForm}>
-                <h2>Send a Message</h2>
-                <label className={ContactCSS.InputLable}>
-                    <span>Name</span>
-                    <input className={ContactCSS.InputBox} type="text" />
-                </label>
-                <label className={ContactCSS.InputLable}>
-                    <span>Email</span>
-                    <input className={ContactCSS.InputBox} type="text" />
-                </label>
-                <label className={ContactCSS.InputLable}>
-                    <span>Message</span>
-                    <input className={ContactCSS.InputBox} type="text"/>
-                </label>
-                <button className={ContactCSS.SubmitButton} type="submit">Submit</button>
-            </div>
-            <div className={ContactCSS.ContactInfo}>
-                <h2>Contact me</h2>
-                <p>Email: qduijster14@gmail.com</p>
-                <div className={ContactCSS.ContactIcons}>
-                    <a href='mailto:qduyster14@gmail.com'><img src={Email_Icon} alt="E-mail" /></a>
-                    <a href='https://www.linkedin.com/in/quinten-duijster-0b60a9318' target='blank'><img src={Linkedin_Icon} alt="Linkedin" /></a>
+            <h2>Contact me</h2>
+            <div className={ContactCSS.ContactMethods}>
+                <div className={ContactCSS.ContactMethod}>
+                    <img className={ContactCSS.ContactMethodImage} src={Discord_Icon} alt="Discord Logo" />
+                    <div className={ContactCSS.ContactMethodText}>
+                        <b>Discord</b>
+                        <p>Join my discord server</p>
+                        <a href="https://discord.gg/AwA7mXV8qb">Join</a>
+                    </div>
+                </div>
+                <div className={ContactCSS.ContactMethod}>
+                    <img className={ContactCSS.ContactMethodImage} src={Email_Icon} alt="E-Mail Logo" />
+                    <div className={ContactCSS.ContactMethodText}>
+                        <b>E-Mail</b>
+                        <p>Email me on qduyster14@gmail.com</p>
+                        <a href="">Send E-Mail</a>
+                    </div>
+                </div>
+                <div className={ContactCSS.ContactMethod}>
+                    <img className={ContactCSS.ContactMethodImage} src={Linkedin_Icon} alt="LinkedIn Logo" />
+                    <div className={ContactCSS.ContactMethodText}>
+                        <b>LinkedIn</b>
+                        <p>Send me a message on LinkedIn</p>
+                        <a href="">Connect</a>
+                    </div>
                 </div>
             </div>
         </div>
