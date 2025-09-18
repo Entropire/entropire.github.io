@@ -100,12 +100,13 @@
     box-sizing: border-box; 
     cursor: pointer;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
 }
 
 .Show-All h4 {
+    position: absolute;
+    top: 35%;
+        left: 7.5%;
     color: var(--Primary-Color);
 }
 
@@ -116,7 +117,7 @@
     height: 2rem;
     border-right: 0.2rem var(--Primary-Color) solid;
     border-bottom: 0.2rem var(--Primary-Color) solid;
-    top: 70%;
+    top: 65%;
     left: 50%;
     transform: translate(-75%, -75%) rotate(-45deg);
 }

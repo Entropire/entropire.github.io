@@ -44,7 +44,7 @@
 
 .Card-Bottom b {
   font-weight: bold;
-  color: var(--Primary-Color); /* Accent color */
+  color: var(--Primary-Color);
 }
 
 .Card-Image{
