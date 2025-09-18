@@ -6,6 +6,7 @@ import { About } from "./pages/About.tsx"
 import { Contact } from "./pages/Contact.tsx"
 import { NotFound } from "./pages/NotFound.tsx"
 import { Projects } from "./pages/Projects.tsx"
+import { Project } from "./pages/Project.tsx"
 import './css/Global.css'
 
 export const Routing = () => {
@@ -19,6 +20,7 @@ export const Routing = () => {
                     <Route path={"/projects"} element={<Projects/>} />
                     <Route path={"/about"} element={<About/>} />
                     <Route path={"/contact"} element={<Contact/>} />
+                    <Route path={"/projects/*"} element={<Project/>} />
                     <Route path={"*"} element={<NotFound/>} />
                 </Routes>
             </main>
