@@ -20,9 +20,8 @@
 }
 
 .ContactMethod{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   width: 15rem;
   height: 22rem;
   background-color: var(--Forground-Color);
@@ -30,9 +29,9 @@
   border: 0.2rem solid var(--Border-Color);
   transition: all 0.3s ease;
   box-sizing: border-box; 
-  text-decoration: none;
   overflow: hidden;
   cursor: pointer;
+  text-decoration: none;
   padding: 1rem;
   gap: 1rem;
 }
@@ -42,14 +41,22 @@
   transform: translateY(-10px)
 }
 
-.ContactMethodImage{
-  height: 30%;
-  width:  auto;
-  object-fit: contain;
+.ContactMethodImg{
+  justify-self: center;
+  align-self: center;
+  width: 50%;
+  height: auto;
+}
+
+.ContactMethodText{
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
 }
 
 .ContactMethod b {
   font-weight: bold;
   color: var(--Primary-Color); 
-}
-
+} 
