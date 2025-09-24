@@ -1,5 +1,5 @@
 import ProfilePic from '../assets/Profile_Picture.png';
-import AboutCSS from '../css/pages/About.module.css'
+import AboutCSS from '../styles/pages/About.module.css'
 
 export const About = () => {
     return(

@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Portfolio",
+    "slug": "portfolio",
+    "tags": {
+      "status": [
+        "In Progress"
+      ],
+      "language": [
+        "Typescript",
+        "CSS",
+        "HTML"
+      ],
+      "software": [
+        "React"
+      ],
+      "type": [
+        "Personal"
+      ]
+    },
+    "date": "2023-09-01",
+    "excerpt": "\r\n# Portfolio\r\n\r\nThis is my Portfolio project\r\n..."
+  },
+  {
+    "title": "SimpleCommands",
+    "slug": "simplecommands",
+    "tags": {
+      "status": [
+        "Done"
+      ],
+      "language": [
+        "C#"
+      ],
+      "software": [],
+      "type": [
+        "Personal"
+      ]
+    },
+    "date": "2023-09-01",
+    "excerpt": "\r\n# SimpleCommands\r\n\r\nThis is my SimpleCommands project..."
+  },
+  {
+    "title": "SimpleFactions",
+    "slug": "simplefactions",
+    "tags": {
+      "status": [
+        "In Progress"
+      ],
+      "language": [
+        "Java"
+      ],
+      "software": [
+        "Sqlite"
+      ],
+      "type": [
+        "Personal"
+      ]
+    },
+    "date": "2023-09-01",
+    "excerpt": "\r\n# SimpleFactions\r\n\r\nThis is my SimpleFactions project..."
+  }
+]

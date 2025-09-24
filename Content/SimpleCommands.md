@@ -2,11 +2,11 @@
 title: "SimpleCommands"
 description: ""
 img: ""
-tags: [
-    status: ["Done"], 
-    language: ["c#"],
-    software: [""],
-    type: ["Personal"]
+tags:
+  status: ["Done"]
+  language: ["C#"]
+  software: []
+  type: ["Personal"]
 date: "2023-09-01"
 ---
 

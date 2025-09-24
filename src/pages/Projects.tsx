@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState, type JSX, use } from "react";
+import { useRef, useEffect, useState, type JSX } from "react";
 import { NavLink } from "react-router-dom";
-import ProjectsCSS from "../css/pages/Projects.module.css";
-import CardCSS from "../css/components/Card.module.css";
+import ProjectsCSS from "../styles/pages/Projects.module.css";
+import CardCSS from "../styles/components/Card.module.css";
 
 export const Projects = () => {
     const refs = useRef<Record<string, HTMLAnchorElement | null>>({});

@@ -2,11 +2,11 @@
 title: "SimpleFactions"
 description: ""
 img: ""
-tags: [
-    status: ["In Progress"], 
-    language: ["Java"],
-    software: ["Sqlite"],
-    type: ["Personal"]
+tags:
+  status: ["In Progress"]
+  language: ["Java"]
+  software: ["Sqlite"]
+  type: ["Personal"]
 date: "2023-09-01"
 ---
 

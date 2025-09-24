@@ -9,15 +9,21 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "node deploy.js"
+    "deploy": "node ./scripts/build-content.js && node ./scripts/deploy.js",
+    "generate": "node ./scripts/build-content.js"
   },
   "dependencies": {
+    "fs-extra": "^11.3.2",
+    "gray-matter": "^4.0.3",
+    "marked": "^16.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.5.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",

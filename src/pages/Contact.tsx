@@ -1,4 +1,4 @@
-import ContactCSS from "../css/pages/Contact.module.css";
+import ContactCSS from "../styles/pages/Contact.module.css";
 import Email_Icon from '../assets/icons/E-mail.png'
 import Linkedin_Icon from '../assets/icons/Linkedin.png'
 import Discord_Icon from '../assets/icons/Discord.svg'

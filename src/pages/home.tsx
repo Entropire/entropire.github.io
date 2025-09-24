@@ -1,7 +1,7 @@
 import { useEffect, useState, type JSX } from "react";
 import { NavLink } from "react-router-dom";
-import HomeCSS from "../css/pages/Home.module.css";
-import CardCSS from "../css/components/Card.module.css";
+import HomeCSS from "../styles/pages/Home.module.css";
+import CardCSS from "../styles/components/Card.module.css";
 
 export const Home = () => {
   const handleScroll = () => {
