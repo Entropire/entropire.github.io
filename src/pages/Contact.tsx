@@ -19,7 +19,7 @@ export const Contact = () => {
                     <img className={ContactCSS.ContactMethodImg} src={Email_Icon} alt="E-Mail Logo" />
                     <div className={ContactCSS.ContactMethodText}>
                         <b>E-Mail</b>
-                        <p>Send me a E-Mail on qduyster14@gmail.com</p>
+                        <p>Send me a E-Mail</p>
                     </div>
                 </a>
                 <a href="https://www.linkedin.com/in/quinten-duijster-0b60a9318" className={ContactCSS.ContactMethod}>

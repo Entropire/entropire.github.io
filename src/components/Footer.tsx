@@ -1,4 +1,4 @@
-import FooterCSS from '../css/components/Footer.module.css'
+import FooterCSS from '../styles/components/Footer.module.css'
 import CV_Icon from '../assets/icons/CV.png'
 import Email_Icon from '../assets/icons/E-mail.png'
 import Linkedin_Icon from '../assets/icons/Linkedin.png'

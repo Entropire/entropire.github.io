@@ -1,4 +1,4 @@
-import ProfilePic from '../assets/Profile_Picture.png';
+import ProfilePic from '../assets/images/Profile_Picture.png';
 import AboutCSS from '../styles/pages/About.module.css'
 
 export const About = () => {

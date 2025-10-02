@@ -1,5 +1,5 @@
 import NotFoundCSS from "../styles/pages/NotFound.module.css";
-import image from "../assets/404.jpg";
+import image from "../assets/images/404.jpg";
 
 export const NotFound = () => {
     return(
