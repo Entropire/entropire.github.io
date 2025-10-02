@@ -31,7 +31,7 @@ ghpages.publish(
       console.error('Deployment failed:', err);
       process.exit(1);
     }
-    console.log('🚀 Deployed successfully!');
+    console.log('Deployed successfully!');
   }
 );
 

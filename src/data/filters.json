@@ -1,43 +1,20 @@
 {
-  "status": {
-    "In Progress": [
-      "portfolio",
-      "simplefactions"
-    ],
-    "Done": [
-      "simplecommands"
-    ]
-  },
-  "language": {
-    "Typescript": [
-      "portfolio"
-    ],
-    "CSS": [
-      "portfolio"
-    ],
-    "HTML": [
-      "portfolio"
-    ],
-    "C#": [
-      "simplecommands"
-    ],
-    "Java": [
-      "simplefactions"
-    ]
-  },
-  "software": {
-    "React": [
-      "portfolio"
-    ],
-    "Sqlite": [
-      "simplefactions"
-    ]
-  },
-  "type": {
-    "Personal": [
-      "portfolio",
-      "simplecommands",
-      "simplefactions"
-    ]
-  }
+  "status": [
+    "In Progress",
+    "Done"
+  ],
+  "language": [
+    "Typescript",
+    "CSS",
+    "HTML",
+    "C#",
+    "Java"
+  ],
+  "software": [
+    "React",
+    "Sqlite"
+  ],
+  "type": [
+    "Personal"
+  ]
 }
