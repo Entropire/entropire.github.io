@@ -5,7 +5,8 @@ import { marked } from "marked";
 import hljs from "highlight.js";
 
 const contentDir = "./content"; 
-const outputDir = "./src/data"; 
+const indexOutputDir = "./src/data"; 
+const projectOutputDir = "./public/projects";
 
 marked.setOptions({
   highlight(code, lang) {
@@ -16,7 +17,6 @@ marked.setOptions({
   },
 });
 
-// Escape JSX special characters
 function escapeJSX(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -26,7 +26,6 @@ function escapeJSX(str) {
     .replace(/}/g, "&#125;");
 }
 
-// Convert marked tokens to JSX
 function tokenToJSX(token) {
   switch (token.type) {
     case "heading":
@@ -44,7 +43,8 @@ function tokenToJSX(token) {
 }
 
 (async () => {
-  await fs.emptyDir(outputDir);
+  await fs.emptyDir(indexOutputDir);
+  await fs.emptyDir(projectOutputDir);
 
   const files = await fs.readdir(contentDir);
   const projects = [];
@@ -83,24 +83,12 @@ function tokenToJSX(token) {
     const safeName = data.title.replace(/[^a-zA-Z0-9_]/g, "_");
     const slug = data.title.toLowerCase().replace(/\s+/g, "-");
 
-    const component = `
-      import React from "react";
-
-      export default function ${safeName}() {
-        return (
-          <>
-            ${jsxContent}
-          </>
-        );
-      }
-    `;
-
-    const tsxPath = path.join(outputDir, `${slug}.tsx`);
-    await fs.outputFile(tsxPath, component);
+    const tsxPath = path.join(projectOutputDir, `${slug}.html`);
+    await fs.outputFile(tsxPath, jsxContent);
   }
 
-  await fs.outputJson(path.join(outputDir, "projects.json"), projects, { spaces: 2 });
-  await fs.outputJson(path.join(outputDir, "filters.json"), filters, { spaces: 2 });
+  await fs.outputJson(path.join(indexOutputDir, "projects.json"), projects, { spaces: 2 });
+  await fs.outputJson(path.join(indexOutputDir, "filters.json"), filters, { spaces: 2 });
 
   console.log("Content built!");
 })();
