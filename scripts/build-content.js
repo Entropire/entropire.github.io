@@ -58,7 +58,6 @@ function tokenToJSX(token) {
 
     const { data, content } = matter(raw);
 
-    // Parse markdown into tokens and convert to JSX
     const tokens = marked.lexer(content);
     const jsxContent = tokens.map(tokenToJSX).join("\n");
 
@@ -81,7 +80,6 @@ function tokenToJSX(token) {
       });
     }
 
-    // Make a safe function name for the component
     const safeName = data.title.replace(/[^a-zA-Z0-9_]/g, "_");
     const slug = data.title.toLowerCase().replace(/\s+/g, "-");
 
@@ -104,5 +102,5 @@ function tokenToJSX(token) {
   await fs.outputJson(path.join(outputDir, "projects.json"), projects, { spaces: 2 });
   await fs.outputJson(path.join(outputDir, "filters.json"), filters, { spaces: 2 });
 
-  console.log("✅ Content built!");
+  console.log("Content built!");
 })();

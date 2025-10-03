@@ -1,20 +1,20 @@
 {
-  "status": [
+  "Status": [
     "In Progress",
     "Done"
   ],
-  "language": [
+  "Language": [
     "Typescript",
     "CSS",
     "HTML",
     "C#",
     "Java"
   ],
-  "software": [
+  "Software": [
     "React",
     "Sqlite"
   ],
-  "type": [
+  "Type": [
     "Personal"
   ]
 }

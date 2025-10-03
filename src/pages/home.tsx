@@ -39,14 +39,14 @@ function LoadProjectPreview(): JSX.Element[] | null {
 
   useEffect(() => {
     try {
-      const firstFour = (Projects as Project[]).slice(0, 4).map((item) => (
-        <NavLink to={`/Projects/${item.title}`} className={CardCSS.Card} key={item.title}>
-          <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${item.image})` }}>
+      const firstFour = (Projects as Project[]).slice(0, 4).map((project) => (
+        <NavLink to={`/Projects/${project.title}`} className={CardCSS.Card} key={project.title}>
+          <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${project.image})` }}>
             <div className={CardCSS["Card-Icons"]}></div>
           </div>
           <div className={CardCSS["Card-Bottom"]}>
-            <b>{item.title}</b>
-            <p>{item.description}</p>
+            <b>{project.title}</b>
+            <p>{project.description}</p>
           </div>
         </NavLink>
       ));

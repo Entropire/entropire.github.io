@@ -18,6 +18,7 @@
     background-color: var(--Forground-Color);
     border-radius: 1rem;
     border: 0.2rem solid var(--Border-Color);
+    width: auto;
 }   
 
 .Filter-Group{

@@ -3,10 +3,10 @@ title: "Portfolio"
 description: "my Portfolio"
 image: "Portfolio.png"
 tags:
-  status: ["In Progress"]
-  language: ["Typescript", "CSS", "HTML"]
-  software: ["React"]
-  type: ["Personal"]
+  Status: ["In Progress"]
+  Language: ["Typescript", "CSS", "HTML"]
+  Software: ["React"]
+  Type: ["Personal"]
 date: "2023-09-01"
 ---
 

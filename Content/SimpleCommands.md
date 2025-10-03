@@ -3,10 +3,10 @@ title: "SimpleCommands"
 description: "my SimpleCommands"
 image: "SimpleCommands.png"
 tags:
-  status: ["Done"]
-  language: ["C#"]
-  software: []
-  type: ["Personal"]
+  Status: ["Done"]
+  Language: ["C#"]
+  Software: []
+  Type: ["Personal"]
 date: "2023-09-01"
 ---
 

@@ -4,18 +4,18 @@
     "description": "my Portfolio",
     "image": "Portfolio.png",
     "tags": {
-      "status": [
+      "Status": [
         "In Progress"
       ],
-      "language": [
+      "Language": [
         "Typescript",
         "CSS",
         "HTML"
       ],
-      "software": [
+      "Software": [
         "React"
       ],
-      "type": [
+      "Type": [
         "Personal"
       ]
     },
@@ -26,14 +26,14 @@
     "description": "my SimpleCommands",
     "image": "SimpleCommands.png",
     "tags": {
-      "status": [
+      "Status": [
         "Done"
       ],
-      "language": [
+      "Language": [
         "C#"
       ],
-      "software": [],
-      "type": [
+      "Software": [],
+      "Type": [
         "Personal"
       ]
     },
@@ -44,16 +44,16 @@
     "description": "my SimpleFactions",
     "image": "SimpleFactions.png",
     "tags": {
-      "status": [
+      "Status": [
         "In Progress"
       ],
-      "language": [
+      "Language": [
         "Java"
       ],
-      "software": [
+      "Software": [
         "Sqlite"
       ],
-      "type": [
+      "Type": [
         "Personal"
       ]
     },

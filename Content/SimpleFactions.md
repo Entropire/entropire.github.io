@@ -3,10 +3,10 @@ title: "SimpleFactions"
 description: "my SimpleFactions"
 image: "SimpleFactions.png"
 tags:
-  status: ["In Progress"]
-  language: ["Java"]
-  software: ["Sqlite"]
-  type: ["Personal"]
+  Status: ["In Progress"]
+  Language: ["Java"]
+  Software: ["Sqlite"]
+  Type: ["Personal"]
 date: "2023-09-01"
 ---
 
