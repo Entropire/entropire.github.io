@@ -1,8 +1,8 @@
 [
   {
     "title": "Portfolio",
-    "description": "",
-    "img": "",
+    "description": "my Portfolio",
+    "image": "Portfolio.png",
     "tags": {
       "status": [
         "In Progress"
@@ -23,8 +23,8 @@
   },
   {
     "title": "SimpleCommands",
-    "description": "",
-    "img": "",
+    "description": "my SimpleCommands",
+    "image": "SimpleCommands.png",
     "tags": {
       "status": [
         "Done"
@@ -41,8 +41,8 @@
   },
   {
     "title": "SimpleFactions",
-    "description": "",
-    "img": "",
+    "description": "my SimpleFactions",
+    "image": "SimpleFactions.png",
     "tags": {
       "status": [
         "In Progress"

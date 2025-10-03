@@ -1,7 +1,7 @@
 ---
 title: "SimpleFactions"
-description: ""
-img: ""
+description: "my SimpleFactions"
+image: "SimpleFactions.png"
 tags:
   status: ["In Progress"]
   language: ["Java"]

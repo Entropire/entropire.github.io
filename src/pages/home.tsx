@@ -2,6 +2,7 @@ import { useEffect, useState, type JSX } from "react";
 import { NavLink } from "react-router-dom";
 import HomeCSS from "../styles/pages/Home.module.css";
 import CardCSS from "../styles/components/Card.module.css";
+import Projects from "../data/projects.json";
 
 export const Home = () => {
   const handleScroll = () => {
@@ -23,46 +24,44 @@ export const Home = () => {
   }, []);
 
 
-type Item = {
-  id: number;
+type Project = {
   title: string;
   description: string;
   image: string;
-  link: string;
-  Tags: {
+  tags: {
     [key: string]: string | string[];
   };
+  date: string;
 };
 
-function useJsonElements(filePath: string): JSX.Element[] | null {
+function LoadProjectPreview(): JSX.Element[] | null {
   const [elements, setElements] = useState<JSX.Element[] | null>(null);
 
   useEffect(() => {
-    fetch(filePath)
-      .then((res) => res.json())
-      .then((data: Item[]) => {
-        const firstThree = data.slice(0, 4).map((item) => (
-            <NavLink to={`/Projects/${item.title}`} className={CardCSS.Card} key={item.id}>
-              <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${item.image})` }}>
-                <div className={CardCSS["Card-Icons"]}>
-                </div>
-              </div>
-              <div className={CardCSS["Card-Bottom"]}>
-                <b>{item.title}</b>
-                <p>{item.description}</p>
-              </div>
-            </NavLink>
-        ));
-        setElements(firstThree);
-      })
-      .catch((err) => {
-        console.error("Failed to load JSON:", err);
-        setElements([]);
-      });
-  }, [filePath]);
+    try {
+      const firstFour = (Projects as Project[]).slice(0, 4).map((item) => (
+        <NavLink to={`/Projects/${item.title}`} className={CardCSS.Card} key={item.title}>
+          <div className={CardCSS["Card-Top"]} style={{ backgroundImage: `url(${item.image})` }}>
+            <div className={CardCSS["Card-Icons"]}></div>
+          </div>
+          <div className={CardCSS["Card-Bottom"]}>
+            <b>{item.title}</b>
+            <p>{item.description}</p>
+          </div>
+        </NavLink>
+      ));
+
+      setElements(firstFour);
+    } catch (err) {
+      console.error("Failed to load JSON:", err);
+      setElements([]);
+    }
+  }, []);
 
   return elements;
 }
+
+const projects = LoadProjectPreview();
 
     return(
         <>
@@ -78,12 +77,22 @@ function useJsonElements(filePath: string): JSX.Element[] | null {
 
                 <div className={HomeCSS["Projects-Preview"]}>
                     <h3>Projects Preview</h3>
-                    <div className={HomeCSS["Card-Container"]}>    
-                        { useJsonElements("./json/Projects.json") || <p>Loading projects...</p> }
-                        <NavLink to="/Projects" className={HomeCSS["Show-All"]} >
-                            <h4>Show All Projects</h4>
+                  <div className={HomeCSS["Card-Container"]}>    
+                    {
+                    projects && projects.length > 0 ? (
+                      <>
+                        {projects}
+                        <NavLink to="/Projects" className={HomeCSS["Show-All"]}>
+                          <h4>Show All Projects</h4>
                         </NavLink>
-                    </div>
+                      </>
+                    ) : projects && projects.length === 0 ? (
+                      <p>No projects found!</p>
+                    ) : (
+                      <p>Loading projects...</p>
+                    )
+                    }
+                  </div>
                 </div>
             </div>
         </>

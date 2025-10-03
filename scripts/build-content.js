@@ -65,8 +65,7 @@ function tokenToJSX(token) {
     const project = {
       title: data.title,
       description: data.description,
-      img: data.img,
-      url: data.url,
+      image: data.image,
       tags: data.tags,
       date: data.date,
     };
