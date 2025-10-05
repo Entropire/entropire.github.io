@@ -1,7 +1,5 @@
 .Projects-Page {
     width: 100%;
- 	  /* display: flex;
-    flex-direction: row; */
     align-items: center;
     gap: 1rem;
     display: grid;
@@ -95,6 +93,7 @@
 }
 
 .Card-Container {
+    height: 100%;
     grid-column: 2;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

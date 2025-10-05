@@ -103,14 +103,14 @@ export const Projects = () => {
 
     return (
         <div className={ProjectsCSS["Projects-Page"]}>
-           {hasError ? (
-                <p>Error while loading project</p>
-            ) : (
-                <>
-                    <div className={ProjectsCSS["Filter-Container"]}>{filtersElements}</div>
-                    <div className={ProjectsCSS["Card-Container"]}>{projectsElements}</div>
-            </>
-            )}
+                {hasError ? (
+                    <p>Error while loading project</p>
+                ) : (
+                    <>
+                        <div className={ProjectsCSS["Filter-Container"]}>{filtersElements}</div>
+                        <div className={ProjectsCSS["Card-Container"]}>{projectsElements}</div>
+                    </>
+                )}
         </div>
     );
 };

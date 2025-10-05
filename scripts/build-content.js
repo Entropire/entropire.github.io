@@ -17,25 +17,16 @@ marked.setOptions({
   },
 });
 
-function escapeJSX(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/{/g, "&#123;")
-    .replace(/}/g, "&#125;");
-}
-
-function tokenToJSX(token) {
+function tokenToHTML(token) {
   switch (token.type) {
     case "heading":
-      return `<h${token.depth}>${escapeJSX(token.text)}</h${token.depth}>`;
+      return `<h${token.depth}>${token.text}</h${token.depth}>`;
     case "paragraph":
-      return `<p>${escapeJSX(token.text)}</p>`;
+      return `<p>${token.text}</p>`;
     case "code":
-      return `<pre><code className="language-${token.lang || ""}">{\`${token.text}\`}</code></pre>`;
+      return `<pre><code class="language-${token.lang || ""}">${token.text}</code></pre>`;
     case "list":
-      const items = token.items.map(i => `<li>${escapeJSX(i.text)}</li>`).join("");
+      const items = token.items.map(i => `<li>${i.text}</li>`).join("");
       return token.ordered ? `<ol>${items}</ol>` : `<ul>${items}</ul>`;
     default:
       return "";
@@ -59,7 +50,7 @@ function tokenToJSX(token) {
     const { data, content } = matter(raw);
 
     const tokens = marked.lexer(content);
-    const jsxContent = tokens.map(tokenToJSX).join("\n");
+    const htmlContent = tokens.map(tokenToHTML).join("\n");
 
     const project = {
       title: data.title,
@@ -80,11 +71,9 @@ function tokenToJSX(token) {
       });
     }
 
-    const safeName = data.title.replace(/[^a-zA-Z0-9_]/g, "_");
     const slug = data.title.toLowerCase().replace(/\s+/g, "-");
-
-    const tsxPath = path.join(projectOutputDir, `${slug}.html`);
-    await fs.outputFile(tsxPath, jsxContent);
+    const htmlPath = path.join(projectOutputDir, `${slug}.html`);
+    await fs.outputFile(htmlPath, htmlContent);
   }
 
   await fs.outputJson(path.join(indexOutputDir, "projects.json"), projects, { spaces: 2 });
