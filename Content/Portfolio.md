@@ -10,7 +10,7 @@ tags:
 date: "2023-09-01"
 ---
 
-# Project Title: Smart Task Manager
+# Portfolio
 
 **Project Type:** Web Application  
 **Technologies Used:** HTML, CSS, JavaScript, React, Node.js, MongoDB  

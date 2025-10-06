@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
+import "highlight.js/styles/github-dark.css"; 
+import ProjectCSS from "../styles/pages/Project.module.css";
 
 export const Project = () => {
   const { projectName } = useParams<{ projectName: string }>();
@@ -31,7 +32,7 @@ export const Project = () => {
 
   return (
     <div
-      className="project-content"
+      className={ProjectCSS.ProjectContent}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
