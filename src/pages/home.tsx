@@ -9,7 +9,7 @@ export const Home = () => {
     document.getElementById("Arrow")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-    const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {

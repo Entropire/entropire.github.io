@@ -8,29 +8,38 @@ const contentDir = "./content";
 const indexOutputDir = "./src/data"; 
 const projectOutputDir = "./public/projects";
 
-marked.setOptions({
-  highlight(code, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      return hljs.highlight(code, { language: lang }).value;
-    }
-    return hljs.highlightAuto(code).value;
-  },
-});
+const renderer = {
+  code(code, lang, isEscaped) {
+    const safeCode = typeof code === "string" ? code : code?.text || "";
+     const escapedCode = escapeHtml(safeCode);
 
-function tokenToHTML(token) {
-  switch (token.type) {
-    case "heading":
-      return `<h${token.depth}>${token.text}</h${token.depth}>`;
-    case "paragraph":
-      return `<p>${token.text}</p>`;
-    case "code":
-      return `<pre><code class="language-${token.lang || ""}">${token.text}</code></pre>`;
-    case "list":
-      const items = token.items.map(i => `<li>${i.text}</li>`).join("");
-      return token.ordered ? `<ol>${items}</ol>` : `<ul>${items}</ul>`;
-    default:
-      return "";
+    const highlighted = lang && hljs.getLanguage(lang)
+      ? hljs.highlight(escapedCode, { language: lang, ignoreIllegals: true }).value
+      : hljs.highlightAuto(escapedCode).value;
+
+    return `<pre><code class="language-${lang || ""}">${highlighted}</code></pre>`;
+  },
+  heading(token) {
+    const text = typeof token === "string" ? token : token.text || "";
+    const level = token?.depth || 1;
+
+    if (level === 2) {
+      const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); 
+      return `<h2 id="${id}">${text}</h2>`;
+    }
+    return `<h${level}>${text}</h${level}>`;
   }
+};
+
+marked.use({ renderer });
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 (async () => {
@@ -50,7 +59,28 @@ function tokenToHTML(token) {
     const { data, content } = matter(raw);
 
     const tokens = marked.lexer(content);
-    const htmlContent = tokens.map(tokenToHTML).join("\n");
+
+    const h2Tokens = tokens.filter(token => token.type === "heading" && token.depth === 2);
+
+    const toc = h2Tokens.map(token => {
+      const id = token.text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); 
+      return { text: token.text, id };
+    });
+
+    marked.use(renderer);
+    const htmlContent =
+    `    
+      <div class="Navigation">
+        <ul>
+          ${toc.map(item => `<li><button data-scroll-id="${item.id}">${item.text}</button></li>`).join("\n")}
+        </ul>
+      </div> 
+      <div class="ProjectContent">
+        ${marked(content)}        
+      </div>
+      <div class="ProjectMeta">   
+      </div>
+    `;
 
     const project = {
       title: data.title,

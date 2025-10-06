@@ -1,7 +1,14 @@
 .ProjectContent{
     width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
 }
 
-.ProjectContent h1{
-    text-align: center;
+.ProjectContent .Navigation{
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: red;
 }
+

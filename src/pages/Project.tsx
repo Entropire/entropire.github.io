@@ -22,18 +22,41 @@ export const Project = () => {
   }, [projectName]);
 
   useEffect(() => {
-    if (html) {
-      hljs.highlightAll();
-    }
+    if (!html) return;
+
+    hljs.highlightAll();
+
+    const buttons = document.querySelectorAll<HTMLButtonElement>(
+      "button[data-scroll-id]"
+    );
+    buttons.forEach((btn) => {
+      const id = btn.getAttribute("data-scroll-id");
+      if (id) {
+        btn.onclick = () => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        };
+      }
+    });
+
+    return () => {
+      buttons.forEach((btn) => {
+        btn.onclick = null;
+      });
+    };
   }, [html]);
 
+  
   if (error) return <p>Project not found</p>;
   if (!html) return <p>Loading project...</p>;
 
   return (
-    <div
+    <>
+      <div
       className={ProjectCSS.ProjectContent}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+      dangerouslySetInnerHTML={{ __html: html }}/>
+    </>
   );
 };
