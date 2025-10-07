@@ -1,3 +1,58 @@
-
-<h1>SimpleCommands</h1>
-<p>This is my SimpleCommands project</p>
+    
+      <div class="Header">
+        <h1>SimpleCommands</h1>
+        <p>my SimpleCommands</p>
+      </div>
+      <div class="ProjectContent">
+        <div class="Navigation">
+          <ul>
+            <li><h4>Table of Contents</h4></li>
+            <li><button data-scroll-id="description">Description</button></li>
+<li><button data-scroll-id="usage">Usage</button></li>
+<li><button data-scroll-id="getting-started">Getting Started</button></li>
+<li><button data-scroll-id="license">License</button></li>
+          </ul>
+        </div> 
+        <div class="MainContent">
+          <h3 id="description">Description</h3><p><code>SimpleCommands</code> provides a lightweight framework to create, register, and execute commands dynamically in C#. Commands can be registered either as <strong>lambda functions</strong> or as <strong>dedicated classes</strong> inheriting from <code>Command</code> with a unique <code>[CommandName]</code> attribute.</p>
+<h3 id="usage">Usage</h3><h3>1. Create a CommandHandler</h3><pre><code class="language-">CommandHandler handler <span class="hljs-operator">=</span> new CommandHandler()<span class="hljs-comment">;</span></code></pre><h3>2.1. Registering a Command with a Lambda</h3><pre><code class="language-">handler.Register(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>, args =<span class="hljs-symbol">&amp;gt;</span>
+{
+    Console.WriteLine($<span class="hljs-symbol">&amp;quot;</span>Hello, {args[0]}!<span class="hljs-symbol">&amp;quot;</span>);
+});</code></pre><h3>2.2. Registering a Command with a Command Class</h3><pre><code class="language-">[<span class="hljs-meta">CommandName(&amp;quot;greet&amp;quot;)</span>]
+<span class="hljs-keyword">class</span> <span class="hljs-title">GoodbyeCommand</span> : <span class="hljs-title">Command</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
+    {
+        Console.WriteLine($&amp;quot;Hello, {<span class="hljs-keyword">args</span>[<span class="hljs-number">0</span>]}!&amp;quot;);
+    }
+}</code></pre><h3>3. Unregistering a Command</h3><pre><code class="language-">handler.Unregister(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>);</code></pre><h3>3. Execute a Command</h3><pre><code class="language-">handler.Execute(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>);</code></pre><h3 id="getting-started">Getting Started</h3><p>Follow these steps to use <code>SimpleCommands</code> in your project.</p>
+<ol>
+<li>Download the <code>SimpleCommands.dll</code> from the releases tab.  </li>
+<li>Create a folder in your project called <code>Libs</code> (or any name you prefer) and place the <code>SimpleCommands.dll</code> there: <code>YourProjectFolder/Libs/SimpleCommands.dll</code></li>
+<li>Open your project in Visual Studio.  </li>
+<li>Right-click on the project in <strong>Solution Explorer</strong> → <strong>Add</strong> → <strong>Reference…</strong>  </li>
+<li>Click <strong>Browse</strong>, navigate to the DLL location, select <code>SimpleCommands.dll</code>, and click <strong>OK</strong>.</li>
+</ol>
+<h3 id="license">License</h3><pre><code class="language-">MIT License
+ 
+Copyright (c) <span class="hljs-number">2025</span> Entropire
+ 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software <span class="hljs-keyword">and </span>associated documentation files (the &amp;quot<span class="hljs-comment">;Software&amp;quot;), to deal</span>
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, <span class="hljs-keyword">distribute, </span><span class="hljs-keyword">sublicense, </span><span class="hljs-keyword">and/or </span>sell
+copies of the Software, <span class="hljs-keyword">and </span>to permit persons to whom the Software is
+furnished to do so, <span class="hljs-keyword">subject </span>to the following conditions:
+  
+The above copyright notice <span class="hljs-keyword">and </span>this permission notice <span class="hljs-keyword">shall </span><span class="hljs-keyword">be </span>included in all
+copies <span class="hljs-keyword">or </span><span class="hljs-keyword">substantial </span>portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED &amp;quot<span class="hljs-comment">;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+IMPLIED, INCLUDING <span class="hljs-keyword">BUT </span>NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE <span class="hljs-keyword">AND </span>NONINFRINGEMENT. IN NO EVENT <span class="hljs-keyword">SHALL </span>THE
+AUTHORS <span class="hljs-keyword">OR </span>COPYRIGHT HOLDERS <span class="hljs-keyword">BE </span>LIABLE FOR ANY CLAIM, DAMAGES <span class="hljs-keyword">OR </span>OTHER</code></pre>        
+        </div>
+        <div class="ProjectMeta">   
+        </div>
+      </div>
+    
