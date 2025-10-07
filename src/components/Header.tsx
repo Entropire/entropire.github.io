@@ -1,36 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
 import HeaderCSS from '../styles/components/Header.module.css'
+import { useTheme } from "./UseTheme";
 
 export const Header = () => {
-    const [manualTheme, setManualTheme] = useState<"light" | "dark" | null>(null);
-
-    const [systemPrefersDark, setSystemPrefersDark] = useState(
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-    );
-
-    const theme = systemPrefersDark ? "dark" : "light";
-
-    useEffect(() => {
-        const root = document.documentElement;
-        root.setAttribute("data-theme", manualTheme || theme);
-    }, [theme, manualTheme]);
-
-    useEffect(() => {
-        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-        const handleChange = (e: MediaQueryListEvent) => {
-        setSystemPrefersDark(e.matches);
-        };
-
-        mediaQuery.addEventListener("change", handleChange);
-        return () => mediaQuery.removeEventListener("change", handleChange);
-    }, []);
-
-    const toggleTheme = () => {
-        setManualTheme((prev) => (prev === "dark" ? "light" : "dark"));
-    };
-
+    const { theme, toggleTheme } = useTheme();
 
     return(
         <>

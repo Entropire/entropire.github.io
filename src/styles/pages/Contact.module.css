@@ -48,6 +48,10 @@
   height: auto;
 }
 
+.ContactMethodImg path{
+    color: var(--Text-Primary-Color);
+}
+
 .ContactMethodText{
   grid-row: 2;
   display: flex;

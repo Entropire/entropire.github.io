@@ -1,4 +1,7 @@
 import ContactCSS from "../styles/pages/Contact.module.css";
+import Email_Icon from '../assets/icons/E-mail.png'
+import Linkedin_Icon from '../assets/icons/Linkedin.png'
+import Discord_Icon from '../assets/icons/Discord.svg'
 
 export const Contact = () => {
     return(
@@ -36,3 +39,4 @@ export const Contact = () => {
         </div>
     );
 }
+{/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false"></svg> */}

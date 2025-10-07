@@ -19,11 +19,11 @@
     gap: 1rem;
 }
 
-.Footer img{
+.Footer svg{
     height: 1.5rem;
     width: auto;
 }
 
-.Footer img:hover{
+.Footer svg:hover{
     cursor: pointer;
 }
