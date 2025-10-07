@@ -3,10 +3,8 @@ title: "SimpleCommands"
 description: "Command Interface for fast prototyping in c# with commands"
 image: "Img/SimpleCommands/SimpleCommands.png"
 tags:
-  Status: ["Done"]
   Language: ["C#"]
-  Software: []
-  Type: ["Personal"]
+  Year: ["2025"]
 date: "2023-09-01"
 ---
 

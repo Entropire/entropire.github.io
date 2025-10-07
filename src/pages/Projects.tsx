@@ -22,28 +22,51 @@ export const Projects = () => {
 
     const filtersElements = Object.entries(Filters)
         .filter(([_, options]) => options.length > 1)
-        .map(([filterType, options]) => (
-            <div key={filterType} className={ProjectsCSS["Filter-Group"]}>
-                <h4>{filterType}</h4>
-                <div className={ProjectsCSS["Filter-Options"]}>
-                    {options.map((option) => (
-                        <label key={option} className={ProjectsCSS["Filter-Option"]}>
-                            <input
-                                type="checkbox"
-                                checked={activeFilters[filterType]?.includes(option) || false}
-                                onChange={(e) =>handleCheckboxChange(filterType, option, e.target.checked)}
-                            />
-                            <span className={ProjectsCSS["Checkmark"]}>
-                                <svg width="12px" height="12px" viewBox="0 0 12 11">
-                                    <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
-                                </svg>
-                            </span>
-                            <span>{option}</span>
-                        </label>
-                    ))}
+        .map(([filterType, options]) => {
+            console.log(filterType)
+            if (filterType === "Year") {
+                const sortedOptions = [...options].sort((a, b) => Number(b) - Number(a)); // Sort descending
+
+                return (
+                    <div key={filterType} className={ProjectsCSS["Filter-Group"]}>
+                        <h4>{filterType}</h4>
+                        <select className={ProjectsCSS["Filter-Options"]}
+                            value=""
+                            onChange={(e) => handleCheckboxChange(filterType, e.target.value, true) }>
+                            <option key="All Years" value="">All Years</option>
+                            {sortedOptions.map((option) => (
+                                <option key={option} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                );
+            }
+
+            return(
+                <div key={filterType} className={ProjectsCSS["Filter-Group"]}>
+                    <h4>{filterType}</h4>
+                    <div className={ProjectsCSS["Filter-Options"]}>
+                        {options.map((option) => (
+                            <label key={option} className={ProjectsCSS["Filter-Option"]}>
+                                <input
+                                    type="checkbox"
+                                    checked={activeFilters[filterType]?.includes(option) || false}
+                                    onChange={(e) =>handleCheckboxChange(filterType, option, e.target.checked)}
+                                />
+                                <span className={ProjectsCSS["Checkmark"]}>
+                                    <svg width="12px" height="12px" viewBox="0 0 12 11">
+                                        <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                <span>{option}</span>
+                            </label>
+                        ))}
+                    </div>
                 </div>
-            </div>
-    ));
+            );
+        });
 
     const projectsElements = projects.map((project) => (
         <NavLink 
@@ -68,6 +91,15 @@ export const Projects = () => {
     const handleCheckboxChange = (key: string, option: string, checked: boolean) => {
         setActiveFilters((prevFilters) => {
             const newFilters = { ...prevFilters };
+
+            if (key === "Year") {            
+                if (!option) {
+                delete newFilters[key];
+            } else {
+                newFilters[key] = [option];
+            }
+            return newFilters;
+        }
 
             if (!newFilters[key]) {
                 newFilters[key] = [];

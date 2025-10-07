@@ -3,10 +3,9 @@ title: "Portfolio"
 description: "A portfolio website where I showcase my work and introducing who I am"
 image: "Img/Portfolio/Portfolio.png"
 tags:
-  Status: ["In Progress"]
   Language: ["Typescript", "CSS", "HTML"]
   Software: ["React"]
-  Type: ["Personal", "School"]
+  Year: ["2025"]
 date: "2025-10-07"
 ---
 

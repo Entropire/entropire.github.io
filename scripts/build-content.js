@@ -106,7 +106,7 @@ function escapeHtml(str) {
       Object.entries(data.tags).forEach(([category, values]) => {
         values.forEach((tag) => {
           if (!filters[category]) filters[category] = [];
-          if (!filters[category].includes(tag)) filters[category].push(tag);
+          if (!filters[category].includes(tag) && tag != "") filters[category].push(tag);
         });
       });
     }

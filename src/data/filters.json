@@ -1,8 +1,4 @@
 {
-  "Status": [
-    "Done",
-    "In Progress"
-  ],
   "Language": [
     "C#",
     "Java",
@@ -10,14 +6,15 @@
     "CSS",
     "HTML"
   ],
-  "Type": [
-    "School",
-    "Personal"
-  ],
   "Software": [
     "Unity",
     "Monogame",
     "Sqlite",
     "React"
+  ],
+  "Year": [
+    "2024",
+    "2025",
+    "2023"
   ]
 }

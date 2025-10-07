@@ -3,10 +3,9 @@ title: "SimpleFactions"
 description: "Custom Minecraft plugin enabling players to form factions, invite friends, and communicate securely"
 image: "Img/SimpleFactions/SimpleFactions.png"
 tags:
-  Status: ["In Progress"]
   Language: ["Java"]
   Software: ["Sqlite"]
-  Type: ["Personal"]
+  Year: ["2023"]
 date: "2023-09-01"
 ---
 
