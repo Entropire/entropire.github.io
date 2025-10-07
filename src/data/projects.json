@@ -1,7 +1,7 @@
 [
   {
     "title": "Portfolio",
-    "description": "my Portfolio",
+    "description": "A portfolio website where I showcase my work and introducing who I am",
     "image": "projects/Img/Portfolio/Portfolio.png",
     "tags": {
       "Status": [
@@ -23,7 +23,7 @@
   },
   {
     "title": "SimpleCommands",
-    "description": "my SimpleCommands",
+    "description": "Command Interface for fast prototyping in c# with commands",
     "image": "projects/Img/SimpleCommands/SimpleCommands.png",
     "tags": {
       "Status": [
@@ -41,7 +41,7 @@
   },
   {
     "title": "SimpleFactions",
-    "description": "my SimpleFactions",
+    "description": "Custom Minecraft plugin enabling players to form factions, invite friends, and communicate securely",
     "image": "projects/Img/SimpleFactions/SimpleFactions.png",
     "tags": {
       "Status": [

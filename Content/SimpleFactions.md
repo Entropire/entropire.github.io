@@ -1,6 +1,6 @@
 ---
 title: "SimpleFactions"
-description: "my SimpleFactions"
+description: "Custom Minecraft plugin enabling players to form factions, invite friends, and communicate securely"
 image: "Img/SimpleFactions/SimpleFactions.png"
 tags:
   Status: ["In Progress"]

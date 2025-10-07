@@ -1,6 +1,6 @@
 ---
 title: "SimpleCommands"
-description: "my SimpleCommands"
+description: "Command Interface for fast prototyping in c# with commands"
 image: "Img/SimpleCommands/SimpleCommands.png"
 tags:
   Status: ["Done"]

@@ -38,6 +38,13 @@
     color: var(--Accent-Color);
 }
 
+
+.ProjectPage :global .ProjectContent .MainContent ul,
+.ProjectPage :global .ProjectContent .MainContent ol{
+     list-style-position: inside;
+}
+
+
 pre code {
   display: block;
   background-color: var(--highlight-bg);
