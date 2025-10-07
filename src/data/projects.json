@@ -2,7 +2,7 @@
   {
     "title": "Portfolio",
     "description": "my Portfolio",
-    "image": "Portfolio.png",
+    "image": "projects/Img/Portfolio/Portfolio.png",
     "tags": {
       "Status": [
         "In Progress"
@@ -24,7 +24,7 @@
   {
     "title": "SimpleCommands",
     "description": "my SimpleCommands",
-    "image": "SimpleCommands.png",
+    "image": "projects/Img/SimpleCommands/SimpleCommands.png",
     "tags": {
       "Status": [
         "Done"
@@ -42,7 +42,7 @@
   {
     "title": "SimpleFactions",
     "description": "my SimpleFactions",
-    "image": "SimpleFactions.png",
+    "image": "projects/Img/SimpleFactions/SimpleFactions.png",
     "tags": {
       "Status": [
         "In Progress"

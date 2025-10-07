@@ -2,6 +2,7 @@
 
 :root {
     --Background-Color: #181A1B;
+    --Background-Color-2: #202923;
     --Forground-Color: #242627;
     --Border-Color: #2F3233;
     --Primary-Color: #00C978;
@@ -26,6 +27,7 @@
 
 [data-theme="dark"] {
     --Background-Color: #181A1B;
+    --Background-Color-2: #202923;
     --Forground-Color: #242627;
     --Border-Color: #2F3233;
     --Primary-Color: #00C978;
@@ -50,6 +52,7 @@
 
 [data-theme="light"] {
     --Background-Color: #D6D6D6;   
+    --Background-Color-2: #D8E6D8;
     --Forground-Color: #CBCBCB;   
     --Border-Color: #B3B3B3;       
     --Primary-Color: #008F45;     
@@ -113,9 +116,13 @@ h4{
     font-size: 1.5rem;
 }
 
-body{
+body {
     background-color: var(--Background-Color);
+    background-image:
+        linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.02) 100%),
+        linear-gradient(45deg, var(--Background-Color), var(--Background-Color-2));
 }
+
 
 #root{
     display: flex;

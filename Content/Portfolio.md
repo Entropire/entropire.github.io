@@ -1,7 +1,7 @@
 ---
 title: "Portfolio"
 description: "my Portfolio"
-image: "Portfolio.png"
+image: "Img/Portfolio/Portfolio.png"
 tags:
   Status: ["In Progress"]
   Language: ["Typescript", "CSS", "HTML"]

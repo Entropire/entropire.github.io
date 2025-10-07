@@ -46,9 +46,12 @@ function escapeHtml(str) {
   await fs.emptyDir(indexOutputDir);
   await fs.emptyDir(projectOutputDir);
 
-  const files = await fs.readdir(contentDir);
+  const files = await fs.readdir(contentDir); 
   const projects = [];
   const filters = {};
+
+
+  await fs.copy(path.join(contentDir, "Img"), path.join(projectOutputDir, "Img"));
 
   for (const file of files) {
     if (!file.endsWith(".md")) continue;
@@ -92,7 +95,7 @@ function escapeHtml(str) {
     const project = {
       title: data.title,
       description: data.description,
-      image: data.image,
+      image: path.posix.join("projects", data.image),
       tags: data.tags,
       date: data.date,
     };

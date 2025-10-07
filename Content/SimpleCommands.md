@@ -1,7 +1,7 @@
 ---
 title: "SimpleCommands"
 description: "my SimpleCommands"
-image: "SimpleCommands.png"
+image: "Img/SimpleCommands/SimpleCommands.png"
 tags:
   Status: ["Done"]
   Language: ["C#"]

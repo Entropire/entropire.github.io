@@ -40,9 +40,9 @@ export const Header = () => {
                                     : HeaderCSS['Nav-Link']
                             }>Blog</NavLink> */}
                     </div>
-                    <div className={HeaderCSS["Header-Nav-Right"]}>
+                    {/* <div className={HeaderCSS["Header-Nav-Right"]}>
                         <button onClick={toggleTheme}>{theme == "dark" ? "Light" : "Dark"}</button>
-                    </div>
+                    </div> */}
                 </nav>
             </header>
         </>
