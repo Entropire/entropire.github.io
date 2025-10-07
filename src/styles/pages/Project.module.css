@@ -37,3 +37,14 @@
 .ProjectPage :global .ProjectContent .Navigation h4{
     color: var(--Accent-Color);
 }
+
+pre code {
+  display: block;
+  background-color: var(--highlight-bg);
+  color: var(--highlight-color);
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}

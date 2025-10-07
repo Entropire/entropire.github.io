@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import hljs from "highlight.js";
-import "highlight.js/styles/github-dark.css"; 
 import ProjectCSS from "../styles/pages/Project.module.css";
+import "../styles/components/HightLightJS.css";
 
 export const Project = () => {
   const { projectName } = useParams<{ projectName: string }>();
@@ -24,8 +23,6 @@ export const Project = () => {
   useEffect(() => {
     if (!html) return;
 
-    hljs.highlightAll();
-
     const buttons = document.querySelectorAll<HTMLButtonElement>(
       "button[data-scroll-id]"
     );
@@ -34,29 +31,21 @@ export const Project = () => {
       if (id) {
         btn.onclick = () => {
           const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
+          if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
         };
       }
     });
 
-    return () => {
-      buttons.forEach((btn) => {
-        btn.onclick = null;
-      });
-    };
+    return () => buttons.forEach((btn) => (btn.onclick = null));
   }, [html]);
 
-  
   if (error) return <p>Project not found</p>;
   if (!html) return <p>Loading project...</p>;
 
   return (
-    <>
-      <div
+    <div
       className={ProjectCSS.ProjectPage}
-      dangerouslySetInnerHTML={{ __html: html }}/>
-    </>
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 };

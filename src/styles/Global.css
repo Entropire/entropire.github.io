@@ -1,36 +1,75 @@
 
 
 :root {
-  --Background-Color: #181A1B;
-  --Forground-Color: #242627;
-  --Border-Color: #2F3233;
-  --Primary-Color: #00C978;
-  --Secondary-Color: #3A3B3C;
-  --Accent-Color: #00C978;  
-  --Text-Primary-Color: #F1F1F1;
-  --Text-Muted-Color: #A8A8A8;
+    --Background-Color: #181A1B;
+    --Forground-Color: #242627;
+    --Border-Color: #2F3233;
+    --Primary-Color: #00C978;
+    --Secondary-Color: #3A3B3C;
+    --Accent-Color: #00C978;  
+    --Text-Primary-Color: #F1F1F1;
+    --Text-Muted-Color: #A8A8A8;
+
+    --highlight-color: var(--Text-Primary-Color);
+    --highlight-bg: var(--Forground-Color);
+    --highlight-comment: #999999;
+    --highlight-keyword: #88aece;
+    --highlight-attribute: #88aece;
+    --highlight-symbol: #c59bc1;
+    --highlight-namespace: #f08d49;
+    --highlight-variable: #b5bd68;
+    --highlight-literal: #f08d49;
+    --highlight-punctuation: #cccccc;
+    --highlight-deletion: #de7176;
+    --highlight-addition: #76c490;
 }
 
 [data-theme="dark"] {
-  --Background-Color: #181A1B;
-  --Forground-Color: #242627;
-  --Border-Color: #2F3233;
-  --Primary-Color: #00C978;
-  --Secondary-Color: #3A3B3C;
-  --Accent-Color: #00C978;  
-  --Text-Primary-Color: #F1F1F1;
-  --Text-Muted-Color: #A8A8A8;
+    --Background-Color: #181A1B;
+    --Forground-Color: #242627;
+    --Border-Color: #2F3233;
+    --Primary-Color: #00C978;
+    --Secondary-Color: #3A3B3C;
+    --Accent-Color: #00C978;  
+    --Text-Primary-Color: #F1F1F1;
+    --Text-Muted-Color: #A8A8A8;
+
+    --highlight-color: var(--Text-Primary-Color);
+    --highlight-bg: var(--Forground-Color);
+    --highlight-comment: #999999;
+    --highlight-keyword: #88aece;
+    --highlight-attribute: #88aece;
+    --highlight-symbol: #c59bc1;
+    --highlight-namespace: #f08d49;
+    --highlight-variable: #b5bd68;
+    --highlight-literal: #f08d49;
+    --highlight-punctuation: #cccccc;
+    --highlight-deletion: #de7176;
+    --highlight-addition: #76c490;
 }
 
 [data-theme="light"] {
-  --Background-Color: #D6D6D6;    /* gentle, soft gray */
-  --Forground-Color: #CBCBCB;    /* subtle layering contrast */
-  --Border-Color: #B3B3B3;       /* soft, low-contrast borders */
-  --Primary-Color: #008F45;      /* muted, calm green */
-  --Secondary-Color: #3A3B3C;    /* neutral, keep same */
-  --Accent-Color: #6FC473;       /* soft accent green */
-  --Text-Primary-Color: #1E1E1E; /* readable without stark contrast */
-  --Text-Muted-Color: #4D4D4D;   /* gentle muted text */
+    --Background-Color: #D6D6D6;   
+    --Forground-Color: #CBCBCB;   
+    --Border-Color: #B3B3B3;       
+    --Primary-Color: #008F45;     
+    --Secondary-Color: #3A3B3C;    
+    --Accent-Color: #6FC473;       
+    --Text-Primary-Color: #1E1E1E; 
+    --Text-Muted-Color: #4D4D4D;   
+
+    --highlight-color: var(--Text-Primary-Color);
+    --highlight-bg: var(--Forground-Color);
+    --highlight-comment: #656e77;
+    --highlight-keyword: #015692;
+    --highlight-attribute: #015692;
+    --highlight-symbol: #803378;
+    --highlight-namespace: #b75501;
+    --highlight-variable: #54790d;
+    --highlight-literal: #b75501;
+    --highlight-punctuation: #535a60;
+    --highlight-deletion: #c02d2e;
+    --highlight-addition: #2f6f44;
 }
 
 *{ 

@@ -1,0 +1,48 @@
+.hljs-comment,
+.hljs-quote {
+  color: var(--highlight-comment);
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: var(--highlight-keyword);
+}
+
+.hljs-attribute,
+.hljs-function,
+.hljs-title,
+.hljs-section,
+.hljs-type {
+  color: var(--highlight-attribute);
+}
+
+.hljs-variable,
+.hljs-symbol {
+  color: var(--highlight-symbol);
+}
+
+.hljs-namespace {
+  color: var(--highlight-namespace);
+}
+
+.hljs-literal,
+.hljs-number,
+.hljs-string {
+  color: var(--highlight-literal);
+}
+
+.hljs-punctuation {
+  color: var(--highlight-punctuation);
+}
+
+.hljs-addition {
+  background-color: var(--highlight-addition);
+}
+
+.hljs-deletion {
+  background-color: var(--highlight-deletion);
+}
