@@ -1,14 +1,39 @@
-.ProjectContent{
+.ProjectPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.ProjectPage :global .Header{
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.ProjectPage :global .Header h1{
+    color: var(--Primary-Color);
+}
+
+.ProjectPage :global .Header p{
+    color: var(--Text-Muted-Color);
+}
+
+.ProjectPage :global .ProjectContent {
     width: 100%;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 20% 60% 20%;
+}   
+
+.ProjectPage :global .Navigation ul{
+    list-style: none;
 }
 
-.ProjectContent .Navigation{
-    display: flex;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: red;
+.ProjectPage :global .Navigation button {
+    background-color: var(--Background-Color);
+    border: none;
 }
 
+.ProjectPage :global .ProjectContent .MainContent h3,
+.ProjectPage :global .ProjectContent .Navigation h4{
+    color: var(--Accent-Color);
+}

@@ -10,9 +10,6 @@ tags:
 date: "2023-09-01"
 ---
 
-# Simple Commands
-
---- 
 ## Description 
 `SimpleCommands` provides a lightweight framework to create, register, and execute commands dynamically in C#. Commands can be registered either as **lambda functions** or as **dedicated classes** inheriting from `Command` with a unique `[CommandName]` attribute.
 

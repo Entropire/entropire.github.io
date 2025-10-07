@@ -14,7 +14,24 @@
     font-size: 18px;
     margin: 0px;
     padding: 0px;
-    color: var(--Text-Primary-Color);
+    color: var(--Text-Primary-Color);   
+    scrollbar-width: thin;
+    scrollbar-color: var(--Primary-Color) var(--Forground-Color);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--Accent-Color);
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: var(--Forground-Color);
 }
 
 h1{

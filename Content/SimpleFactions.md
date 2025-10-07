@@ -10,9 +10,6 @@ tags:
 date: "2023-09-01"
 ---
 
-# Simple-Factions
-
----
 > [!WARNING]
 > This plugin is still in developemt. If you find a bug or feature that can be impoved you can open a issue for it.
 

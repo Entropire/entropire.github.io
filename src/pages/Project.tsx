@@ -55,7 +55,7 @@ export const Project = () => {
   return (
     <>
       <div
-      className={ProjectCSS.ProjectContent}
+      className={ProjectCSS.ProjectPage}
       dangerouslySetInnerHTML={{ __html: html }}/>
     </>
   );

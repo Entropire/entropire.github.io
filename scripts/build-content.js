@@ -25,7 +25,7 @@ const renderer = {
 
     if (level === 2) {
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); 
-      return `<h2 id="${id}">${text}</h2>`;
+      return `<h3 id="${id}">${text}</h3>`;
     }
     return `<h${level}>${text}</h${level}>`;
   }
@@ -70,15 +70,22 @@ function escapeHtml(str) {
     marked.use(renderer);
     const htmlContent =
     `    
-      <div class="Navigation">
-        <ul>
-          ${toc.map(item => `<li><button data-scroll-id="${item.id}">${item.text}</button></li>`).join("\n")}
-        </ul>
-      </div> 
-      <div class="ProjectContent">
-        ${marked(content)}        
+      <div class="Header">
+        <h1>${data.title}</h1>
+        <p>${data.description}</p>
       </div>
-      <div class="ProjectMeta">   
+      <div class="ProjectContent">
+        <div class="Navigation">
+          <ul>
+            <li><h4>Table of Contents</h4></li>
+            ${toc.map(item => `<li><button data-scroll-id="${item.id}">${item.text}</button></li>`).join("\n")}
+          </ul>
+        </div> 
+        <div class="MainContent">
+          ${marked(content)}        
+        </div>
+        <div class="ProjectMeta">   
+        </div>
       </div>
     `;
 

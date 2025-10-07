@@ -10,14 +10,6 @@ tags:
 date: "2023-09-01"
 ---
 
-# Portfolio
-
-**Project Type:** Web Application  
-**Technologies Used:** HTML, CSS, JavaScript, React, Node.js, MongoDB  
-**Project Link:** [Live Demo](#) | [GitHub Repository](#)
-
----
-
 ## Overview
 The **Smart Task Manager** is a comprehensive web application designed to help users manage their daily tasks efficiently. The app leverages modern web technologies to provide a responsive and intuitive interface. Users can create, edit, delete, and organize tasks with priority levels and deadlines.  
 
@@ -28,8 +20,6 @@ Key goals of the project include:
 - Provide insights via charts and analytics.
 - Deliver a smooth, responsive user experience across devices.
 
----
-
 ## Features
 - **Task Management:** Add, edit, delete, and categorize tasks. Tasks can be marked as high, medium, or low priority.  
 - **Deadline Tracking:** Set deadlines for tasks and get visual reminders when a task is approaching its due date.  
@@ -37,8 +27,6 @@ Key goals of the project include:
 - **Search and Filter:** Quickly find tasks using search or filter by priority, deadline, or category.  
 - **Notifications:** Email or in-app notifications alert users about upcoming deadlines and overdue tasks.  
 - **Responsive Design:** Fully optimized for desktops, tablets, and mobile devices.  
-
----
 
 ## Screenshots / Demo
 Here are some images demonstrating the application interface:  
@@ -53,8 +41,6 @@ Here are some images demonstrating the application interface:
 *Visual representation of productivity trends over time.*
 
 You can also watch the demo video here: [Demo Video](#)
-
----
 
 ## Installation / Setup
 Follow these steps to set up the project locally:
