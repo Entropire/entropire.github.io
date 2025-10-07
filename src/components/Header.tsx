@@ -6,6 +6,10 @@ export const Header = () => {
         <>
             <header className={HeaderCSS.Header}>
                 <nav className={HeaderCSS['Header-Nav']}>
+                    <NavLink to="/" className={HeaderCSS['Header-Nav-Left']}>
+                        <img src="./favicon.png" alt="Logo" />
+                        <p>Quinten Duijster</p>
+                    </NavLink>
                     <div className={HeaderCSS['Header-Nav-Center']}>
                         <NavLink to="/" className={({ isActive }) =>
                                 isActive
@@ -35,7 +39,6 @@ export const Header = () => {
                     </div>
                     {/* <div className={HeaderCSS["Header-Nav-Right"]}>
                         <button>dark</button>
-                        <button>NL</button>
                     </div> */}
                 </nav>
             </header>
