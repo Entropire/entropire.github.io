@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import HeaderCSS from '../styles/components/Header.module.css'
-import { useTheme } from "./UseTheme";
+// import { useTheme } from "./UseTheme";
 
 export const Header = () => {
-    const { theme, toggleTheme } = useTheme();
+    // const { theme, toggleTheme } = useTheme();
 
     return(
         <>
