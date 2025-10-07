@@ -1,3 +1,5 @@
+
+
 :root {
   --Background-Color: #181A1B;
   --Forground-Color: #242627;
@@ -7,6 +9,28 @@
   --Accent-Color: #00C978;  
   --Text-Primary-Color: #F1F1F1;
   --Text-Muted-Color: #A8A8A8;
+}
+
+[data-theme="dark"] {
+  --Background-Color: #181A1B;
+  --Forground-Color: #242627;
+  --Border-Color: #2F3233;
+  --Primary-Color: #00C978;
+  --Secondary-Color: #3A3B3C;
+  --Accent-Color: #00C978;  
+  --Text-Primary-Color: #F1F1F1;
+  --Text-Muted-Color: #A8A8A8;
+}
+
+[data-theme="light"] {
+  --Background-Color: #D6D6D6;    /* gentle, soft gray */
+  --Forground-Color: #CBCBCB;    /* subtle layering contrast */
+  --Border-Color: #B3B3B3;       /* soft, low-contrast borders */
+  --Primary-Color: #008F45;      /* muted, calm green */
+  --Secondary-Color: #3A3B3C;    /* neutral, keep same */
+  --Accent-Color: #6FC473;       /* soft accent green */
+  --Text-Primary-Color: #1E1E1E; /* readable without stark contrast */
+  --Text-Muted-Color: #4D4D4D;   /* gentle muted text */
 }
 
 *{ 
