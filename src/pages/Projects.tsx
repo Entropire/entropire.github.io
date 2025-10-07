@@ -25,14 +25,16 @@ export const Projects = () => {
         .map(([filterType, options]) => {
             console.log(filterType)
             if (filterType === "Year") {
-                const sortedOptions = [...options].sort((a, b) => Number(b) - Number(a)); // Sort descending
+                const sortedOptions = [...options].sort((a, b) => Number(b) - Number(a));
 
                 return (
                     <div key={filterType} className={ProjectsCSS["Filter-Group"]}>
                         <h4>{filterType}</h4>
-                        <select className={ProjectsCSS["Filter-Options"]}
-                            value=""
-                            onChange={(e) => handleCheckboxChange(filterType, e.target.value, true) }>
+                            <select
+                            className={ProjectsCSS["Filter-Options"]}
+                            value={activeFilters[filterType] || "0"}
+                            onChange={(e) => handleCheckboxChange(filterType, e.target.value, true)}
+                            >
                             <option key="All Years" value="">All Years</option>
                             {sortedOptions.map((option) => (
                                 <option key={option} value={option}>
@@ -92,8 +94,8 @@ export const Projects = () => {
         setActiveFilters((prevFilters) => {
             const newFilters = { ...prevFilters };
 
-            if (key === "Year") {            
-                if (!option) {
+        if (key === "Year") {            
+            if (!option) {
                 delete newFilters[key];
             } else {
                 newFilters[key] = [option];
