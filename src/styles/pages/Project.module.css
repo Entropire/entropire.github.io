@@ -44,6 +44,10 @@
      list-style-position: inside;
 }
 
+.ProccesingText {
+    text-align: center;
+    width: 100%;
+}
 
 pre code {
   display: block;

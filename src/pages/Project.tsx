@@ -39,8 +39,8 @@ export const Project = () => {
     return () => buttons.forEach((btn) => (btn.onclick = null));
   }, [html]);
 
-  if (error) return <p>Project not found</p>;
-  if (!html) return <p>Loading project...</p>;
+  if (error) return <p className={ProjectCSS.ProccesingText}>Project not found</p>;
+  if (!html) return <p className={ProjectCSS.ProccesingText}>Loading project...</p>;
 
   return (
     <div

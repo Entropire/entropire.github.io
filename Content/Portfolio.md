@@ -6,8 +6,8 @@ tags:
   Status: ["In Progress"]
   Language: ["Typescript", "CSS", "HTML"]
   Software: ["React"]
-  Type: ["Personal"]
-date: "2023-09-01"
+  Type: ["Personal", "School"]
+date: "2025-10-07"
 ---
 
 ## Overview

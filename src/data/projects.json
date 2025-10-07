@@ -1,5 +1,82 @@
 [
   {
+    "title": "Consolemon",
+    "description": "A school project where we needed to write a pokemon fighting game a in console",
+    "image": "projects/Img/Consolemon/Consolemon.png",
+    "tags": {
+      "Status": [
+        "Done"
+      ],
+      "Language": [
+        "C#"
+      ],
+      "Type": [
+        "School"
+      ]
+    },
+    "date": "2025-01-26"
+  },
+  {
+    "title": "HungryNight",
+    "description": "A school project where we needed to recreate a small peace of hollowknight",
+    "image": "projects/Img/HungryNight/HungryNight.png",
+    "tags": {
+      "Status": [
+        "Done"
+      ],
+      "Language": [
+        "C#"
+      ],
+      "Software": [
+        "Unity"
+      ],
+      "Type": [
+        "School"
+      ]
+    },
+    "date": "2025-01-26"
+  },
+  {
+    "title": "MonoGameMenu",
+    "description": "Menu system made in monogame",
+    "image": "projects/Img/MonoGameMenu/MonoGameMenu.png",
+    "tags": {
+      "Status": [
+        "Done"
+      ],
+      "Language": [
+        "C#"
+      ],
+      "Software": [
+        "Monogame"
+      ],
+      "Type": [
+        "Personal"
+      ]
+    },
+    "date": "2025-01-26"
+  },
+  {
+    "title": "NotEntropire",
+    "description": "A Discord bot that helps users form teams for a game jam",
+    "image": "projects/Img/NotEntropire/NotEntropire.png",
+    "tags": {
+      "Status": [
+        "Done"
+      ],
+      "Language": [
+        "Java"
+      ],
+      "Software": [
+        "Sqlite"
+      ],
+      "Type": [
+        "Personal"
+      ]
+    },
+    "date": "2025-01-26"
+  },
+  {
     "title": "Portfolio",
     "description": "A portfolio website where I showcase my work and introducing who I am",
     "image": "projects/Img/Portfolio/Portfolio.png",
@@ -16,10 +93,11 @@
         "React"
       ],
       "Type": [
-        "Personal"
+        "Personal",
+        "School"
       ]
     },
-    "date": "2023-09-01"
+    "date": "2025-10-07"
   },
   {
     "title": "SimpleCommands",

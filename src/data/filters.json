@@ -1,20 +1,23 @@
 {
   "Status": [
-    "In Progress",
-    "Done"
+    "Done",
+    "In Progress"
   ],
   "Language": [
+    "C#",
+    "Java",
     "Typescript",
     "CSS",
-    "HTML",
-    "C#",
-    "Java"
-  ],
-  "Software": [
-    "React",
-    "Sqlite"
+    "HTML"
   ],
   "Type": [
+    "School",
     "Personal"
+  ],
+  "Software": [
+    "Unity",
+    "Monogame",
+    "Sqlite",
+    "React"
   ]
 }
