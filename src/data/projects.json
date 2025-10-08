@@ -3,6 +3,7 @@
     "title": "Consolemon",
     "description": "A school project where we needed to write a pokemon fighting game a in console",
     "image": "projects/Img/Consolemon/Consolemon.png",
+    "link": "https://github.com/QuintenDuyster/consolemon_console",
     "tags": {
       "Language": [
         "C#"
@@ -20,6 +21,7 @@
     "title": "HungryNight",
     "description": "A school project where we needed to recreate a small peace of hollowknight",
     "image": "projects/Img/HungryNight/HungryNight.png",
+    "link": "https://github.com/Entropire/HungryNight",
     "tags": {
       "Language": [
         "C#"
@@ -37,6 +39,7 @@
     "title": "MonoGameMenu",
     "description": "Menu system made in monogame",
     "image": "projects/Img/MonoGameMenu/MonoGameMenu.png",
+    "link": "https://github.com/Entropire/FistMonoGame",
     "tags": {
       "Language": [
         "C#"
@@ -54,6 +57,7 @@
     "title": "NotEntropire",
     "description": "A Discord bot that helps users form teams for a game jam",
     "image": "projects/Img/NotEntropire/NotEntropire.png",
+    "link": "https://github.com/Entropire/NotEntropire",
     "tags": {
       "Language": [
         "Java"
@@ -71,6 +75,7 @@
     "title": "Portfolio",
     "description": "A portfolio website where I showcase my work and introducing who I am",
     "image": "projects/Img/Portfolio/Portfolio.png",
+    "link": "https://github.com/Entropire/entropire.github.io",
     "tags": {
       "Language": [
         "Typescript",
@@ -90,6 +95,7 @@
     "title": "SimpleCommands",
     "description": "Command Interface for fast prototyping in c# with commands",
     "image": "projects/Img/SimpleCommands/SimpleCommands.png",
+    "link": "https://github.com/Entropire/SimpleCommands",
     "tags": {
       "Language": [
         "C#"
@@ -104,6 +110,7 @@
     "title": "SimpleFactions",
     "description": "Custom Minecraft plugin enabling players to form factions, invite friends, and communicate securely",
     "image": "projects/Img/SimpleFactions/SimpleFactions.png",
+    "link": "https://github.com/Entropire/SimpleFactions",
     "tags": {
       "Language": [
         "Java"

@@ -27,6 +27,9 @@ const renderer = {
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); 
       return `<h3 id="${id}">${text}</h3>`;
     }
+    if(level === 3){
+       return `<h4>${text}</h4>`;
+    }
     return `<h${level}>${text}</h${level}>`;
   }
 };
@@ -70,6 +73,15 @@ function escapeHtml(str) {
       return { text: token.text, id };
     });
 
+    const project = {
+      title: data.title,
+      description: data.description,
+      image: path.posix.join("projects", data.image),
+      link: data.link,
+      tags: data.tags,
+      date: data.date,
+    };
+
     marked.use(renderer);
     const htmlContent =
     `    
@@ -88,17 +100,31 @@ function escapeHtml(str) {
           ${marked(content)}        
         </div>
         <div class="ProjectMeta">   
+          ${
+            data.tags
+              ? Object.entries(data.tags)
+                  .map(([category, options]) => {
+                    if (!Array.isArray(options)) return "";
+                    return `
+                      <div class="${category}">
+                        <h4>${category}</h4>
+                        ${options
+                          .filter(option => option.trim() !== "")
+                          .map(option => `<p value="${option}">${option}</p>`)
+                          .join("")}
+                      </div>
+                    `;
+                  })
+                  .join("")
+              : ""
+          }
+          <div class="Links">
+            <h4>Links<h4>
+            <a href="${data.link}"><p>Github</p></a>
+          </div>
         </div>
       </div>
     `;
-
-    const project = {
-      title: data.title,
-      description: data.description,
-      image: path.posix.join("projects", data.image),
-      tags: data.tags,
-      date: data.date,
-    };
 
     projects.push(project);
 

@@ -31,7 +31,7 @@ export const Projects = () => {
                     <div key={filterType} className={ProjectsCSS["Filter-Group"]}>
                         <h4>{filterType}</h4>
                             <select
-                            className={ProjectsCSS["Filter-Options"]}
+                            className={ProjectsCSS["Filter-Options-Select"]}
                             value={activeFilters[filterType] || "0"}
                             onChange={(e) => handleCheckboxChange(filterType, e.target.value, true)}
                             >

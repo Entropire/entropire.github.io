@@ -1,61 +1,150 @@
-.ProjectPage{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+.ProjectPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.ProjectPage :global .Header{
-    text-align: center;
-    margin-bottom: 5rem;
+.ProjectPage :global(.Header) {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 60%;
 }
 
-.ProjectPage :global .Header h1{
-    color: var(--Primary-Color);
+.ProjectPage :global(.Header h1) {
+  color: var(--Primary-Color);
+  margin-bottom: 0.5rem;
 }
 
-.ProjectPage :global .Header p{
-    color: var(--Text-Muted-Color);
+.ProjectPage :global(.Header p) {
+  color: var(--Text-Muted-Color);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.ProjectPage :global .ProjectContent {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 20% 60% 20%;
-}   
-
-.ProjectPage :global .Navigation ul{
-    list-style: none;
+.ProjectPage :global(.ProjectContent) {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  gap: 2rem;
+  padding: 0 2rem;
 }
 
-.ProjectPage :global .Navigation button {
+.ProjectPage :global(.Navigation) {
+  width: auto;
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+  justify-self: right;
+  background: var(--Forground-Color);
+  border: 0.2rem solid var(--Border-Color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.ProjectPage :global(.Navigation ul) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ProjectPage :global(.Navigation h4) {
+  color: var(--Accent-Color);
+  margin-bottom: .5rem;
+}
+
+.ProjectPage :global(.Navigation button) {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: var(--Primary-Text-Color);
+  cursor: pointer;
+  padding: 0.4rem 0;
+  transition: color 0.2s ease, transform 0.15s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.ProjectPage :global(.Navigation button:hover) {
+  color: var(--Accent-Color);
+}
+
+.ProjectPage :global(.Navigation button.active) {
+  color: var(--Accent-Color);
+}
+
+.ProjectPage :global(.Navigation button.active)::before {
+  color: var(--Accent-Color);
+  margin-right: 0.5rem;
+}
+
+.ProjectPage :global(.MainContent h3) {
+  color: var(--Accent-Color);
+  margin-top: 2rem;
+}
+
+.ProjectPage :global(.MainContent p) {
+  color: var(--Text-Color);
+  margin: 1rem 0;
+}
+
+.ProjectPage :global(.MainContent ul),
+.ProjectPage :global(.MainContent ol) {
+    list-style-position: inside;
+}
+
+.ProjectPage :global(.MainContent img) {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--Border-Color, #e5e7eb);
+}
+
+
+.ProjectPage :global(.MainContent blockquote) {
+  border-left: 4px solid var(--Accent-Color);
+  background: var(--Forground-Color);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.ProjectPage :global(.ProjectMeta) {
+  width: auto;
+  align-self: start;
+  justify-self: left;
+  background: var(--Forground-Color);
+  border: 0.2rem solid var(--Border-Color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.ProjectPage :global(.ProjectMeta h4) {
+  color: var(--Accent-Color);
+  margin-bottom: .5rem;
+}
+
+.ProjectPage :global(.ProjectMeta p) {
     background-color: var(--Background-Color);
-    border: none;
-}
-
-.ProjectPage :global .ProjectContent .MainContent h3,
-.ProjectPage :global .ProjectContent .Navigation h4{
-    color: var(--Accent-Color);
-}
-
-
-.ProjectPage :global .ProjectContent .MainContent ul,
-.ProjectPage :global .ProjectContent .MainContent ol{
-     list-style-position: inside;
-}
-
-.ProccesingText {
+    border: .2rem solid var(--Border-Color);
+    border-radius: 1rem;
     text-align: center;
-    width: 100%;
+    width: auto;
+}
+
+.ProjectPage :global(.ProjectMeta a){
+    text-decoration: none;
 }
 
 pre code {
   display: block;
+  margin: 1.5rem 0;
   background-color: var(--highlight-bg);
   color: var(--highlight-color);
-  padding: 1em;
-  border-radius: 0.5em;
+  padding: 1.25em;
+  border: 0.2rem solid var(--Border-Color);
+  border-radius: 0.75em;
   overflow-x: auto;
   font-family: 'Fira Code', monospace;
   font-size: 0.9rem;
+  line-height: 1.5;
 }

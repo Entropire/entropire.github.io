@@ -92,6 +92,13 @@
   size: 1rem;
 }
 
+.Filter-Options-Select{
+  background-color: var(--Forground-Color);
+  border:  0.2rem solid var(--Border-Color);
+  border-radius: .5rem;
+  padding: 0rem 0.2rem;
+}
+
 .Card-Container {
     height: 100%;
     grid-column: 2;

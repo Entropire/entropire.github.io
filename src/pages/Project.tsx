@@ -39,6 +39,53 @@ export const Project = () => {
     return () => buttons.forEach((btn) => (btn.onclick = null));
   }, [html]);
 
+useEffect(() => {
+  if (!html) return;
+
+  const navButtons = document.querySelectorAll<HTMLButtonElement>(
+    ".Navigation button[data-scroll-id]"
+  );
+  const sections = Array.from(navButtons)
+    .map((btn) => document.getElementById(btn.dataset.scrollId || ""))
+    .filter(Boolean) as HTMLElement[];
+
+  if (sections.length === 0) return;
+
+  const handleScroll = () => {
+    const center = window.innerHeight / 2;
+
+    let closestSection: HTMLElement | null = null;
+    let minDistance = Infinity;
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const sectionMid = rect.top + rect.height / 2;
+      const distance = Math.abs(center - sectionMid);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestSection = section;
+      }
+    });
+
+    if (closestSection) {
+      navButtons.forEach((btn) => {
+        btn.classList.toggle(
+          "active",
+          btn.dataset.scrollId === closestSection!.id
+        );
+      });
+    }
+  };
+
+  // Initial highlight
+  handleScroll();
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [html]);
+
+
   if (error) return <p className={ProjectCSS.ProccesingText}>Project not found</p>;
   if (!html) return <p className={ProjectCSS.ProccesingText}>Loading project...</p>;
 

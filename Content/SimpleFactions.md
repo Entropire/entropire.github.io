@@ -2,6 +2,7 @@
 title: "SimpleFactions"
 description: "Custom Minecraft plugin enabling players to form factions, invite friends, and communicate securely"
 image: "Img/SimpleFactions/SimpleFactions.png"
+link: "https://github.com/Entropire/SimpleFactions"
 tags:
   Language: ["Java"]
   Software: ["Sqlite"]

@@ -2,6 +2,7 @@
 title: "SimpleCommands"
 description: "Command Interface for fast prototyping in c# with commands"
 image: "Img/SimpleCommands/SimpleCommands.png"
+link: "https://github.com/Entropire/SimpleCommands"
 tags:
   Language: ["C#"]
   Year: ["2025"]

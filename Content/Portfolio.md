@@ -2,6 +2,7 @@
 title: "Portfolio"
 description: "A portfolio website where I showcase my work and introducing who I am"
 image: "Img/Portfolio/Portfolio.png"
+link: "https://github.com/Entropire/entropire.github.io"
 tags:
   Language: ["Typescript", "CSS", "HTML"]
   Software: ["React"]
