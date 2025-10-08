@@ -1,0 +1,17 @@
+.Not-Supported{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Not-Supported img{
+    width: 100vw;
+    height: auto;
+}
+
+
+.Not-Supported h1{
+    size: 2rem;
+}

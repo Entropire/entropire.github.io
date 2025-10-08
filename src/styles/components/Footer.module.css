@@ -1,5 +1,4 @@
 .Footer{
-    display: flex;
     background-color: var(--Forground-Color);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -26,4 +25,14 @@
 
 .Footer svg:hover{
     cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .Footer{
+        display: flex;
+    }
+    
+    .Footer svg{
+        display: none;
+    }
 }
