@@ -1,56 +1,60 @@
     
       <div class="Header">
         <h1>SimpleCommands</h1>
-        <p>Command Interface for fast prototyping in c# with commands</p>
+        <p>A lightweight command interface for fast prototyping in C# with commands</p>
       </div>
       <div class="ProjectContent">
         <div class="Navigation">
           <ul>
             <li><h4>Table of Contents</h4></li>
             <li><button data-scroll-id="description">Description</button></li>
-<li><button data-scroll-id="usage">Usage</button></li>
-<li><button data-scroll-id="getting-started">Getting Started</button></li>
-<li><button data-scroll-id="license">License</button></li>
+<li><button data-scroll-id="features">Features</button></li>
+<li><button data-scroll-id="commands">Commands</button></li>
+<li><button data-scroll-id="commandhandler">CommandHandler</button></li>
           </ul>
         </div> 
         <div class="MainContent">
-          <h3 id="description">Description</h3><p><code>SimpleCommands</code> provides a lightweight framework to create, register, and execute commands dynamically in C#. Commands can be registered either as <strong>lambda functions</strong> or as <strong>dedicated classes</strong> inheriting from <code>Command</code> with a unique <code>[CommandName]</code> attribute.</p>
-<h3 id="usage">Usage</h3><h4>1. Create a CommandHandler</h4><pre><code class="language-">CommandHandler handler <span class="hljs-operator">=</span> new CommandHandler()<span class="hljs-comment">;</span></code></pre><h4>2.1. Registering a Command with a Lambda</h4><pre><code class="language-">handler.Register(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>, args =<span class="hljs-symbol">&amp;gt;</span>
-{
-    Console.WriteLine($<span class="hljs-symbol">&amp;quot;</span>Hello, {args[0]}!<span class="hljs-symbol">&amp;quot;</span>);
-});</code></pre><h4>2.2. Registering a Command with a Command Class</h4><pre><code class="language-">[<span class="hljs-meta">CommandName(&amp;quot;greet&amp;quot;)</span>]
-<span class="hljs-keyword">class</span> <span class="hljs-title">GoodbyeCommand</span> : <span class="hljs-title">Command</span>
+          <div>
+              <img src="projects/Img/SimpleCommands/Example.gif" alt="Example GIF" loading="lazy" class="custom-image" />
+            </div><h3 id="description">Description</h3><p>I built this API to speed up my workflow when making small CLI tools or prototypes.
+It it allows registering commands via class inharitance or lambda expressions.
+It also makes it easy to switch between command handlers so you can change active command easily.</p><h3 id="features">Features</h3><ul>
+<li>Command registration and execution system  </li>
+<li>Support for commands via class inheritance or lambda expressions  </li>
+<li>Command handler system for managing multiple sets of commands  </li>
+<li>Easy execution of commands by name via a unified interface</li>
+</ul>
+<h3 id="commands">Commands</h3><p>A command is an order given to a computer program that performs a specific action via a command-line interface (CLI).
+Commands can be created with one of two ways.</p><ol>
+<li>By extending from the <strong>Command</strong> class:</li>
+</ol>
+<pre><code class="language-"><span class="hljs-keyword">class</span> <span class="hljs-title">GreetCommand</span> : <span class="hljs-title">Command</span>
 {
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
     {
         Console.WriteLine($&amp;quot;Hello, {<span class="hljs-keyword">args</span>[<span class="hljs-number">0</span>]}!&amp;quot;);
     }
-}</code></pre><h4>3. Unregistering a Command</h4><pre><code class="language-">handler.Unregister(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>);</code></pre><h4>3. Execute a Command</h4><pre><code class="language-">handler.Execute(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>);</code></pre><h3 id="getting-started">Getting Started</h3><p>Follow these steps to use <code>SimpleCommands</code> in your project.</p>
-<ol>
-<li>Download the <code>SimpleCommands.dll</code> from the releases tab.  </li>
-<li>Create a folder in your project called <code>Libs</code> (or any name you prefer) and place the <code>SimpleCommands.dll</code> there: <code>YourProjectFolder/Libs/SimpleCommands.dll</code></li>
-<li>Open your project in Visual Studio.  </li>
-<li>Right-click on the project in <strong>Solution Explorer</strong> → <strong>Add</strong> → <strong>Reference…</strong>  </li>
-<li>Click <strong>Browse</strong>, navigate to the DLL location, select <code>SimpleCommands.dll</code>, and click <strong>OK</strong>.</li>
+}</code></pre><p class="Comment">//Creates a class that inherits from **Command** and prints `Hello, [the user's first arg]!` to the console when executed.</p><ol start="2">
+<li>By using a lambda expression:</li>
 </ol>
-<h3 id="license">License</h3><pre><code class="language-">MIT License
- 
-Copyright (c) <span class="hljs-number">2025</span> Entropire
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software <span class="hljs-keyword">and </span>associated documentation files (the &amp;quot<span class="hljs-comment">;Software&amp;quot;), to deal</span>
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, <span class="hljs-keyword">distribute, </span><span class="hljs-keyword">sublicense, </span><span class="hljs-keyword">and/or </span>sell
-copies of the Software, <span class="hljs-keyword">and </span>to permit persons to whom the Software is
-furnished to do so, <span class="hljs-keyword">subject </span>to the following conditions:
-  
-The above copyright notice <span class="hljs-keyword">and </span>this permission notice <span class="hljs-keyword">shall </span><span class="hljs-keyword">be </span>included in all
-copies <span class="hljs-keyword">or </span><span class="hljs-keyword">substantial </span>portions of the Software.
- 
-THE SOFTWARE IS PROVIDED &amp;quot<span class="hljs-comment">;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
-IMPLIED, INCLUDING <span class="hljs-keyword">BUT </span>NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE <span class="hljs-keyword">AND </span>NONINFRINGEMENT. IN NO EVENT <span class="hljs-keyword">SHALL </span>THE
-AUTHORS <span class="hljs-keyword">OR </span>COPYRIGHT HOLDERS <span class="hljs-keyword">BE </span>LIABLE FOR ANY CLAIM, DAMAGES <span class="hljs-keyword">OR </span>OTHER</code></pre>        
+<pre><code class="language-">handler.Register(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>, args =<span class="hljs-symbol">&amp;gt;</span> {
+    Console.WriteLine($<span class="hljs-symbol">&amp;quot;</span>Hello, {args[0]}!<span class="hljs-symbol">&amp;quot;</span>); 
+});</code></pre><p class="Comment">//Creates a command lambda expression that prints `Hello, [the user's first arg]!` to the console when executed.</p><h4>Command Name</h4><p>Command names are the names that you enter in a command line interface or a console to execute the code linked to that name.
+There are two ways to link a command to a name:</p><ol>
+<li>By adding the <strong>CommandName</strong> attribute to your command class:</li>
+</ol>
+<pre><code class="language-">[<span class="hljs-meta">CommandName(&amp;quot;greet&amp;quot;)</span>]
+<span class="hljs-keyword">class</span> <span class="hljs-title">GreetCommand</span> : <span class="hljs-title">Command</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
+    {
+        Console.WriteLine($&amp;quot;Hello, {<span class="hljs-keyword">args</span>[<span class="hljs-number">0</span>]}!&amp;quot;);
+    }
+}</code></pre><p class="Comment">//Creates a class that inherits from **Command** where the command name is set with the **CommandName** attribute.</p><ol start="2">
+<li>By setting the command name while registering your command:</li>
+</ol>
+<pre><code class="language-">handler.Register(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>, new GreetCommand());</code></pre><p class="Comment">//Registers a command where the name of the command is set as a parameter of the **Register** function.</p><h3 id="commandhandler">CommandHandler</h3><p>A command handler is a registry that manages all registered commands and routes execution to the correct one.
+You can create a new command handler by instantiating a new one:</p><pre><code class="language-">CommandHandler handler <span class="hljs-operator">=</span> new CommandHandler()<span class="hljs-comment">;</span></code></pre><p class="Comment">//Creates a new **CommandHandler** instance.</p><p>To register commands call the **Register** function:</p><pre><code class="language-"><span class="hljs-keyword">handler</span>.Register(<span class="hljs-keyword">new</span> GreetCommand());</code></pre><p class="Comment">//Registers the **GreetCommand** where the name is set in the class with the **CommandName** attribute.</p><p>To unregister commands call the **Unregister** function:</p><pre><code class="language-"><span class="hljs-keyword">handler</span>.Unregister(<span class="hljs-keyword">new</span> GreetCommand());</code></pre><p class="Comment">//Unregisters the **GreetCommand**.</p><p>To execute a command call the **Execute** function:</p><pre><code class="language-">handler.Execute(<span class="hljs-symbol">&amp;quot;</span>greet<span class="hljs-symbol">&amp;quot;</span>, <span class="hljs-symbol">&amp;quot;</span>helloworld<span class="hljs-symbol">&amp;quot;</span>);</code></pre><p class="Comment">//Executes the command linked to the `greet` keyword.</p>        
         </div>
         <div class="ProjectMeta">   
           
@@ -65,8 +69,12 @@ AUTHORS <span class="hljs-keyword">OR </span>COPYRIGHT HOLDERS <span class="hljs
                       </div>
                     
           <div class="Links">
-            <h4>Links<h4>
-            <a href="https://github.com/Entropire/SimpleCommands"><p>Github</p></a>
+            <h4>Links</h4>
+            
+                        <a href="https://github.com/Entropire/SimpleCommands" target="_blank" rel="noopener noreferrer">
+                          <p>Github</p>
+                        </a>
+                      
           </div>
         </div>
       </div>
