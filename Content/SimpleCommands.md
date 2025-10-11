@@ -1,36 +1,36 @@
 ---
 title: "SimpleCommands"
-description: "Command Interface for fast prototyping in c# with commands"
+description: "A lightweight command interface for fast prototyping in C# with commands"
 image: "Img/SimpleCommands/SimpleCommands.png"
-link: "https://github.com/Entropire/SimpleCommands"
+links: [
+    {name: "Github", url: "https://github.com/Entropire/SimpleCommands"}
+]
 tags:
-  Language: ["C#"]
-  Year: ["2025"]
+    Language: ["C#"]
+    Year: ["2025"]
 date: "2023-09-01"
 ---
 
-## Description 
-`SimpleCommands` provides a lightweight framework to create, register, and execute commands dynamically in C#. Commands can be registered either as **lambda functions** or as **dedicated classes** inheriting from `Command` with a unique `[CommandName]` attribute.
+![Example GIF](./Img/SimpleCommands/Example.gif)
 
-## Usage
-### 1. Create a CommandHandler
-```csharp
-CommandHandler handler = new CommandHandler();
-```
+## Description
+I built this API to speed up my workflow when making small CLI tools or prototypes.
+It it allows registering commands via class inharitance or lambda expressions.
+It also makes it easy to switch between command handlers so you can change active command easily.
 
-### 2.1. Registering a Command with a Lambda
+## Features
+- Command registration and execution system  
+- Support for commands via class inheritance or lambda expressions  
+- Command handler system for managing multiple sets of commands  
+- Easy execution of commands by name via a unified interface  
 
-```csharp
-handler.Register("greet", args =>
-{
-    Console.WriteLine($"Hello, {args[0]}!");
-});
-```
+## Commands
+A command is an order given to a computer program that performs a specific action via a command-line interface (CLI).
+Commands can be created with one of two ways.
 
-### 2.2. Registering a Command with a Command Class
-```csharp
-[CommandName("greet")]
-class GoodbyeCommand : Command
+1. By extending from the **Command** class:
+```cs
+class GreetCommand : Command
 {
     public override void Execute(string[] args)
     {
@@ -38,45 +38,61 @@ class GoodbyeCommand : Command
     }
 }
 ```
+//Creates a class that inherits from **Command** and prints `Hello, [the user's first arg]!` to the console when executed.
 
-### 3. Unregistering a Command
-```csharp
-handler.Unregister("greet");
+2. By using a lambda expression:
+```cs
+handler.Register("greet", args => {
+    Console.WriteLine($"Hello, {args[0]}!"); 
+});
 ```
+//Creates a command lambda expression that prints `Hello, [the user's first arg]!` to the console when executed.
 
-### 3. Execute a Command
-```csharp
-handler.Execute("greet");
+### Command Name
+Command names are the names that you enter in a command line interface or a console to execute the code linked to that name.
+There are two ways to link a command to a name:
+
+1. By adding the **CommandName** attribute to your command class:
+```cs
+[CommandName("greet")]
+class GreetCommand : Command
+{
+    public override void Execute(string[] args)
+    {
+        Console.WriteLine($"Hello, {args[0]}!");
+    }
+}
 ```
+//Creates a class that inherits from **Command** where the command name is set with the **CommandName** attribute.
 
-## Getting Started
-
-Follow these steps to use `SimpleCommands` in your project.
-
-1. Download the `SimpleCommands.dll` from the releases tab.  
-2. Create a folder in your project called `Libs` (or any name you prefer) and place the `SimpleCommands.dll` there: `YourProjectFolder/Libs/SimpleCommands.dll`
-3. Open your project in Visual Studio.  
-4. Right-click on the project in **Solution Explorer** → **Add** → **Reference…**  
-5. Click **Browse**, navigate to the DLL location, select `SimpleCommands.dll`, and click **OK**.
-
-## License
-```text
-MIT License
- 
-Copyright (c) 2025 Entropire
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-  
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
- 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+2. By setting the command name while registering your command:
+```cs
+handler.Register("greet", new GreetCommand());
 ```
+//Registers a command where the name of the command is set as a parameter of the **Register** function.
+
+## CommandHandler
+A command handler is a registry that manages all registered commands and routes execution to the correct one.
+You can create a new command handler by instantiating a new one:
+```cs
+CommandHandler handler = new CommandHandler();
+```
+//Creates a new **CommandHandler** instance.
+
+To register commands call the **Register** function:
+```cs
+handler.Register(new GreetCommand());
+```
+//Registers the **GreetCommand** where the name is set in the class with the **CommandName** attribute.
+
+To unregister commands call the **Unregister** function:
+```cs
+handler.Unregister(new GreetCommand());
+```
+//Unregisters the **GreetCommand**.
+
+To execute a command call the **Execute** function:
+```cs
+handler.Execute("greet", "helloworld");
+```
+//Executes the command linked to the `greet` keyword.

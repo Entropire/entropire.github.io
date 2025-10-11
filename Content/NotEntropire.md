@@ -2,7 +2,9 @@
 title: "NotEntropire"
 description: "A Discord bot that helps users form teams for a game jam"
 image: "Img/NotEntropire/NotEntropire.png"
-link: "https://github.com/Entropire/NotEntropire"
+link: [
+  {name: "Github", url: "https://github.com/Entropire/NotEntropire"}
+]
 tags:
   Language: ["Java"]
   Software: ["Sqlite"]

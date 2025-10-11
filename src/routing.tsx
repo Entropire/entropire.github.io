@@ -1,6 +1,6 @@
 import { useNavigate, Routes, Route } from "react-router-dom"
 import { useEffect} from "react"
-import { Home } from "./pages/home.tsx"
+import { Home } from "./pages/Home.tsx"
 import { Header } from "./components/Header.tsx"
 import { Footer } from "./components/Footer.tsx"
 import { About } from "./pages/About.tsx"

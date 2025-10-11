@@ -31,6 +31,34 @@ const renderer = {
        return `<h4>${text}</h4>`;
     }
     return `<h${level}>${text}</h${level}>`;
+  },
+  image(href, title, text) {
+    const safeHref = typeof href === "string" ? href : href?.href || href?.text || "";
+
+    const imgTitle = title ? ` title="${title}"` : "";
+    const imgSrc = path.posix.join("projects", safeHref);
+
+    return `<div>
+              <img src="${imgSrc}" alt="${text}"${imgTitle} loading="lazy" class="custom-image" />
+            </div>`;
+  },
+  paragraph(text) {
+    const safeText = typeof text === "string" ? text : text?.text || "";
+
+    if(safeText.trimStart().startsWith("//"))
+    {
+      return `<p class="Comment">${safeText}</p>`;
+    }
+
+    const mdImageRegex = /!\[(.*?)\]\((.*?)(?: "(.*?)")?\)/;
+    const match = safeText.match(mdImageRegex);
+
+    if (match) {
+      const [, alt, href, title] = match;
+      return this.image(href, title, alt); // pass all three arguments
+    }
+
+    return `<p>${safeText}</p>`;
   }
 };
 
@@ -77,7 +105,7 @@ function escapeHtml(str) {
       title: data.title,
       description: data.description,
       image: path.posix.join("projects", data.image),
-      link: data.link,
+      links: data.links,
       tags: data.tags,
       date: data.date,
     };
@@ -119,8 +147,20 @@ function escapeHtml(str) {
               : ""
           }
           <div class="Links">
-            <h4>Links<h4>
-            <a href="${data.link}"><p>Github</p></a>
+            <h4>Links</h4>
+            ${
+              data.links
+                ? data.links
+                    .map(linkObj => {
+                      return `
+                        <a href="${linkObj.url}" target="_blank" rel="noopener noreferrer">
+                          <p>${linkObj.name}</p>
+                        </a>
+                      `;
+                    })
+                    .join("")
+                : ""
+            }
           </div>
         </div>
       </div>

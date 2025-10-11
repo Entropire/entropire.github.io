@@ -84,8 +84,11 @@
 }
 
 .ProjectPage :global(.MainContent p) {
-  color: var(--Text-Color);
   margin: 1rem 0;
+}
+
+.ProjectPage :global(.MainContent .Comment) {
+  color: var(--Text-Muted-Color);
 }
 
 .ProjectPage :global(.MainContent ul),
