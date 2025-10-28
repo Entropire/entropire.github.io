@@ -17,23 +17,6 @@
     "date": "2025-01-26"
   },
   {
-    "title": "HungryNight",
-    "description": "A school project where we needed to recreate a small peace of hollowknight",
-    "image": "projects/Img/HungryNight/HungryNight.png",
-    "tags": {
-      "Language": [
-        "C#"
-      ],
-      "Software": [
-        "Unity"
-      ],
-      "Year": [
-        "2025"
-      ]
-    },
-    "date": "2025-01-26"
-  },
-  {
     "title": "MonoGameMenu",
     "description": "Menu system made in monogame",
     "image": "projects/Img/MonoGameMenu/MonoGameMenu.png",
@@ -56,7 +39,7 @@
     "image": "projects/Img/NotEntropire/NotEntropire.png",
     "tags": {
       "Language": [
-        "Java"
+        "C#"
       ],
       "Software": [
         "Sqlite"

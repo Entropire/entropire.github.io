@@ -1,13 +1,12 @@
 {
   "Language": [
     "C#",
-    "Java",
     "Typescript",
     "CSS",
-    "HTML"
+    "HTML",
+    "Java"
   ],
   "Software": [
-    "Unity",
     "Monogame",
     "Sqlite",
     "React"

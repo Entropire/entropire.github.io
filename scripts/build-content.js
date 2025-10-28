@@ -11,11 +11,10 @@ const projectOutputDir = "./public/projects";
 const renderer = {
   code(code, lang, isEscaped) {
     const safeCode = typeof code === "string" ? code : code?.text || "";
-     const escapedCode = escapeHtml(safeCode);
 
     const highlighted = lang && hljs.getLanguage(lang)
-      ? hljs.highlight(escapedCode, { language: lang, ignoreIllegals: true }).value
-      : hljs.highlightAuto(escapedCode).value;
+      ? hljs.highlight(safeCode, { language: lang, ignoreIllegals: true }).value
+      : hljs.highlightAuto(safeCode).value;
 
     return `<pre><code class="language-${lang || ""}">${highlighted}</code></pre>`;
   },

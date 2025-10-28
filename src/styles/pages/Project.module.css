@@ -7,7 +7,7 @@
 
 .ProjectPage :global(.Header) {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   max-width: 60%;
 }
 
@@ -89,6 +89,7 @@
 
 .ProjectPage :global(.MainContent .Comment) {
   color: var(--Text-Muted-Color);
+  font-size: 0.8rem;
 }
 
 .ProjectPage :global(.MainContent ul),
@@ -99,7 +100,6 @@
 .ProjectPage :global(.MainContent img) {
   width: 100%;
   border-radius: 0.75rem;
-  margin: 1.5rem 0;
   border: 1px solid var(--Border-Color, #e5e7eb);
 }
 

@@ -6,8 +6,14 @@ link: [
   {name: "Github", url: "https://github.com/Entropire/NotEntropire"}
 ]
 tags:
-  Language: ["Java"]
+  Language: ["C#"]
   Software: ["Sqlite"]
   Year: ["2024"]
 date: "2025-01-26"
 ---
+
+![Example GIF](./Img/SimpleCommands/Example.gif)
+
+## Description
+
+
