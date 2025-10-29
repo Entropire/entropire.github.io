@@ -18,7 +18,7 @@
   },
   {
     "title": "Portfolio",
-    "description": "A portfolio website where I showcase my work and introducing who I am",
+    "description": "A React page written in typescript to showcase my work",
     "image": "projects/Img/Portfolio/Portfolio.png",
     "links": [
       {
@@ -43,7 +43,7 @@
   },
   {
     "title": "SimpleCommands",
-    "description": "A lightweight command interface for fast prototyping in C# with commands",
+    "description": "A C# library that adds a dynamic command interface to your project.",
     "image": "projects/Img/SimpleCommands/SimpleCommands.png",
     "links": [
       {
@@ -63,7 +63,7 @@
   },
   {
     "title": "SimpleFactions",
-    "description": "Custom Minecraft plugin enabling players to form factions, invite friends, and communicate securely",
+    "description": "A java minecraft plugin that adds factions",
     "image": "projects/Img/SimpleFactions/SimpleFactions.png",
     "links": [
       {
