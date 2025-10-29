@@ -1,39 +1,5 @@
 [
   {
-    "title": "Consolemon",
-    "description": "A school project where we needed to write a pokemon fighting game a in console",
-    "image": "projects/Img/Consolemon/Consolemon.png",
-    "tags": {
-      "Language": [
-        "C#"
-      ],
-      "Software": [
-        ""
-      ],
-      "Year": [
-        "2024"
-      ]
-    },
-    "date": "2025-01-26"
-  },
-  {
-    "title": "MonoGameMenu",
-    "description": "Menu system made in monogame",
-    "image": "projects/Img/MonoGameMenu/MonoGameMenu.png",
-    "tags": {
-      "Language": [
-        "C#"
-      ],
-      "Software": [
-        "Monogame"
-      ],
-      "Year": [
-        "2024"
-      ]
-    },
-    "date": "2025-01-26"
-  },
-  {
     "title": "NotEntropire",
     "description": "A Discord bot that helps users form teams for a game jam",
     "image": "projects/Img/NotEntropire/NotEntropire.png",

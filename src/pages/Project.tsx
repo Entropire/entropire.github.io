@@ -78,7 +78,6 @@ useEffect(() => {
     }
   };
 
-  // Initial highlight
   handleScroll();
 
   window.addEventListener("scroll", handleScroll, { passive: true });
