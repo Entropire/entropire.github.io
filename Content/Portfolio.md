@@ -1,7 +1,7 @@
 ---
 title: "Portfolio"
 description: "A React page written in typescript to showcase my work"
-image: "Img/Portfolio/Portfolio.png"
+image: "Img/Portfolio/Portfolio_Ico.png"
 links: [
   {name: "Github", url: "https://github.com/Entropire/entropire.github.io"}
 ]
@@ -11,6 +11,8 @@ tags:
   Year: ["2025"]
 date: "2025-10-07"
 ---
+
+![Example GIF](./Img/Portfolio/Portfolio.png)
 
 ## Description
 I created this project because I wanted a way to showcase my work to companies for internships and job opportunities.
@@ -30,6 +32,23 @@ skills, and experience, giving visitors an idea of the kind of developer I am an
 
 ## Outcome
 The end result is a fully functional website that showcases my knowledge of both front-end and back-end web development.
+
+## The Design
+To plan the layout of my portfolio website, I started by using Adobe XD to create a general design for the pages I wanted to include.
+This initial design served as a guideline during development, helping me maintain a consistent look and feel across the site.
+
+Initial home page design:
+
+![Initial home page design](./Img/Portfolio/Home.png)
+
+Initial projects page design:
+
+![Initial projects page design](./Img/Portfolio/Projects.png)
+
+Initial about page design:
+
+![Initial about page design](./Img/Portfolio/About.png)
+
 ## Markdown to HTML Parser
 To make writing and managing project pages easier, I created a script that converts Markdown files into HTML, which can then be dynamically loaded on the website.
 

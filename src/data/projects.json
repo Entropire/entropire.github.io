@@ -1,25 +1,8 @@
 [
   {
-    "title": "NotEntropire",
-    "description": "A Discord bot that helps users form teams for a game jam",
-    "image": "projects/Img/NotEntropire/NotEntropire.png",
-    "tags": {
-      "Language": [
-        "C#"
-      ],
-      "Software": [
-        "Sqlite"
-      ],
-      "Year": [
-        "2024"
-      ]
-    },
-    "date": "2025-01-26"
-  },
-  {
     "title": "Portfolio",
     "description": "A React page written in typescript to showcase my work",
-    "image": "projects/Img/Portfolio/Portfolio.png",
+    "image": "projects/Img/Portfolio/Portfolio_Ico.png",
     "links": [
       {
         "name": "Github",
@@ -62,30 +45,26 @@
     "date": "2023-09-01"
   },
   {
-    "title": "SimpleFactions",
-    "description": "A java minecraft plugin that adds factions",
-    "image": "projects/Img/SimpleFactions/SimpleFactions.png",
+    "title": "TeamManager",
+    "description": "A Discord bot that helps users form teams for a game jam",
+    "image": "projects/Img/NotEntropire/NotEntropire.png",
     "links": [
       {
-        "name": "GitHub",
-        "url": "https://github.com/Entropire/SimpleFactions"
-      },
-      {
-        "name": "Modrinth",
-        "url": "https://modrinth.com/plugin/simple-factions"
+        "name": "Github",
+        "url": "https://github.com/Entropire/TeamManager"
       }
     ],
     "tags": {
       "Language": [
-        "Java"
+        "C#"
       ],
       "Software": [
         "Sqlite"
       ],
       "Year": [
-        "2023"
+        "2025"
       ]
     },
-    "date": "2023-09-01"
+    "date": "2025-01-26"
   }
 ]

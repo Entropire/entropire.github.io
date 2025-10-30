@@ -9,6 +9,7 @@ import { NotFound } from "./pages/NotFound.tsx"
 import { Projects } from "./pages/Projects.tsx"
 import { Project } from "./pages/Project.tsx"
 import { NotSupported } from "./pages/NotSupported.tsx"
+import ScrollToTop from "./components/ScrollToTop.tsx"
 import './styles/Global.css'
 
 export const Routing = () => {
@@ -28,6 +29,8 @@ export const Routing = () => {
         <>
             <Header/>
             <main>
+                <ScrollToTop />
+
                 <Routes>
                     <Route path={"/"} element={<Home/>} />
                     <Route path={"/projects"} element={<Projects/>} />

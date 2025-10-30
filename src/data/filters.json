@@ -1,18 +1,15 @@
 {
   "Language": [
-    "C#",
     "Typescript",
     "CSS",
     "HTML",
-    "Java"
+    "C#"
   ],
   "Software": [
-    "Sqlite",
-    "React"
+    "React",
+    "Sqlite"
   ],
   "Year": [
-    "2024",
-    "2025",
-    "2023"
+    "2025"
   ]
 }

@@ -17,7 +17,6 @@ date: "2023-09-01"
 I created this project because I found myself rewriting a command interface in multiple c# projects.
 So to stop myself from reinventing the wheel and to save time, I decided to build a reusable command system that I could use in all my project where I needed it.
 The goal of this project was to create a lightweight, easy-to-use library that provides a flexible way to define, register and trigger commands.
-And publish it as a NuGet package for convenient reuse that u can install here//insert link.
 
 ## Core Features
 - Define commands with ease
@@ -68,7 +67,6 @@ This makes it easy to handle user input without manually parsing string every ti
 ## Reflection
 Working on SimpleCommands helped me think carefully about modular and reusable library design.
 I learned how to create a flexible API that supports both class-based and inline commands, and how to handle user input consistently with minimal boilerplate.
-I also learned how to publish a C# library on NuGet, making it easier to share and reuse across different projects.
 
 If I were to continue developing this library, I’d like to add async command support, 
 improve error handling and logging, 
