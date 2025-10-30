@@ -1,162 +1,45 @@
     
       <div class="Header">
         <h1>SimpleCommands</h1>
-        <p>A lightweight command interface for fast prototyping in C# with commands</p>
+        <p>A C# library that adds a dynamic command interface to your project.</p>
       </div>
       <div class="ProjectContent">
         <div class="Navigation">
           <ul>
             <li><h4>Table of Contents</h4></li>
             <li><button data-scroll-id="description">Description</button></li>
-<li><button data-scroll-id="features">Features</button></li>
-<li><button data-scroll-id="commands-registry">Commands Registry</button></li>
-<li><button data-scroll-id="user-input">User Input</button></li>
-<li><button data-scroll-id="command-handler">Command Handler</button></li>
-<li><button data-scroll-id="commands">Commands</button></li>
-<li><button data-scroll-id="commandnameattribute">CommandNameAttribute</button></li>
+<li><button data-scroll-id="core-features">Core Features</button></li>
+<li><button data-scroll-id="outcome">Outcome</button></li>
+<li><button data-scroll-id="command-definition">Command Definition</button></li>
+<li><button data-scroll-id="command-storage">Command Storage</button></li>
+<li><button data-scroll-id="command-calling">Command Calling</button></li>
+<li><button data-scroll-id="reflection">Reflection</button></li>
           </ul>
         </div> 
         <div class="MainContent">
           <div>
               <img src="projects/Img/SimpleCommands/Example.gif" alt="Example GIF" loading="lazy" class="custom-image" />
-            </div><h3 id="description">Description</h3><p>I built this API to speed up my workflow when making small CLI tools or prototypes.
-It it allows registering commands via class inharitance or lambda expressions.
-It also makes it easy to switch between command handlers so you can change active command easily.</p><h3 id="features">Features</h3><ul>
-<li>Command registration and execution system  </li>
-<li>Support for commands via class inheritance or lambda expressions  </li>
-<li>Command handler system for managing multiple sets of commands  </li>
-<li>Easy execution of commands by name via a unified interface</li>
+            </div><h3 id="description">Description</h3><p>I created this project because I found myself rewriting a command interface in multiple c# projects.
+So to stop myself from reinventing the wheel and to save time, I decided to build a reusable command system that I could use in all my project where I needed it.
+The goal of this project was to create a lightweight, easy-to-use library that provides a flexible way to define, register and trigger commands.</p><h3 id="core-features">Core Features</h3><ul>
+<li>Define commands with ease</li>
+<li>Register and deregister commands dynamically</li>
+<li>Switch between command handlers effortlessly</li>
+<li>Trigger commands based on user input</li>
 </ul>
-<h3 id="commands-registry">Commands Registry</h3><p>For the regestring of the command i used a disctonary whare the key is the name of the command and the value is the action connected to it.
-I used the `StringComparer.OrdinalIgnoreCase` paramater for the initiation of the dictonary to make it case insansitive. This make it so that "hi" and "Hi" execute the same command. </p><pre><code class="language-"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CommandRegistry</span>
-{
-    <span class="hljs-keyword">private</span> Dictionary&lt;<span class="hljs-built_in">string</span>, Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;&gt; dictionaryOfCommands = <span class="hljs-keyword">new</span>(StringComparer.OrdinalIgnoreCase);
+<h3 id="outcome">Outcome</h3><p>The end result of the project is a library that allows you to define, register, deregister and class commands on rune time.</p><h3 id="command-definition">Command Definition</h3><p>You can create and register a command dynamically either using a class or a lambda expression.</p><p>For example, you can create a command with a dedicated class:</p><pre><code class="language-">[CommandName(<span class="hljs-string">&quot;eco&quot;</span>)]
+public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EcoCommand</span><span class="hljs-attr"> : Command</span> </span>{ ... }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RegisterCommand</span>(<span class="hljs-params">Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt; commandAction, <span class="hljs-keyword">params</span> <span class="hljs-built_in">string</span>[] commandNames</span>)</span>
-    {
-        <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">string</span> commandName <span class="hljs-keyword">in</span> commandNames)
-        {
-            <span class="hljs-keyword">if</span> (!dictionaryOfCommands.ContainsKey(commandName))
-            {
-                dictionaryOfCommands.Add(commandName, commandAction);
-            }
-            <span class="hljs-keyword">else</span>
-            {
-                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidOperationException(<span class="hljs-string">$&quot;Command &#x27;<span class="hljs-subst">{commandName}</span>&#x27; already exists.&quot;</span>);
-            }
-        }
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RegisterCommand</span>(<span class="hljs-params">Command command</span>)</span>
-    {
-        RegisterCommand(command.Execute, command.CommandNames);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnregisterCommand</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandName</span>)</span>
-    {
-        <span class="hljs-keyword">if</span> (dictionaryOfCommands.ContainsKey(commandName))
-        {
-             dictionaryOfCommands.Remove(commandName);
-        }
-        <span class="hljs-keyword">else</span>
-        {
-             <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidOperationException(<span class="hljs-string">$&quot;The command &#x27;<span class="hljs-subst">{commandName}</span>&#x27; does not exist.&quot;</span>);
-        }
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> <span class="hljs-title">TryGetCommand</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandName, <span class="hljs-keyword">out</span> Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;? commandAction</span>)</span>
-        =&gt; dictionaryOfCommands.TryGetValue(commandName, <span class="hljs-keyword">out</span> commandAction);
-}</code></pre><h3 id="user-input">User Input</h3><p>To make sure the user input is correctly used for executing commands i made a helper class that takes in a user input string and if it is a command returns the command name and its args.</p><pre><code class="language-"><span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CommandInputParser</span>
-{
-    ublic <span class="hljs-built_in">string</span> CommandPrefix { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>; }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CommandInputParser</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandPrefix = <span class="hljs-string">&quot;/&quot;</span></span>)</span>
-    {
-        CommandPrefix = commandPrefix;
-     }
-
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPrefix</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandPrefix</span>)</span>
-      {
-         CommandPrefix = commandPrefix;
-     } 
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> <span class="hljs-title">TryParseUserInput</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> userInput, <span class="hljs-keyword">out</span> <span class="hljs-built_in">string</span> commandName, <span class="hljs-keyword">out</span> <span class="hljs-built_in">string</span>[] commandArgs</span>)</span>
-    {
-         commandName = <span class="hljs-built_in">string</span>.Empty;
-        commandArgs = Array.Empty&lt;<span class="hljs-built_in">string</span>&gt;();
-
-        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">string</span>.IsNullOrWhiteSpace(userInput) || !userInput.StartsWith(CommandPrefix))
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-
-        <span class="hljs-built_in">string</span>[] parts = userInput.Split(<span class="hljs-string">&#x27; &#x27;</span>, StringSplitOptions.RemoveEmptyEntries);
-        commandName = parts[<span class="hljs-number">0</span>].Substring(CommandPrefix.Length);
-        commandArgs = parts.Skip(<span class="hljs-number">1</span>).ToArray();
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-    }
-}</code></pre><h3 id="command-handler">Command Handler</h3><p>Then I combined the **CommandRegistry** and the **CommandInputParser** to make the CommandHanlder class to have one central point for handling commands.</p><pre><code class="language-"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CommandHandler</span>
-{
-    <span class="hljs-keyword">private</span> CommandRegistry _commandRegistry;
-    <span class="hljs-keyword">private</span> CommandInputParser _commandInputParser;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CommandHandler</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandPrefix</span>)</span>
-    {
-        _commandRegistry = <span class="hljs-keyword">new</span> CommandRegistry();
-        _commandInputParser = <span class="hljs-keyword">new</span> CommandInputParser(commandPrefix);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RegisterCommand</span>(<span class="hljs-params">Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt; commandAction, <span class="hljs-keyword">params</span> <span class="hljs-built_in">string</span>[] commandNames</span>)</span> 
-        =&gt; _commandRegistry.RegisterCommand(commandAction, commandNames);
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RegisterCommand</span>(<span class="hljs-params">Command command</span>)</span> =&gt; _commandRegistry.RegisterCommand(command);
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnregisterCommand</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commanName</span>)</span> =&gt; _commandRegistry.UnregisterCommand(commanName);
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> name, <span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
-    {
-        <span class="hljs-keyword">if</span> (!_commandRegistry.TryGetCommand(name, <span class="hljs-keyword">out</span> Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;? commandAction))
-        {
-            <span class="hljs-keyword">return</span>;   
-        }
-
-        commandAction?.Invoke(name, <span class="hljs-keyword">args</span>);
-    } 
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> userInput</span>)</span>
-    {
-        <span class="hljs-keyword">if</span> (!_commandInputParser.TryParseUserInput(userInput, <span class="hljs-keyword">out</span> <span class="hljs-built_in">string</span> commandName, <span class="hljs-keyword">out</span> <span class="hljs-built_in">string</span>[] commandArgs))
-        {
-            <span class="hljs-keyword">return</span>;
-        }
-
-        Execute(commandName, commandArgs);
-    }
-}</code></pre><h3 id="commands">Commands</h3><p>For the commands self I made a **Command** the inforces that every clas the inharets from it must contain a execute function and a CommandNameAttribute.</p><pre><code class="language-"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Command</span>
-{
-    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>[] CommandNames { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>; }
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">Command</span>()</span>
-    {
-      <span class="hljs-keyword">var</span> commandNameAttribute = GetType().GetCustomAttribute&lt;CommandNameAttribute&gt;();
-
-        <span class="hljs-keyword">if</span> (commandNameAttribute == <span class="hljs-literal">null</span>)
-        {
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidOperationException(<span class="hljs-string">$&quot;Class &#x27;<span class="hljs-subst">{GetType().FullName}</span>&#x27; must have a [CommandName] attribute.&quot;</span>);
-        }
-
-        CommandNames = commandNameAttribute.CommandNames;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandName, <span class="hljs-built_in">string</span>[] commandArgs</span>)</span>;
-}</code></pre><h3 id="commandnameattribute">CommandNameAttribute</h3><p>The CommandNameAttribute is a custom attribute for settings the name of the command in a Command class</p><pre><code class="language-">[<span class="hljs-meta">AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)</span>]
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CommandNameAttribute</span> : <span class="hljs-title">Attribute</span>
-{
-    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>[] CommandNames { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>; }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CommandNameAttribute</span>(<span class="hljs-params"><span class="hljs-keyword">params</span> <span class="hljs-built_in">string</span>[] commandNames</span>)</span>
-    {
-      CommandNames = commandNames;
-    }
-}</code></pre>        
+_handler.RegisterCommand(EcoCommand);</code></pre><p>Or define one inline using a lambda:</p><pre><code class="language-">_handler.RegisterCommand(<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-function"><span class="hljs-params">(args, name)</span> =&gt;</span> Console.WriteLine(<span class="hljs-string">&quot;Hello&quot;</span>));</code></pre><h3 id="command-storage">Command Storage</h3><p>Commands are stored in a dictionary for fast lookup and to ensure that no two commands share the same name</p><pre><code class="language-"><span class="hljs-keyword">private</span> Dictionary&lt;<span class="hljs-built_in">string</span>, Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;&gt; <span class="hljs-built_in">dictionary</span>OfCommands = new(StringComparer.OrdinalIgnoreCase);</code></pre><h3 id="command-calling">Command Calling</h3><p>Commands can be executed simply by passing a user input string to the handler:</p><pre><code class="language-">string userInput <span class="hljs-operator">=</span> <span class="hljs-string">&quot;/eco helloworld&quot;</span>
+_handler.Execute(userInput)<span class="hljs-comment">;</span></code></pre><p>In the background the input string is automatically split into the command name and its arguments,
+and the command corresponding to the command name is executed. </p><p>For example, the input ```"/eco helloworld"``` would be parsed into:</p><ul>
+<li>Command Name: <code>&quot;eco&quot;</code></li>
+<li>Arguments: <code>&quot;[&quot;helloworld&quot;]&quot;</code></li>
+</ul>
+<p>This makes it easy to handle user input without manually parsing string every time and ensures that the user inputs is always parsed in the same way.</p><h3 id="reflection">Reflection</h3><p>Working on SimpleCommands helped me think carefully about modular and reusable library design.
+I learned how to create a flexible API that supports both class-based and inline commands, and how to handle user input consistently with minimal boilerplate.</p><p>If I were to continue developing this library, I’d like to add async command support, 
+improve error handling and logging, 
+and explore ways to extend the command parser for more complex input patterns.</p>        
         </div>
         <div class="ProjectMeta">   
           

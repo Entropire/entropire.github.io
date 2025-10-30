@@ -1,17 +1,64 @@
     
       <div class="Header">
         <h1>Portfolio</h1>
-        <p>A portfolio website where I showcase my work and introducing who I am</p>
+        <p>A React page written in typescript to showcase my work</p>
       </div>
       <div class="ProjectContent">
         <div class="Navigation">
           <ul>
             <li><h4>Table of Contents</h4></li>
-            
+            <li><button data-scroll-id="description">Description</button></li>
+<li><button data-scroll-id="core-features">Core Features</button></li>
+<li><button data-scroll-id="outcome">Outcome</button></li>
+<li><button data-scroll-id="the-design">The Design</button></li>
+<li><button data-scroll-id="markdown-to-html-parser">Markdown to HTML Parser</button></li>
+<li><button data-scroll-id="dynamic-project-loading">Dynamic project loading</button></li>
+<li><button data-scroll-id="reflection">Reflection</button></li>
           </ul>
         </div> 
         <div class="MainContent">
-                  
+          <div>
+              <img src="projects/Img/Portfolio/Portfolio.png" alt="Example GIF" loading="lazy" class="custom-image" />
+            </div><h3 id="description">Description</h3><p>I created this project because I wanted a way to showcase my work to companies for internships and job opportunities.</p><p>I built the website using React with TypeScript to highlight my skills in modern web development.
+I chose React because I had experience with it previously, and it is widely used in the industry.</p><p>The goal of the project is to create a platform where I can display my projects, 
+skills, and experience, giving visitors an idea of the kind of developer I am and the work I am capable of.</p><h3 id="core-features">Core Features</h3><ul>
+<li>Markdown to HTML parser makes it easy to write and update project pages without touching the main code</li>
+<li>Dynamic project automatically loads project content on a single page based on the URL</li>
+<li>Interactive UI components built with React and TypeScript for smooth, reusable components</li>
+<li>Easy project management adding or updating projects only requires editing Markdown files</li>
+<li>Showcase skills demonstrates both front-end development and project organization</li>
+</ul>
+<h3 id="outcome">Outcome</h3><p>The end result is a fully functional website that showcases my knowledge of both front-end and back-end web development.</p><h3 id="the-design">The Design</h3><p>To plan the layout of my portfolio website, I started by using Adobe XD to create a general design for the pages I wanted to include.
+This initial design served as a guideline during development, helping me maintain a consistent look and feel across the site.</p><p>Initial home page design:</p><div>
+              <img src="projects/Img/Portfolio/Home.png" alt="Initial home page design" loading="lazy" class="custom-image" />
+            </div><p>Initial projects page design:</p><div>
+              <img src="projects/Img/Portfolio/Projects.png" alt="Initial projects page design" loading="lazy" class="custom-image" />
+            </div><p>Initial about page design:</p><div>
+              <img src="projects/Img/Portfolio/About.png" alt="Initial about page design" loading="lazy" class="custom-image" />
+            </div><h3 id="markdown-to-html-parser">Markdown to HTML Parser</h3><p>To make writing and managing project pages easier, I created a script that converts Markdown files into HTML, which can then be dynamically loaded on the website.</p><p>To accomplish this, I used the following packages</p><ul>
+<li>marked: for converting markdown to html</li>
+<li>gray-matter: extracts metadata from the top of project Markdown files</li>
+<li>highlight.js: provides syntax highlighting for code snippets</li>
+</ul>
+<p>This system allows me to add or update projects quickly without touching the main website code, making the portfolio scalable and easy to maintain.</p><h3 id="dynamic-project-loading">Dynamic project loading</h3><p>To display the generated HTML project files, I created a page that dynamically loads content based on the URL.</p><p>First, I retrieve the project name from the URL using React Router:</p><pre><code class="language-"><span class="hljs-keyword">const</span> { projectName } = useParams&lt;{ projectName: <span class="hljs-built_in">string</span> }&gt;();</code></pre><p>Next, I fetch the corresponding HTML file:</p><pre><code class="language-">  useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (!projectName) <span class="hljs-keyword">return</span>;
+
+    fetch(`<span class="language-javascript">/projects/${projectName.<span class="hljs-title function_">toLowerCase</span>()}.<span class="hljs-property">html</span></span>`)
+      .<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (!res.ok) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Not found&quot;</span>);
+        <span class="hljs-keyword">return</span> res.text();
+      })
+      .<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-params">(content)</span> =&gt;</span> setHtml(content))
+      .<span class="hljs-keyword">catch</span>(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> setError(<span class="hljs-literal">true</span>));
+  }, [projectName]);</code></pre><p>Finally, I render the HTML inside the page:</p><pre><code class="language-"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+    <span class="hljs-attr">className</span>=<span class="hljs-string">{ProjectCSS.ProjectPage}</span>
+    <span class="hljs-attr">dangerouslySetInnerHTML</span>=</span></span><span class="hljs-template-variable">{{ <span class="hljs-name">__html:</span> html }}</span><span class="language-xml"><span class="hljs-tag">
+/&gt;</span></span></code></pre><p>Since I don’t have access to the classes or IDs inside the loaded HTML, 
+I apply general CSS rules to HTML elements within the container using the class ProjectCSS.ProjectPage. 
+This ensures the dynamically loaded content is styled consistently with the rest of the site.</p><h3 id="reflection">Reflection</h3><p>Working on this project helped me gain a better understanding of website design and how to effectively use CSS for styling. 
+I also learned how to set up a CI/CD pipeline to deploy a static website to GitHub Pages, 
+which improved my workflow and deployment skills.</p><p>In the next stage of this project, I plan to refactor and improve the codebase and make the website fully responsive, 
+so it works seamlessly on desktop, tablet, and mobile devices.</p>        
         </div>
         <div class="ProjectMeta">   
           

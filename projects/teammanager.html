@@ -1,0 +1,194 @@
+    
+      <div class="Header">
+        <h1>TeamManager</h1>
+        <p>A Discord bot that helps users form teams for a game jam</p>
+      </div>
+      <div class="ProjectContent">
+        <div class="Navigation">
+          <ul>
+            <li><h4>Table of Contents</h4></li>
+            <li><button data-scroll-id="description">Description</button></li>
+<li><button data-scroll-id="core-features">Core features</button></li>
+<li><button data-scroll-id="outcome">Outcome</button></li>
+<li><button data-scroll-id="application-life-cycle">Application life cycle</button></li>
+<li><button data-scroll-id="user-interface">User Interface</button></li>
+<li><button data-scroll-id="storing-teams">Storing teams</button></li>
+<li><button data-scroll-id="custom-logger">Custom logger</button></li>
+<li><button data-scroll-id="reflection">Reflection</button></li>
+          </ul>
+        </div> 
+        <div class="MainContent">
+          <h3 id="description">Description</h3><p>I created this project for a game jam where we needed an easy way to keep track of teams and allow people to register quickly.</p><p>We also wanted participants to have the option to be put in a random team if they diden't have one. Making it easier for solo participants to participate in the game jam and a fun way to get to know new peaple.</p><p>So with these things in mind the goal of the project was to create a team managment discord bot that allows user to:</p><ul>
+<li>Register fo the event</li>
+<li>Create and join teams</li>
+<li>Choose to be placed in a random team automatically</li>
+</ul>
+<h3 id="core-features">Core features</h3><ul>
+<li>Users can create teams</li>
+<li>Users can invite others to their team or request to join an existing one</li>
+<li>A management system for handling invites and join requests</li>
+<li>A management system for maneging the teams and there members</li>
+<li>Users can register for the event by either creating/joining a team or choosing to be placed in a random one</li>
+</ul>
+<h3 id="outcome">Outcome</h3><p>The end result of this project was a Discord bot that allows users to create teams and invite other users to join them.</p><p>Because of time constraints of when the game jam was planned, I wasn’t able to implement the random team assignment system, but the foundation for the feature was designed and planned for future updates.</p><h3 id="application-life-cycle">Application life cycle</h3><p>For this project, I used Entity Component System (ECS) principles and Dependency Injection (DI) for the first time to manage the bot’s life cycle and service dependencies.</p><pre><code class="language-">            using IHost host = Host.CreateDefaultBuilder<span class="hljs-params">()</span>
+                <span class="hljs-string">.ConfigureAppConfiguration</span><span class="hljs-params">((hostingContext, config)</span> =&gt;
+                {
+                    config.AddYamlFile<span class="hljs-params">(&quot;Config.yml&quot;)</span>;
+                })
+                <span class="hljs-string">.ConfigureServices</span><span class="hljs-params">((context, services)</span> =&gt;
+                {
+                    Config config = new Config<span class="hljs-params">()</span>;
+                    context.Configuration.Bind<span class="hljs-params">(config)</span>;
+
+                    services
+                    <span class="hljs-string">.AddSingleton</span><span class="hljs-params">(config)</span>
+                    <span class="hljs-string">.AddDbContext</span>&lt;TeamsDbContext&gt;<span class="hljs-params">(<span class="hljs-attr">options</span> =&gt; options.UseSqlite(&quot;Data <span class="hljs-attr">Source</span>=teams.db&quot;)</span>)
+                    <span class="hljs-string">.AddSingleton</span><span class="hljs-params">(<span class="hljs-attr">x</span> =&gt; new DiscordSocketClient(new DiscordSocketConfig()</span>
+                    {
+                        GatewayIntents = GatewayIntents.Guilds | GatewayIntents.GuildMembers,
+                        UseInteractionSnowflakeDate = <span class="hljs-literal">false</span>,
+                        LogLevel = LogSeverity.Debug
+                    }))
+                    <span class="hljs-string">.AddSingleton</span><span class="hljs-params">(<span class="hljs-attr">x</span> =&gt; new InteractionService(x.GetRequiredService&lt;DiscordSocketClient&gt;()</span>,
+                    new InteractionServiceConfig<span class="hljs-params">()</span>
+                    {
+                        LogLevel = LogSeverity.Debug
+                    }))
+                    <span class="hljs-string">.AddSingleton</span>&lt;TeamService&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddSingleton</span>&lt;TeamMemberService&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddSingleton</span>&lt;TeamInviteService&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddSingleton</span>&lt;InvitesMenuInteractionHandler&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddSingleton</span>&lt;BotService&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddSingleton</span>&lt;MemberSyncService&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddSingleton</span>&lt;TeamRoleAutocomplete&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddTransient</span>&lt;ILogger, ConsoleLogger&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddTransient</span>&lt;ILogger, FileLogger&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddTransient</span>&lt;ILogger, ChannelLogger&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddTransient</span>&lt;LoggerManager&gt;<span class="hljs-params">()</span>
+                    <span class="hljs-string">.AddHostedService</span>&lt;InviteCleanupService&gt;<span class="hljs-params">()</span>;
+                }
+                )<span class="hljs-string">.Build</span><span class="hljs-params">()</span>;</code></pre><h3 id="user-interface">User Interface</h3><p>Since a Discord bot doesn’t have access to traditional UI elements, all interactions had to be handled through commands and text-based components.
+This limitation encouraged me to find creative solutions for user interaction particularly for managing team invites and join requests.</p><p>To make this process more user-friendly, I implemented a dropdown menu where users can select a specific request to manage.
+Once selected, two buttons appear Accept and Decline allowing users to quickly respond to requests.</p><pre><code class="language-">[<span class="hljs-meta">SlashCommand(<span class="hljs-string">&quot;invites&quot;</span>, <span class="hljs-string">&quot;Open invitation menu&quot;</span>)</span>]
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">ViewPendingInvitesAsync</span>()</span>
+{
+  <span class="hljs-keyword">await</span> DeferAsync(ephemeral: <span class="hljs-literal">true</span>); 
+
+  <span class="hljs-keyword">var</span> invites = <span class="hljs-keyword">await</span> _teamInviteService.GetInvitesAsync(Context.User.Id);
+  <span class="hljs-keyword">if</span> (!invites.Any())
+  {
+    <span class="hljs-keyword">await</span> FollowupAsync(<span class="hljs-string">&quot;You have no pending invites or join requests.&quot;</span>);
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-keyword">var</span> menu = <span class="hljs-keyword">new</span> SelectMenuBuilder()
+    .WithCustomId(<span class="hljs-string">$&quot;invites_menu_<span class="hljs-subst">{Context.User.Id}</span>&quot;</span>)
+    .WithPlaceholder(<span class="hljs-string">&quot;Select an invite or join request to manage&quot;</span>)
+    .WithMinValues(<span class="hljs-number">1</span>)
+    .WithMaxValues(<span class="hljs-number">1</span>);
+
+  <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> invite <span class="hljs-keyword">in</span> invites)
+  {
+    TeamMember? sender = <span class="hljs-keyword">await</span> _teamMemberService.GetMemberAsync(invite.SenderId);
+
+    menu.AddOption(<span class="hljs-keyword">new</span> SelectMenuOptionBuilder()
+      .WithLabel(<span class="hljs-string">$&quot;Team: <span class="hljs-subst">{invite.Team.Name}</span>&quot;</span>)
+      .WithValue(invite.Id.ToString())
+      .WithDescription(<span class="hljs-string">$&quot;From: <span class="hljs-subst">{sender?.Name}</span>, Status: <span class="hljs-subst">{invite.status}</span>, Type: <span class="hljs-subst">{invite.type.ToString()}</span>&quot;</span>));
+  }
+
+  <span class="hljs-keyword">var</span> component = <span class="hljs-keyword">new</span> ComponentBuilder()
+    .WithSelectMenu(menu)
+    .Build();
+
+  <span class="hljs-keyword">await</span> FollowupAsync(<span class="hljs-string">&quot;Manage your team invites:&quot;</span>, components: component);
+}</code></pre><p class="Comment">//insert give here</p><h3 id="storing-teams">Storing teams</h3><p>For this project, I needed a scalable and reliable way to store team-related data.
+I chose to use a SQLite database because it’s lightweight, fast, and doesn’t require running a separate SQL server.</p><p>The database consists of three main tables:</p><ul>
+<li>Teams — stores team information</li>
+<li>TeamMembers — stores users and their team associations</li>
+<li>TeamInvites — stores pending invites and join requests</li>
+</ul>
+<pre><code class="language-"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TeamsDbContext</span> : <span class="hljs-title">DbContext</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DbSet</span>&lt;<span class="hljs-title">Team</span>&gt; Teams</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DbSet</span>&lt;<span class="hljs-title">TeamMember</span>&gt; TeamMembers</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DbSet</span>&lt;<span class="hljs-title">TeamInvite</span>&gt; TeamInvites</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TeamsDbContext</span>(<span class="hljs-params">DbContextOptions&lt;TeamsDbContext&gt; options</span>) : <span class="hljs-title">base</span>(<span class="hljs-params">options</span>)</span> { }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnModelCreating</span>(<span class="hljs-params">ModelBuilder modelBuilder</span>)</span>
+    {
+        modelBuilder.Entity&lt;Team&gt;()
+            .HasMany(t =&gt; t.Members)
+            .WithOne(m =&gt; m.Team)
+            .HasForeignKey(m =&gt; m.TeamId)
+            .IsRequired(<span class="hljs-literal">false</span>) 
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity&lt;Team&gt;()
+            .HasOne(t =&gt; t.Owner)
+            .WithMany()
+            .HasForeignKey(t =&gt; t.OwnerId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity&lt;TeamInvite&gt;()      
+            .HasOne(i =&gt; i.Team)
+            .WithMany()
+            .HasForeignKey(i =&gt; i.TeamId)  
+            .OnDelete(DeleteBehavior.Cascade);
+
+        <span class="hljs-keyword">base</span>.OnModelCreating(modelBuilder);
+    }
+}</code></pre><h3 id="custom-logger">Custom logger</h3><p>Because the Discord bot was designed to run 24/7 on a server, I built a custom logging system that outputs logs to three different destinations:</p><ul>
+<li>Console: for real-time feedback and debugging</li>
+<li>File: for long-term log storage and historical tracking</li>
+<li>Discord channel: for important informational events, such as when a team is created or deleted</li>
+</ul>
+<p>The purpose of this system was to ensure that if something went wrong, I could easily review the logs, identify the problem, and fix it.</p><p>Additionally, if a critical issue occurred for example, a corrupted database file I would still have detailed logs available to recreate the database from scratch.</p><pre><code class="language-"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LoggerManager</span>
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> IEnumerable&lt;ILogger&gt; _loggers;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LoggerManager</span>(<span class="hljs-params">IEnumerable&lt;ILogger&gt; loggers</span>)</span>
+    {
+        _loggers = loggers;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">LogAsync</span>(<span class="hljs-params">LogMessage msg</span>)</span>
+    {
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> logger <span class="hljs-keyword">in</span> _loggers)
+        {
+            <span class="hljs-keyword">await</span> logger.Log(msg);
+        }
+    }
+}</code></pre><h3 id="reflection">Reflection</h3><p>Working on this project helped me become more familiar with modern C# features such as dependency injection and the Entity Component System (ECS) architecture.
+It also improved my understanding of how to structure larger applications with clear separation of concerns and lifecycle management.</p><p>If I continue this project, my next goal is to implement the random team creation system that automatically assigns solo participants to available teams, making the bot fully meet its original design goals.</p>        
+        </div>
+        <div class="ProjectMeta">   
+          
+                      <div class="Language">
+                        <h4>Language</h4>
+                        <p value="C#">C#</p>
+                      </div>
+                    
+                      <div class="Software">
+                        <h4>Software</h4>
+                        <p value="Sqlite">Sqlite</p>
+                      </div>
+                    
+                      <div class="Year">
+                        <h4>Year</h4>
+                        <p value="2025">2025</p>
+                      </div>
+                    
+          <div class="Links">
+            <h4>Links</h4>
+            
+                        <a href="https://github.com/Entropire/TeamManager" target="_blank" rel="noopener noreferrer">
+                          <p>Github</p>
+                        </a>
+                      
+          </div>
+        </div>
+      </div>
+    
