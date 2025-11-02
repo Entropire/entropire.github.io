@@ -28,7 +28,7 @@ export const Header = () => {
                                 isActive
                                     ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`
                                     : HeaderCSS['Nav-Link']
-                            }>About</NavLink>
+                            }>About me</NavLink>
                         <NavLink to="/Contact" className={({ isActive }) =>
                                 isActive
                                     ? `${HeaderCSS['Nav-Link']} ${HeaderCSS.active}`

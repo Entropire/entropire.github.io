@@ -15,10 +15,12 @@ export const About = () => {
                         <li><strong>Location:</strong> The Netherlands</li>
                         <li><strong>Age:</strong> 19</li>
                         <li><strong>Hobbies:</strong> Game Development, Archery, Gaming</li>
+                        <li><strong>HardSkills:</strong> Unity, React, XD, c#, java, html, css, typescript</li>
+                        <li><strong>SoftSkills:</strong> Communication, Teamwork, Problem solving, Punctual, Helpful</li>
                         <li>
                             <strong>Socials:</strong>
                             <div>
-                                <a href='./QuintenDuijsterCV.pdf' download>
+                                <a href='./CV-QuintenDuijster.pdf' download>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.057 45.057" width="50" height="50">
                                         <path d="M19.558,25.389c-0.067,0.176-0.155,0.328-0.264,0.455c-0.108,0.129-0.24,0.229-0.396,0.301
                                             c-0.156,0.072-0.347,0.107-0.57,0.107c-0.313,0-0.572-0.068-0.78-0.203c-0.208-0.137-0.374-0.316-0.498-0.541
@@ -61,8 +63,13 @@ export const About = () => {
                 </div>
                 <div className={AboutCSS.MainContent}>
                     <div>
-                        <h3>About Me</h3>
-                        <p>Hi, my name is Quinten, a 19-year-old software/game developer that lives in the Netherlands. I’m currently learning game development and enjoy building complex backend systems in games. When I’m not programming, I like to play games, spend time with friends and practice archery. One of my favorite things is spending a day shooting archery in the mountains of Austria, surrounded by nature and incredible views and enjoying the peace and quiet. </p>
+                        <p>I am a 19-year-old student from the Netherlands, currently studying Software and Game Development at Media College Amsterdam.</p>
+
+                        <h3>How I was introduced to programming</h3>
+                        <p>I was first introduced to programming when I was 12 years old. Where I needed to create a program in scratch. From this point on I took an interest in programming and started following tutorials about it. When I started middle school, we could choose for an extra subject, and I chose science and ICT. Here I dived even deeper into programming and realized that this was what I wanted to do later.</p>
+
+                        <h3>My vision for the future</h3>
+                        <p>I am overall a very day-to-day person and don’t really think years into the future about what I want to do. For now, my goal is to keep learning new things and improve. Right now, that means learning more about algorithms and procedural generation and how to apply them in games.</p>
                     </div>
                 </div>  
             </div>

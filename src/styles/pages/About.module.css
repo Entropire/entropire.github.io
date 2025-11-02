@@ -72,3 +72,9 @@
 .GeneralInfo svg:hover{
     cursor: pointer;
 }
+
+.MainContent h3{
+    margin-top: 2rem;
+    color: var(--Primary-Color);
+    font-size: 2rem;
+}

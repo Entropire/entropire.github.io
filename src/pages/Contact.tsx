@@ -32,7 +32,7 @@ export const Contact = () => {
                         <p>Connect with me on linkedin</p>
                     </div>
                 </a>
-                <a href='./QuintenDuijsterCV.pdf' target='blank' download className={ContactCSS.ContactMethod}>
+                <a href='./CV-QuintenDuijster.pdf' target='blank' download className={ContactCSS.ContactMethod}>
                       <svg className={ContactCSS.ContactMethodImg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.057 45.057" width="50" height="50">
                             <path d="M19.558,25.389c-0.067,0.176-0.155,0.328-0.264,0.455c-0.108,0.129-0.24,0.229-0.396,0.301
                                 c-0.156,0.072-0.347,0.107-0.57,0.107c-0.313,0-0.572-0.068-0.78-0.203c-0.208-0.137-0.374-0.316-0.498-0.541
