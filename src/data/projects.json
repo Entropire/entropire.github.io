@@ -45,6 +45,33 @@
     "date": "2023-09-01"
   },
   {
+    "title": "SimpleFactions",
+    "description": "A Minecraft pluging that adds team-based system to your world",
+    "image": "projects/Img/SimpleFactions/SimpleFactions.webp",
+    "links": [
+      {
+        "name": "Github",
+        "url": "https://github.com/Entropire/SimpleFactions"
+      },
+      {
+        "name": "Modrinth",
+        "url": "https://modrinth.com/plugin/simple-factions"
+      }
+    ],
+    "tags": {
+      "Language": [
+        "Java"
+      ],
+      "Year": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ]
+    },
+    "date": "n/a"
+  },
+  {
     "title": "TeamManager",
     "description": "A Discord bot that helps users form teams for a game jam",
     "image": "projects/Img/NotEntropire/NotEntropire.png",

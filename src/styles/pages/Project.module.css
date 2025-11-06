@@ -97,6 +97,17 @@
     list-style-position: inside;
 }
 
+.ProjectPage :global(.MainContent .iframe-container) {
+  height: 400px;
+}
+
+.ProjectPage :global(.MainContent .iframe-container iframe) {
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
 .ProjectPage :global(.MainContent img) {
   width: 100%;
   border-radius: 0.75rem;

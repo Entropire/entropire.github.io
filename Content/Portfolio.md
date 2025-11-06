@@ -12,7 +12,7 @@ tags:
 date: "2025-10-07"
 ---
 
-![Example GIF](./Img/Portfolio/Portfolio.png)
+:::iframe http://localhost:5173/#/:::
 
 ## Description
 I created this project because I wanted a way to showcase my work to companies for internships and job opportunities.
@@ -22,6 +22,7 @@ I chose React because I had experience with it previously, and it is widely used
 
 The goal of the project is to create a platform where I can display my projects, 
 skills, and experience, giving visitors an idea of the kind of developer I am and the work I am capable of.
+Additionally, the platform should be highly maintainable, allowing me to update content — such as adding new projects or modifying details without needing to dive into the code each time.
 
 ## Core Features
 - Markdown to HTML parser makes it easy to write and update project pages without touching the main code
@@ -29,9 +30,6 @@ skills, and experience, giving visitors an idea of the kind of developer I am an
 - Interactive UI components built with React and TypeScript for smooth, reusable components
 - Easy project management adding or updating projects only requires editing Markdown files
 - Showcase skills demonstrates both front-end development and project organization
-
-## Outcome
-The end result is a fully functional website that showcases my knowledge of both front-end and back-end web development.
 
 ## The Design
 To plan the layout of my portfolio website, I started by using Adobe XD to create a general design for the pages I wanted to include.
@@ -59,6 +57,8 @@ To accomplish this, I used the following packages
 
 This system allows me to add or update projects quickly without touching the main website code, making the portfolio scalable and easy to maintain.
 
+[view source code](https://github.com/Entropire/entropire.github.io/blob/master/scripts/build-content.js)
+
 ## Dynamic project loading
 To display the generated HTML project files, I created a page that dynamically loads content based on the URL.
 
@@ -69,17 +69,26 @@ const { projectName } = useParams<{ projectName: string }>();
 
 Next, I fetch the corresponding HTML file:
 ```typescript
-  useEffect(() => {
+useEffect(() => {
+    // Run this effect whenever `projectName` changes
     if (!projectName) return;
 
-    fetch(`/projects/${projectName.toLowerCase()}.html`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Not found");
-        return res.text();
-      })
-      .then((content) => setHtml(content))
-      .catch(() => setError(true));
-  }, [projectName]);
+    fetch(`/projects/${projectName.toLowerCase()}.html`) 
+        // Fetch the HTML file that matches the current project name
+        .then((res) => {
+            if (!res.ok) throw new Error("Not found");
+            // Convert the response to text (HTML content)
+            return res.text();
+        })
+        .then((content) => {
+            // Store the HTML content in state
+            setHtml(content);
+        })
+        .catch(() => {
+            // If any error occurs (e.g., file not found), update the error state
+            setError(true);
+        });
+}, [projectName]); // Re-run effect when `projectName` changes
 ```
 
 Finally, I render the HTML inside the page:

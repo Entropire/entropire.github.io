@@ -41,36 +41,80 @@ const renderer = {
               <img src="${imgSrc}" alt="${text}"${imgTitle} loading="lazy" class="custom-image" />
             </div>`;
   },
-  paragraph(text) {
-    const safeText = typeof text === "string" ? text : text?.text || "";
+  paragraph(token) {
+      const text = typeof token === "string" ? token : token.text || "";
 
-    if(safeText.trimStart().startsWith("//"))
-    {
-      return `<p class="Comment">${safeText}</p>`;
-    }
+      if (text.trimStart().startsWith("//")) {
+        return `<p class="Comment">${text}</p>`;
+      }
 
-    const mdImageRegex = /!\[(.*?)\]\((.*?)(?: "(.*?)")?\)/;
-    const match = safeText.match(mdImageRegex);
+      const mdImageRegex = /!\[(.*?)\]\((.*?)(?: "(.*?)")?\)/;
+      const match = text.match(mdImageRegex);
+      if (match) {
+        const [, alt, href, title] = match;
+        return this.image(href, title, alt);
+      }
 
-    if (match) {
-      const [, alt, href, title] = match;
-      return this.image(href, title, alt); // pass all three arguments
-    }
+      if (token.tokens) {
+        return `<p>${token.tokens.map(t => {
+          switch (t.type) {
+            case "text": return t.raw;
+            case "link": return this.link(t.href, t.title, t.text);
+            case "codespan": return `<code>${t.text}</code>`;
+            case "strong": return `<strong>${t.text}</strong>`;
+            case "em": return `<em>${t.text}</em>`;
+            default: return t.raw;
+          }
+        }).join("")}</p>`;
+      }
 
-    return `<p>${safeText}</p>`;
+      return `<p>${text}</p>`;
+  },
+  link(href, title, text) {
+    const isExternal = href.startsWith("http");
+    const className = isExternal ? "external-link" : "internal-link";
+    return `<a href="${href}" title="${title || ''}" class="${className}" ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''}>${text}</a>`;
   }
 };
 
-marked.use({ renderer });
+const iframeExtension = {
+  name: "iframe",
+  level: "block",
+  start(src) {
+    return src.match(/^:::iframe\s+/)?.index;
+  },
+  tokenizer(src) {
+    const rule = /^:::iframe\s+(?<url>\S+)(?:\s+width=(?<width>\d+))?(?:\s+height=(?<height>\d+))?:::\s*(?:\n|$)/;
+    const match = rule.exec(src);
+    if (match) {
+      const { url, width, height } = match.groups;
+      return {
+        type: "iframe",
+        raw: match[0], 
+        url,
+        width: width || "100%",
+        height: height || "400",
+      };
+    }
+  },
+  renderer(token) {
+    return `
+      <div class="iframe-container">
+        <iframe
+          src="${token.url}"
+          width="${token.width}"
+          height="${token.height}"
+          loading="lazy"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+    `;
+  },
+};
 
-function escapeHtml(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
+
+marked.use({ renderer, extensions: [iframeExtension] });
 
 (async () => {
   await fs.emptyDir(indexOutputDir);
@@ -109,7 +153,6 @@ function escapeHtml(str) {
       date: data.date,
     };
 
-    marked.use(renderer);
     const htmlContent =
     `    
       <div class="Header">

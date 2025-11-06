@@ -9,7 +9,6 @@
             <li><h4>Table of Contents</h4></li>
             <li><button data-scroll-id="description">Description</button></li>
 <li><button data-scroll-id="core-features">Core Features</button></li>
-<li><button data-scroll-id="outcome">Outcome</button></li>
 <li><button data-scroll-id="command-definition">Command Definition</button></li>
 <li><button data-scroll-id="command-storage">Command Storage</button></li>
 <li><button data-scroll-id="command-calling">Command Calling</button></li>
@@ -27,16 +26,73 @@ The goal of this project was to create a lightweight, easy-to-use library that p
 <li>Switch between command handlers effortlessly</li>
 <li>Trigger commands based on user input</li>
 </ul>
-<h3 id="outcome">Outcome</h3><p>The end result of the project is a library that allows you to define, register, deregister and class commands on rune time.</p><h3 id="command-definition">Command Definition</h3><p>You can create and register a command dynamically either using a class or a lambda expression.</p><p>For example, you can create a command with a dedicated class:</p><pre><code class="language-">[CommandName(<span class="hljs-string">&quot;eco&quot;</span>)]
-public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EcoCommand</span><span class="hljs-attr"> : Command</span> </span>{ ... }
+<h3 id="command-definition">Command Definition</h3><p>You can create and register a command dynamically either using a class or a lambda expression.</p><pre><code class="language-">[<span class="hljs-meta">CommandName(<span class="hljs-string">&quot;eco&quot;</span>)</span>]
+<span class="hljs-comment">// Sets the command name for this class</span>
+<span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">EcoCommand</span> : <span class="hljs-title">Command</span>
+{
+    <span class="hljs-comment">// Function executed when the command is run</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Execute</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> commandName, <span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
+    {
+        <span class="hljs-comment">// Ensure there is at least one argument</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">args</span>.Length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
 
-_handler.RegisterCommand(EcoCommand);</code></pre><p>Or define one inline using a lambda:</p><pre><code class="language-">_handler.RegisterCommand(<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-function"><span class="hljs-params">(args, name)</span> =&gt;</span> Console.WriteLine(<span class="hljs-string">&quot;Hello&quot;</span>));</code></pre><h3 id="command-storage">Command Storage</h3><p>Commands are stored in a dictionary for fast lookup and to ensure that no two commands share the same name</p><pre><code class="language-"><span class="hljs-keyword">private</span> Dictionary&lt;<span class="hljs-built_in">string</span>, Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;&gt; <span class="hljs-built_in">dictionary</span>OfCommands = new(StringComparer.OrdinalIgnoreCase);</code></pre><h3 id="command-calling">Command Calling</h3><p>Commands can be executed simply by passing a user input string to the handler:</p><pre><code class="language-">string userInput <span class="hljs-operator">=</span> <span class="hljs-string">&quot;/eco helloworld&quot;</span>
-_handler.Execute(userInput)<span class="hljs-comment">;</span></code></pre><p>In the background the input string is automatically split into the command name and its arguments,
-and the command corresponding to the command name is executed. </p><p>For example, the input ```"/eco helloworld"``` would be parsed into:</p><ul>
+        Console.WriteLine(<span class="hljs-keyword">args</span>[<span class="hljs-number">0</span>]);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-comment">// Initialize a command handler with &quot;/&quot; as the command prefix</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> CommandHandler _handler = <span class="hljs-keyword">new</span>(<span class="hljs-string">&quot;/&quot;</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span> =&gt; <span class="hljs-keyword">new</span> Program().Run();
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Run</span>()</span>
+    {
+        <span class="hljs-comment">// Registering a command via a class</span>
+        _handler.RegisterCommand(<span class="hljs-keyword">new</span> EcoCommand());
+        
+        <span class="hljs-comment">// Registering a command via a lambda expression</span>
+        _handler.RegisterCommand(<span class="hljs-string">&quot;hello&quot;</span>, (commandName, <span class="hljs-keyword">args</span>) =&gt;
+        {
+            <span class="hljs-comment">// Ensure there is at least one argument</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">args</span>.Length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
+            
+            Console.WriteLine(<span class="hljs-string">$&quot;Hello <span class="hljs-subst">{<span class="hljs-keyword">args</span>[<span class="hljs-number">0</span>]}</span>&quot;</span>);
+        });
+    }
+}</code></pre><h3 id="command-storage">Command Storage</h3><p>Commands are stored in a dictionary that maps each command name to its corresponding execution delegate.
+This allows for fast, case-insensitive lookups and ensures that each command name is unique within the registry.</p><pre><code class="language-"><span class="hljs-keyword">private</span> Dictionary&lt;<span class="hljs-built_in">string</span>, Action&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;&gt; <span class="hljs-built_in">dictionary</span>OfCommands = new(StringComparer.OrdinalIgnoreCase);</code></pre><ul>
+<li>Key (string): The command name (e.g., &quot;hello&quot;, &quot;eco&quot;).</li>
+<li>Value (Action&lt;string, string[]&gt;): A reference to the command’s execution logic.</li>
+<li>Case-insensitive lookup: Using StringComparer.OrdinalIgnoreCase allows users to invoke commands regardless of letter casing (e.g., &quot;HELLO&quot; and &quot;hello&quot; are treated the same).</li>
+<li>Uniqueness enforced: Attempting to register a command with an existing name throws an InvalidOperationException.</li>
+</ul>
+<h3 id="command-calling">Command Calling</h3><p>Commands can be executed by simply passing a user input string to the handler:</p><pre><code class="language-">string userInput <span class="hljs-operator">=</span> <span class="hljs-string">&quot;/eco helloworld&quot;</span>
+_handler.Execute(userInput)<span class="hljs-comment">;</span></code></pre><p>Internally, the input string is automatically split into the command name and its arguments.
+The corresponding command is then executed.</p><pre><code class="language-"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> <span class="hljs-title">TryParseUserInput</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> userInput, <span class="hljs-keyword">out</span> <span class="hljs-built_in">string</span> commandName, <span class="hljs-keyword">out</span> <span class="hljs-built_in">string</span>[] commandArgs</span>)</span>
+{
+    commandName = <span class="hljs-built_in">string</span>.Empty;
+    commandArgs = Array.Empty&lt;<span class="hljs-built_in">string</span>&gt;();
+
+    <span class="hljs-comment">// Validate input and ensure it starts with the defined prefix</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">string</span>.IsNullOrWhiteSpace(userInput) || !userInput.StartsWith(CommandPrefix))
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// Split the input into parts</span>
+    <span class="hljs-built_in">string</span>[] parts = userInput.Split(<span class="hljs-string">&#x27; &#x27;</span>, StringSplitOptions.RemoveEmptyEntries);
+
+    <span class="hljs-comment">// Extract command name (without prefix)</span>
+    commandName = parts[<span class="hljs-number">0</span>].Substring(CommandPrefix.Length);
+
+    <span class="hljs-comment">// Extract command arguments</span>
+    commandArgs = parts.Skip(<span class="hljs-number">1</span>).ToArray();
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}</code></pre><p>For example, the input <code>"/eco helloworld"</code> would be parsed into:</p><ul>
 <li>Command Name: <code>&quot;eco&quot;</code></li>
 <li>Arguments: <code>&quot;[&quot;helloworld&quot;]&quot;</code></li>
 </ul>
-<p>This makes it easy to handle user input without manually parsing string every time and ensures that the user inputs is always parsed in the same way.</p><h3 id="reflection">Reflection</h3><p>Working on SimpleCommands helped me think carefully about modular and reusable library design.
+<p>This approach simplifies user input handling, removes the need for manual string parsing, and ensures consistent command parsing across your application.</p><h3 id="reflection">Reflection</h3><p>Working on SimpleCommands helped me think carefully about modular and reusable library design.
 I learned how to create a flexible API that supports both class-based and inline commands, and how to handle user input consistently with minimal boilerplate.</p><p>If I were to continue developing this library, I’d like to add async command support, 
 improve error handling and logging, 
 and explore ways to extend the command parser for more complex input patterns.</p>        
