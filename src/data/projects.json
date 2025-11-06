@@ -51,7 +51,7 @@
     "links": [
       {
         "name": "Github",
-        "url": "https://github.com/Entropire/SimpleFactions"
+        "url": "https://github.com/Entropire/SimpleFactions/tree/V2.1.1"
       },
       {
         "name": "Modrinth",
@@ -61,6 +61,9 @@
     "tags": {
       "Language": [
         "Java"
+      ],
+      "Software": [
+        "Sqlite"
       ],
       "Year": [
         "2022",
@@ -74,7 +77,7 @@
   {
     "title": "TeamManager",
     "description": "A Discord bot that helps users form teams for a game jam",
-    "image": "projects/Img/NotEntropire/NotEntropire.png",
+    "image": "projects/Img/TeamManager/TeamManager.png",
     "links": [
       {
         "name": "Github",

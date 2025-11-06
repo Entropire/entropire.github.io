@@ -1,7 +1,7 @@
 ---
 title: "TeamManager"
 description: "A Discord bot that helps users form teams for a game jam"
-image: "Img/NotEntropire/NotEntropire.png"
+image: "Img/TeamManager/TeamManager.png"
 links: [
     {name: "Github", url: "https://github.com/Entropire/TeamManager"}
 ]

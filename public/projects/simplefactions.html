@@ -8,22 +8,16 @@
           <ul>
             <li><h4>Table of Contents</h4></li>
             <li><button data-scroll-id="description">Description</button></li>
-<li><button data-scroll-id="description">Description</button></li>
 <li><button data-scroll-id="core-features">Core features</button></li>
+<li><button data-scroll-id="managing-teams">Managing teams</button></li>
+<li><button data-scroll-id="user-interface">User interface</button></li>
+<li><button data-scroll-id="reflection">Reflection</button></li>
           </ul>
         </div> 
         <div class="MainContent">
           <div>
               <img src="projects/Img/SimpleFactions/SimpleFactions_Banner.png" alt="SimpleFactions Banner" loading="lazy" class="custom-image" />
-            </div><h3 id="description">Description</h3><p>I started this project because I wanted a system in minecraft stat could more then the default system that was implemented.
-I started this project with limeted programming knolage but that dident stop me.
-after now 4 year on and off programming, multiple rewrites and alot of improvements in code quality i created version 2.1 
-that has been installed 890 times and with all the version combined 1791 times.</p><p>The main goals of this project where that players could: </p><ul>
-<li>Created teams with a name and color</li>
-<li>Invite and Join teams</li>
-<li>Use a UI to make managing there team easier</li>
-</ul>
-<h3 id="description">Description</h3><p>I started this project because I wanted a system in Minecraft that could do more than the default system in Minecraft. I began with limited programming knowledge, but that didn’t stop me. After four years of on-and-off programming, multiple rewrites, and significant improvements in code quality, I created version 2.1. It has been installed 890 times, with all versions combined totaling 1,791 installations.</p><p>The main goals of this project were for players to be able to: </p><ul>
+            </div><h3 id="description">Description</h3><p>I started this project because I wanted a system in Minecraft that could do more than the default system in Minecraft. I began with limited programming knowledge, but that didn’t stop me. After four years of on-and-off programming, multiple rewrites, and significant improvements in code quality, I created version 2.1. It has been installed 890 times, with all versions combined totaling 1,791 installations.</p><p>The main goals of this project were for players to be able to: </p><ul>
 <li>Create teams with a name and color</li>
 <li>Invite and join teams</li>
 <li>Manage their team more easily using a user-friendly UI</li>
@@ -37,13 +31,130 @@ that has been installed 890 times and with all the version combined 1791 times.<
 <li>Zero configuration needed (defaults included)</li>
 <li>User-friendly UI intervace</li>
 </ul>
-        
+<h3 id="managing-teams">Managing teams</h3><p>For managing factions and invites, I used SQLite because it provides fast lookups and does not require a dedicated database server.</p><p>To make the database easier to work with, I created a DataBaseContext class. 
+This class is responsible for establishing a database connection and storing it for later use throughout the plugin.</p><pre><code class="language-"><span class="hljs-built_in">public</span> <span class="hljs-keyword">class</span> DataBaseContext
+{
+    private String <span class="hljs-type">path</span>;
+    <span class="hljs-built_in">public</span> <span class="hljs-keyword">Connection</span> con;
+    
+    // Constructor <span class="hljs-keyword">for</span> the DataBaseContext <span class="hljs-keyword">class</span>.
+    // Takes the <span class="hljs-keyword">database</span> file <span class="hljs-type">path</span> <span class="hljs-keyword">and</span> creates a <span class="hljs-keyword">connection</span> immediately.
+    <span class="hljs-built_in">public</span> DataBaseContext(String <span class="hljs-type">path</span>)
+    {
+        this.path = <span class="hljs-type">path</span>;              
+        con = CreateConnection();     
+    }
+
+    // Attempts <span class="hljs-keyword">to</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">return</span> a <span class="hljs-built_in">new</span> SQLite <span class="hljs-keyword">database</span> <span class="hljs-keyword">connection</span> <span class="hljs-keyword">using</span> the provided <span class="hljs-type">path</span>.
+    <span class="hljs-built_in">public</span> <span class="hljs-keyword">Connection</span> CreateConnection()
+    {
+        try
+        {
+            // Attempt <span class="hljs-keyword">to</span> establish a <span class="hljs-keyword">connection</span> <span class="hljs-keyword">to</span> the SQLite <span class="hljs-keyword">database</span> <span class="hljs-keyword">using</span> JDBC.
+            <span class="hljs-keyword">return</span> DriverManager.getConnection(&quot;jdbc:sqlite:&quot; + <span class="hljs-type">path</span>);
+        }
+        catch (SQLException e)
+        {
+            // <span class="hljs-keyword">If</span> <span class="hljs-keyword">connection</span> fails, <span class="hljs-keyword">log</span> an error message <span class="hljs-keyword">to</span> the Minecraft <span class="hljs-keyword">server</span> console.
+            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + &quot;Failed to connect to the database: &quot; + e.getMessage()
+            );
+            
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+    }
+}</code></pre><p>After setting up this context class, I created helper classes for each table in the database.
+Each helper class handles the CRUD operations (Create, Read, Update, Delete) for its corresponding table, making the database layer more organized and easier to maintain.</p><p>You can find the database helper classes here:
+<a href="https://github.com/Entropire/SimpleFactions/tree/V2.1.1/Simple_Factions/src/main/java/me/entropire/simple_factions/database" title="" class="external-link" target="_blank" rel="noopener noreferrer">Database classes</a></p><h3 id="user-interface">User interface</h3><p>To make faction management easier for players, I created a custom user interface (GUI) system.</p><p>For this system, I started by making a Gui class that implements Paper’s InventoryHolder interface.
+By doing this, I could easily identify whether an open inventory belonged to one of my plugin’s GUIs.</p><p>I also stored a map of buttons in each GUI.
+This made it simple to check whether a player clicked one of the registered buttons and if so, which one.</p><p>With these two features combined, it became much harder for players to perform unintended or unauthorized actions inside a GUI.</p><pre><code class="language-"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Gui</span> implements InventoryHolder
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> name; <span class="hljs-comment">// The name (title) of the GUI.</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> size;    <span class="hljs-comment">// The inventory size (27 = small, 54 = large).</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;Integer, Button&gt; buttons = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">// Slot-to-button mapping.</span>
+
+    <span class="hljs-comment">// Constructor that sets the GUI name and size based on a predefined GuiSize enum.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Gui</span><span class="hljs-params">(<span class="hljs-type">String</span> name, GuiSize size)</span>
+    </span>{
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.size = size == GuiSize.Small ? <span class="hljs-number">27</span> : <span class="hljs-number">54</span>;
+    }
+
+    <span class="hljs-comment">// Required by the InventoryHolder interface, but not used directly here.</span>
+    @<span class="hljs-function">Override
+    <span class="hljs-keyword">public</span> Inventory <span class="hljs-title">getInventory</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> null;
+    }
+
+    <span class="hljs-comment">// Adds a button to the GUI using a single-line lore.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title">addButton</span><span class="hljs-params">(<span class="hljs-type">int</span> slot, <span class="hljs-type">String</span> name, Material material, <span class="hljs-type">String</span> lore, ButtonPressAction action)</span>
+    </span>{
+        <span class="hljs-built_in">addButton</span>(slot, name, material, Arrays.<span class="hljs-built_in">asList</span>(lore), action);
+    }
+
+    <span class="hljs-comment">// Adds a button to the GUI with custom name, material, lore, and click action.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title">addButton</span><span class="hljs-params">(<span class="hljs-type">int</span> slot, <span class="hljs-type">String</span> name, Material material, List&lt;<span class="hljs-type">String</span>&gt; lore, ButtonPressAction action)</span>
+    </span>{
+        Button button = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Button</span>(material, action);
+        ItemMeta buttonMeta = button.<span class="hljs-built_in">getItemMeta</span>();
+        buttonMeta.<span class="hljs-built_in">setDisplayName</span>(name);
+        buttonMeta.<span class="hljs-built_in">setLore</span>(lore);
+        button.<span class="hljs-built_in">setItemMeta</span>(buttonMeta);
+
+        <span class="hljs-comment">// Store the button in the slot map for lookup when a player clicks it.</span>
+        buttons.<span class="hljs-built_in">put</span>(slot, button);
+    }
+
+    <span class="hljs-comment">// Returns the button located in a specific inventory slot.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Button <span class="hljs-title">getButton</span><span class="hljs-params">(<span class="hljs-type">int</span> slot)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> buttons.<span class="hljs-built_in">get</span>(slot);
+    }
+
+    <span class="hljs-comment">// Builds the final Inventory object and fills it with all registered buttons.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Inventory <span class="hljs-title">create</span><span class="hljs-params">()</span>
+    </span>{
+        Inventory inventory = Bukkit.<span class="hljs-built_in">createInventory</span>(<span class="hljs-keyword">this</span>, size, name);
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> slot : buttons.<span class="hljs-built_in">keySet</span>())
+        {
+            inventory.<span class="hljs-built_in">setItem</span>(slot, buttons.<span class="hljs-built_in">get</span>(slot));
+        }
+
+        <span class="hljs-keyword">return</span> inventory;
+    }
+}</code></pre><p>To simplify GUI creation, I made an abstract BaseGui class that all GUI implementations inherit from.
+Each subclass can then define its own layout, buttons, and behavior when opened.</p><p>Here’s an example of one of those GUIs the main Simple Factions GUI:</p><pre><code class="language-">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleFactionGui</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseGui</span></span>
+{
+    <span class="hljs-meta">@Override</span>
+    public void open(<span class="hljs-type">Player</span> player)
+    {
+        <span class="hljs-type">Gui</span> gui = <span class="hljs-keyword">new</span> <span class="hljs-type">Gui</span>(<span class="hljs-string">&quot;Simple-Factions&quot;</span>, <span class="hljs-type">GuiSize</span>.<span class="hljs-type">Small</span>);
+
+        <span class="hljs-comment">// Button to create a new faction.</span>
+        gui.addButton(<span class="hljs-number">11</span>, <span class="hljs-string">&quot;Create&quot;</span>, <span class="hljs-type">Material</span>.<span class="hljs-type">ANVIL</span>, <span class="hljs-string">&quot;Create a new faction.&quot;</span>,
+                (btn, event) -&gt; <span class="hljs-keyword">new</span> <span class="hljs-type">CreateFactionGui</span>().open(player));
+
+        <span class="hljs-comment">// Button to join an existing faction.</span>
+        gui.addButton(<span class="hljs-number">15</span>, <span class="hljs-string">&quot;Join&quot;</span>, <span class="hljs-type">Material</span>.<span class="hljs-type">NAME_TAG</span>, <span class="hljs-string">&quot;Join an existing faction.&quot;</span>,
+                (btn, event) -&gt; <span class="hljs-keyword">new</span> <span class="hljs-type">FactionListGui</span>(<span class="hljs-number">1</span>).open(player));
+
+        <span class="hljs-comment">// Open the inventory for the player.</span>
+        player.openInventory(gui.create());
+    }
+}</code></pre><div>
+              <img src="projects/Img/SimpleFactions/SimpleFactionsGUI.png" alt="Image of gui" loading="lazy" class="custom-image" />
+            </div><h3 id="reflection">Reflection</h3><p>I learned a lot from this project — from managing my codebase and writing clean, scalable code to publishing versions and incorporating feedback from users.</p><p>Through this process, I gained a deeper understanding of how to structure larger projects, maintain readable code, and balance new features with stability and user experience.</p><p>The next step I’m taking with this project is to rewrite it once again to make it more modular. This will allow me to release it across multiple plugin platforms, rather than only the two I currently support.</p>        
         </div>
         <div class="ProjectMeta">   
           
                       <div class="Language">
                         <h4>Language</h4>
                         <p value="Java">Java</p>
+                      </div>
+                    
+                      <div class="Software">
+                        <h4>Software</h4>
+                        <p value="Sqlite">Sqlite</p>
                       </div>
                     
                       <div class="Year">
@@ -54,7 +165,7 @@ that has been installed 890 times and with all the version combined 1791 times.<
           <div class="Links">
             <h4>Links</h4>
             
-                        <a href="https://github.com/Entropire/SimpleFactions" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/Entropire/SimpleFactions/tree/V2.1.1" target="_blank" rel="noopener noreferrer">
                           <p>Github</p>
                         </a>
                       
