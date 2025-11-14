@@ -125,9 +125,9 @@ Once selected, two buttons appear Accept and Decline allowing users to quickly r
     <span class="hljs-keyword">await</span> FollowupAsync(<span class="hljs-string">&quot;Manage your team invites:&quot;</span>, components: component);
 }</code></pre><h3 id="storing-teams">Storing teams</h3><p>For this project, I needed a scalable and reliable way to store team-related data.
 I chose to use a SQLite database because it’s lightweight, fast, and doesn’t require running a separate SQL server.</p><p>The database consists of three main tables:</p><ul>
-<li>Teams — stores team information</li>
-<li>TeamMembers — stores users and their team associations</li>
-<li>TeamInvites — stores pending invites and join requests</li>
+<li>Teams: stores team information</li>
+<li>TeamMembers: stores users and their team associations</li>
+<li>TeamInvites: stores pending invites and join requests</li>
 </ul>
 <pre><code class="language-"><span class="hljs-comment">// DbContext for managing Teams, TeamMembers, and TeamInvites in the database</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TeamsDbContext</span> : <span class="hljs-title">DbContext</span>
