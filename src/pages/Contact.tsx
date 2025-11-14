@@ -5,7 +5,7 @@ export const Contact = () => {
         <div className={ContactCSS.ContectPage}>
             <h2>Contact me</h2>
             <div className={ContactCSS.ContactMethods}>
-                <a href="https://discord.gg/AwA7mXV8qb" target='blank' className={ContactCSS.ContactMethod}>
+                {/* <a href="https://discord.gg/AwA7mXV8qb" target='blank' className={ContactCSS.ContactMethod}>
                     <svg className={ContactCSS.ContactMethodImg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.94 28" width="50" height="50">
                         <path d="M23.67,0c-.36.64-.69,1.3-.98,1.98-2.8-.42-5.65-.42-8.46,0-.29-.68-.62-1.34-.98-1.98-2.63.45-5.19,1.24-7.62,2.35C.81,9.49-.49,16.44.15,23.3c2.82,2.08,5.98,3.68,9.35,4.69.76-1.02,1.43-2.1,2-3.23-1.09-.41-2.14-.91-3.15-1.5.27-.19.52-.39.77-.58,5.92,2.78,12.77,2.78,18.69,0,.25.21.51.41.77.58-1.01.6-2.06,1.1-3.16,1.51.57,1.13,1.24,2.21,2,3.23,3.37-1.02,6.53-2.6,9.35-4.69.77-7.96-1.31-14.85-5.49-20.96C28.87,1.24,26.31.46,23.68.01h0ZM12.33,19.08c-1.82,0-3.33-1.65-3.33-3.69s1.45-3.7,3.32-3.7,3.36,1.66,3.33,3.7c-.03,2.03-1.47,3.69-3.32,3.69ZM24.6,19.08c-1.83,0-3.32-1.65-3.32-3.69s1.45-3.7,3.32-3.7,3.35,1.66,3.32,3.7c-.03,2.03-1.47,3.69-3.32,3.69Z" fill="currentColor"/>
                     </svg>
@@ -13,7 +13,7 @@ export const Contact = () => {
                         <b>Discord</b>
                         <p>Join my discord server</p>
                     </div>
-                </a>
+                </a> */}
                 <a href="mailto:qduyster14@gmail.com" target='blank' className={ContactCSS.ContactMethod}>
                     <svg className={ContactCSS.ContactMethodImg} xmlns="http://www.w3.org/2000/svg"  viewBox="0 -9.31 56.223 56.223" width="50" height="50">
                         <path d="M798.377,169.859h.012a2.16,2.16,0,0,0,1.181-.346l.092-.059.063-.039,1.071-.887,25.563-21.094a.3.3,0,0,0-.239-.123H770.492a.291.291,0,0,0-.183.066l26.745,22.045A2.1,2.1,0,0,0,798.377,169.859ZM770.2,150.3v31.268l19.159-15.476Zm37.084,15.9,19.139,15.38V150.4Zm-6.085,5.021a4.559,4.559,0,0,1-5.619.005l-4.388-3.619L770.2,184.558v.053a.3.3,0,0,0,.3.3h55.625a.3.3,0,0,0,.3-.3v-.049l-20.974-16.852Z" transform="translate(-770.195 -147.311)" fill="currentColor"/>

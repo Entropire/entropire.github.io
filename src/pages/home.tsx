@@ -69,7 +69,7 @@ const projects = LoadProjectPreview();
                 <div className={HomeCSS["Banner"]}>
                     <div className={HomeCSS["Banner-Text"]}>
                         <h1>Quinten Duijster</h1>   
-                        <h3>An energetic software/game developer</h3>     
+                        <h3>An energetic backend developer</h3>     
                     </div>
                     <img className={HomeCSS["Banner-Icon"]} src="./favicon.png" alt="profile picture" />
                 </div>   
