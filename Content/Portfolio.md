@@ -12,7 +12,7 @@ tags:
 date: "2025-10-07"
 ---
 
-:::iframe http://https://quintenduijster.nl/:::
+:::iframe https://quintenduijster.nl/ bg=Img/Portfolio/Portfolio.png:::
 
 ## Description
 I created this project because I wanted a way to showcase my work to companies for internships and job opportunities.

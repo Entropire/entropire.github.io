@@ -84,16 +84,19 @@ const iframeExtension = {
     return src.match(/^:::iframe\s+/)?.index;
   },
   tokenizer(src) {
-    const rule = /^:::iframe\s+(?<url>\S+)(?:\s+width=(?<width>\d+))?(?:\s+height=(?<height>\d+))?:::\s*(?:\n|$)/;
+    const rule = /^:::iframe\s+(?<url>\S+)(?:\s+width=(?<width>\d+))?(?:\s+height=(?<height>\d+))?(?:\s+bg=(?<bg>\S+))?:::\s*(?:\n|$)/;
     const match = rule.exec(src);
+
     if (match) {
-      const { url, width, height } = match.groups;
+      const { url, width, height, bg } = match.groups;
+
       return {
         type: "iframe",
-        raw: match[0], 
+        raw: match[0],
         url,
         width: width || "100%",
         height: height || "400",
+        bg: bg || null
       };
     }
   },
@@ -107,6 +110,7 @@ const iframeExtension = {
           loading="lazy"
           frameborder="0"
           allowfullscreen
+          style="${token.bg ? `background-image: url('${path.posix.join("projects", token.bg)}'); background-size: cover;` : ''}"
         ></iframe>
       </div>
     `;
