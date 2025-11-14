@@ -143,9 +143,9 @@ For this project, I needed a scalable and reliable way to store team-related dat
 I chose to use a SQLite database because it’s lightweight, fast, and doesn’t require running a separate SQL server.
 
 The database consists of three main tables:
-- Teams — stores team information
-- TeamMembers — stores users and their team associations
-- TeamInvites — stores pending invites and join requests
+- Teams: stores team information
+- TeamMembers: stores users and their team associations
+- TeamInvites: stores pending invites and join requests
 ```cs 
 // DbContext for managing Teams, TeamMembers, and TeamInvites in the database
 public class TeamsDbContext : DbContext

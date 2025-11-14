@@ -176,7 +176,7 @@ public class SimpleFactionGui extends BaseGui
 ![Image of gui](Img/SimpleFactions/SimpleFactionsGUI.png)
 
 ## Reflection
-I learned a lot from this project — from managing my codebase and writing clean, scalable code to publishing versions and incorporating feedback from users.
+I learned a lot from this project from managing my codebase and writing clean, scalable code to publishing versions and incorporating feedback from users.
 
 Through this process, I gained a deeper understanding of how to structure larger projects, maintain readable code, and balance new features with stability and user experience.
 
