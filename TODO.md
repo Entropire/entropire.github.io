@@ -9,5 +9,3 @@
 - NL versie toevoegen
 - Light mode toevoegen
 - Code clean up (denk zelf dat dit wel benidgt is :) )
-
-[DONE]
