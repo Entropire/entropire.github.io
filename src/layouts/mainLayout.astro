@@ -1,0 +1,34 @@
+---
+import "../styles/page.css";
+import Header from "../components/header.astro"
+import Footer from "../components/footer.astro"
+const {
+    title = '',
+} = Astro.props
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+</head>
+<body>
+    <Header/>
+    <aside class="left">
+        <slot name="left" />
+    </aside>
+
+    <main class="center">
+        <slot />
+    </main>
+
+    <aside class="right">
+        <slot name="right" />
+    </aside>
+    <Footer/>
+</body>
+</html>
