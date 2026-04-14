@@ -1,0 +1,42 @@
+---
+import '../styles/components/header.css'
+import HeaderLink from '../components/headerLink.astro'
+---
+
+<header class="header">
+    <nav>
+        <ul class="nav">
+            <li><HeaderLink href="/">home</HeaderLink></li>
+            <li><HeaderLink href="projects">projects</HeaderLink></li>
+            <li><HeaderLink href="about">about</HeaderLink></li>
+            <li><HeaderLink href="contact">contact</HeaderLink></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    const header = document.querySelector('.header');
+    if (!header) {
+    } else {
+        const threshold = 10;
+        let ticking = false;
+
+        function updateHeader() {
+            if (window.scrollY > threshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        });
+
+        updateHeader();
+    }
+</script>

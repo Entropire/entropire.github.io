@@ -1,0 +1,29 @@
+:root {
+    --color-bg: #0a0a0a;
+    --color-text: #ffffff;
+    --color-primary: rgb(0, 255, 128);
+    --color-primary-rgb: 0, 255, 128;
+    --grid-large: 80px;
+    --grid-small: 40px;
+    --arc-peak: 600;
+    --arc-base: 1000;
+    --glow-opacity: 0.08;
+    --stroke-opacity: 0.12;
+    --particle-count: 30;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body{
+    height: 200vh;
+}

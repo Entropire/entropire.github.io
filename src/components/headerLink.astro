@@ -1,0 +1,63 @@
+---
+const { href = '' } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+
+const current = Astro.url.pathname.replace(base, '').replace(/\/$/, '');
+const target = href.replace(/^\//, '').replace(/\/$/, '');
+
+const isActive = current === target || (current === '' && target === '');
+---
+
+<a href={`${base}${target}`} class={`nav-link ${isActive ? 'active' : ''}`}>
+    <slot />
+</a>
+
+
+<style>
+    .nav-link {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+        transition: color 0.3s ease;
+        opacity: 0.8;
+    }
+
+    .nav-link:hover {
+        color: var(--color-primary);
+        opacity: 1;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link.active {
+        color: var(--color-primary);
+        opacity: 1;
+    }
+
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .nav-link {
+            font-size: 0.9rem;
+        }
+    }
+</style>
