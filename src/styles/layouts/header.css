@@ -1,24 +1,36 @@
-/* Header navigation */
 .header {
     position: sticky;
     top: 0;
-    padding: 2rem 4rem;
+    padding: 1rem 4rem;
     z-index: 200;
     background: transparent;
-    border-bottom: 1px solid transparent;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .header.scrolled {
-    padding: 1rem 4rem;
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-color: rgba(var(--color-primary-rgb), 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header.scrolled::after {
+    width: 100%;
 }
 
 .nav {
@@ -33,10 +45,6 @@
 @media (max-width: 768px) {
     .header {
         padding: 1.5rem 2rem;
-    }
-
-    .header.scrolled {
-        padding: 0.75rem 2rem;
     }
 
     .nav {

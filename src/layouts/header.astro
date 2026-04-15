@@ -26,29 +26,34 @@ import HeaderLink from '../components/headerLink.astro'
 </script>
 
 <script>
-    const header = document.querySelector<HTMLElement>('.header');
-    if (header) {
-        const threshold = 10;
-        let ticking = false;
+    const threshold = 10;
 
-        function updateHeader() {
-            if (window.scrollY > threshold) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateHeader);
-                ticking = true;
-            }
-        });
-
-        window.addEventListener('beforeunload', () => {
-            sessionStorage.setItem('scrollY', window.scrollY.toString());
-        });
+    function updateHeader() {
+        const header = document.querySelector<HTMLElement>('.header');
+        if (!header) return;
+        header.classList.toggle('scrolled', window.scrollY > threshold);
     }
+
+    let initialized = false;
+
+    document.addEventListener('astro:page-load', () => {
+        updateHeader();
+
+        if (!initialized) {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateHeader();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            window.addEventListener('beforeunload', () => {
+                sessionStorage.setItem('scrollY', window.scrollY.toString());
+            });
+            initialized = true;
+        }
+    });
 </script>
