@@ -16,17 +16,19 @@ const {
 </head>
 <body>
     <Header/>
-    <aside class="left">
-        <slot name="left" />
-    </aside>
+    <main>
+        <aside class="left">
+            <slot name="left" />
+        </aside>
 
-    <main class="center">
-        <slot />
+        <section class="center">
+            <slot />
+        </section>
+
+        <aside class="right">
+            <slot name="right" />
+        </aside>
     </main>
-
-    <aside class="right">
-        <slot name="right" />
-    </aside>
     <Footer/>
 </body>
 </html>

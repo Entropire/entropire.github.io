@@ -1,0 +1,28 @@
+---
+const {
+    href = '',
+    img = '',
+    target = '',
+    download,
+    class: className,
+} = Astro.props;
+---
+
+<a href={href} target={target} class:list={["icon", className]} download={download} set:html={img} />
+
+<style>
+    .icon {
+        display: inline-flex;
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .icon :global(svg) {
+        height: 100%;
+        width: 100%;
+    }
+
+    .icon:hover {
+        cursor: pointer;
+    }
+</style>
