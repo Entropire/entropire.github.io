@@ -42,6 +42,7 @@ body::before {
         repeating-linear-gradient(0deg, transparent, transparent calc(var(--grid-large) - 1px), rgba(var(--color-primary-rgb), 0.035) calc(var(--grid-large) - 1px), rgba(var(--color-primary-rgb), 0.035) var(--grid-large)),
         repeating-linear-gradient(90deg, transparent, transparent calc(var(--grid-large) - 1px), rgba(var(--color-primary-rgb), 0.035) calc(var(--grid-large) - 1px), rgba(var(--color-primary-rgb), 0.035) var(--grid-large));
     background-size: var(--grid-large) var(--grid-large);
+    background-position: center 0;
     mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
 }
