@@ -4,6 +4,7 @@
     top: 0;
     padding: 2rem 4rem;
     z-index: 200;
+    background: transparent;
     border-bottom: 1px solid transparent;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
@@ -14,8 +15,8 @@
 .header.scrolled {
     padding: 1rem 4rem;
     background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-color: rgba(var(--color-primary-rgb), 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -26,6 +27,7 @@
     align-items: center;
     gap: 3rem;
     list-style: none;
+    background: transparent;
 }
 
 @media (max-width: 768px) {
