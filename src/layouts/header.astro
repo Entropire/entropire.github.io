@@ -17,8 +17,9 @@ import HeaderLink from '../components/headerLink.astro'
 <script is:inline>
     (function () {
         const header = document.currentScript.previousElementSibling;
+        const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
         const savedY = parseInt(sessionStorage.getItem('scrollY') || '0');
-        if (header && savedY > 10) {
+        if (header && isReload && savedY > 10) {
             header.classList.add('scrolled');
         }
     })();
