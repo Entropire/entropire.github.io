@@ -14,10 +14,19 @@ import HeaderLink from '../components/headerLink.astro'
     </nav>
 </header>
 
+<script is:inline>
+    (function () {
+        const header = document.currentScript.previousElementSibling;
+        const savedY = parseInt(sessionStorage.getItem('scrollY') || '0');
+        if (header && savedY > 10) {
+            header.classList.add('scrolled');
+        }
+    })();
+</script>
+
 <script>
-    const header = document.querySelector('.header');
-    if (!header) {
-    } else {
+    const header = document.querySelector<HTMLElement>('.header');
+    if (header) {
         const threshold = 10;
         let ticking = false;
 
@@ -37,6 +46,8 @@ import HeaderLink from '../components/headerLink.astro'
             }
         });
 
-        updateHeader();
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('scrollY', window.scrollY.toString());
+        });
     }
 </script>

@@ -1,9 +1,7 @@
 /* Header navigation */
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
     padding: 2rem 4rem;
     z-index: 200;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
