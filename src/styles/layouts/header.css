@@ -4,6 +4,10 @@
     top: 0;
     padding: 2rem 4rem;
     z-index: 200;
+    border-bottom: 1px solid transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -12,7 +16,7 @@
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    border-color: rgba(var(--color-primary-rgb), 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
