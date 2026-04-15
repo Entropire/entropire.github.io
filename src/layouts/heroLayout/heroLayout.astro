@@ -2,7 +2,6 @@
 import "../../styles/global.css";
 import Header from "./header.astro"
 import Footer from "../footer.astro"
-import Hero from "../../components/Hero.astro"
 import { ClientRouter } from 'astro:transitions';
 const {
     title = '',
@@ -19,7 +18,7 @@ const {
 </head>
 <body>
     <Header/>
-    <Hero />
+    <slot name="hero" />
     <main>
         <aside class="left">
             <slot name="left" />
