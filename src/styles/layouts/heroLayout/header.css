@@ -3,10 +3,11 @@
     top: 0;
     padding: 1rem 4rem;
     z-index: 200;
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header::after {
@@ -15,10 +16,21 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 0;
     height: 1px;
     background: rgba(var(--color-primary-rgb), 0.1);
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header.scrolled::after {
+    width: 100%;
 }
 
 .nav {

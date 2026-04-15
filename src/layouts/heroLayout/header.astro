@@ -1,0 +1,58 @@
+---
+import '../../styles/layouts/heroLayout/header.css'
+import DefaultHeader from '../header.astro'
+---
+
+<DefaultHeader />
+
+<script is:inline>
+    (function () {
+        const header = document.currentScript.previousElementSibling;
+        const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+        const savedY = parseInt(sessionStorage.getItem('scrollY') || '0');
+        if (header && isReload && savedY > 10) {
+            header.classList.add('scrolled');
+        }
+    })();
+</script>
+
+<script>
+    const threshold = 10;
+
+    function updateHeader() {
+        const header = document.querySelector<HTMLElement>('.header');
+        if (!header) return;
+        header.classList.toggle('scrolled', window.scrollY > threshold);
+    }
+
+    let scrollHandler: (() => void) | null = null;
+
+    document.addEventListener('astro:page-load', () => {
+        updateHeader();
+
+        if (!scrollHandler) {
+            let ticking = false;
+            scrollHandler = () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateHeader();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+            window.addEventListener('scroll', scrollHandler);
+            window.addEventListener('beforeunload', () => {
+                sessionStorage.setItem('scrollY', window.scrollY.toString());
+            });
+        }
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+        if (scrollHandler) {
+            window.removeEventListener('scroll', scrollHandler);
+            scrollHandler = null;
+        }
+        sessionStorage.removeItem('scrollY');
+    });
+</script>
