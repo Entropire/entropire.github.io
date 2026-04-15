@@ -23,12 +23,10 @@ const isActive = current === target || (current === '' && target === '');
         position: relative;
         padding: 0.5rem 0;
         transition: color 0.3s ease;
-        opacity: 0.8;
     }
 
     .nav-link:hover {
         color: var(--color-primary);
-        opacity: 1;
     }
 
     .nav-link::after {
@@ -48,11 +46,6 @@ const isActive = current === target || (current === '' && target === '');
 
     .nav-link.active {
         color: var(--color-primary);
-        opacity: 1;
-    }
-
-    .nav-link.active::after {
-        width: 100%;
     }
 
     @media (max-width: 768px) {
