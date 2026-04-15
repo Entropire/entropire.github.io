@@ -1,4 +1,6 @@
 body:has(.hero) .header {
+    position: fixed;
+    width: 100%;
     background: transparent;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);

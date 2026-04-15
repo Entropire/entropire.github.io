@@ -1,22 +1,14 @@
 ---
-import "../../styles/global.css";
 import Header from "../header.astro"
 import Footer from "../footer.astro"
-import { ClientRouter } from 'astro:transitions';
+import BaseLayout from "../BaseLayout.astro"
 const {
     title = '',
 } = Astro.props
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ClientRouter />
-</head>
-<body>
+
+<BaseLayout title={title}>
     <Header/>
     <main>
         <aside class="left">
@@ -32,6 +24,5 @@ const {
         </aside>
     </main>
     <Footer/>
-</body>
-</html>
+</BaseLayout>
 
