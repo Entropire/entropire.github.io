@@ -1,18 +1,18 @@
-	---
-	import '../styles/pages/index.css'
-	import MainLayout from '../layouts/mainLayout.astro';
-	---
+---
+import '../styles/pages/index.css'
+import HeroLayout from '../layouts/heroLayout.astro';
+---
 
-	<MainLayout title="Home">
-		<div slot="left">
-			Left menu
-		</div>
+<HeroLayout title="Home">
+	<div slot="left">
+		Left menu
+	</div>
 
-		<div class="main-content">
-			Main content here
-		</div>
+	<div class="main-content">
+		Main content here
+	</div>
 
-		<div slot="right">
-			Right widgets
-		</div>
-	</MainLayout>
+	<div slot="right">
+		Right widgets
+	</div>
+</HeroLayout>
