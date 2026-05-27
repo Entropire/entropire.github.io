@@ -1,11 +1,66 @@
 ---
+import HeaderLink from '../components/headerLink.astro'
 ---
 
-<header>
+<header class="header">
+    <nav class="nav">
+        <a href="" class="brand">
+            <img src="./favicon.png" alt="favicon">
+            <p>Quinten Duijster</p>
+        </a>
 
+        <div class="links">
+            <HeaderLink href="">Home</HeaderLink>
+            <HeaderLink href="projects">Projects</HeaderLink>
+            <HeaderLink href="about">About</HeaderLink>
+            <HeaderLink href="contact">Contact</HeaderLink>
+        </div>
+    </nav>
 </header>
 
 
 <style>
+
+.header {
+    width: 100%;
+    flex-shrink: 0;
+
+    background-color: var(--color-forground);
+    border-bottom: 2px solid var(--color-accent);
+
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
+    width: 100%;
+    max-width: 1200px;
+    padding: 8px 24px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand img {
+    height: 38px;
+    width: auto;
+}
+
+.links {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
 
 </style>
