@@ -23,18 +23,15 @@ import HeaderLink from '../components/headerLink.astro'
 
 .header {
     width: 100%;
-    flex-shrink: 0;
-
     background-color: var(--color-forground);
     border-bottom: 2px solid var(--color-accent);
-
     display: flex;
     justify-content: center;
 }
 
 .nav {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--max-width);
     padding: 8px 24px;
     box-sizing: border-box;
     display: flex;

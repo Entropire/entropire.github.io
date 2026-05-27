@@ -1,16 +1,46 @@
 ---
-import Icon from '../components/Icon.astro'
+import Icon from "./Icon.astro"
 
-import File_Icon from '../assets/icons/file.svg?raw'
-import Email_Icon from '../assets/icons/email.svg?raw'
-import Linkedin_Icon from '../assets/icons/linkedin.svg?raw'
-import Github_Icon from '../assets/icons/email.svg?raw'
+import icon_email from "../assets/icons/email.svg?raw"
+import icon_file from "../assets/icons/file.svg?raw"
+import icon_github from "../assets/icons/github.svg?raw"
+import icon_linkedin from "../assets/icons/linkedin.svg?raw"
 ---
 
 <footer class="footer">
-
+    <div class="content">
+        <p>© 2026 Quinten Duijster - All rights reserved</p>
+        
+        <div class="icons">
+            <Icon class="icon" img={icon_email} />
+            <Icon class="icon" img={icon_file}/>
+            <Icon class="icon" img={icon_github}/>
+            <Icon class="icon" img={icon_linkedin}/>
+        </div>
+    </div>
 </footer>
 
 <style>
-    
+
+.footer{
+    width: 100%;
+    background-color: var(--color-forground);
+    display: flex;
+    justify-content: center;
+}
+
+.content{
+    width: 100%;
+    max-width: var(--max-width);
+    padding: 8px 24px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.icons{
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+}
 </style>
