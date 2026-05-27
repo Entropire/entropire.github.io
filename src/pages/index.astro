@@ -3,4 +3,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Home">
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Quinten Duijster</h1>
+            <h3>An energetic backend developer</h3>
+        </div>
+        <img class="hero-img" src="./favicon.png" alt="favicon">
+    </div>
 </BaseLayout>
+
+<style>
+.hero {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.hero-img{
+    border-radius: 45%;
+}
+
+.hero-text{
+    text-align: right;
+}
+
+.hero-text,
+.hero-img{
+    width: 40%;
+    
+}
+
+.hero-text h1{
+    color: var(--color-primary);
+}
+
+.hero-text h3 {
+    color: var(--color-text-muted);
+}
+
+</style>
