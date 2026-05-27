@@ -1,23 +1,6 @@
 ---
-import '../styles/pages/index.css'
-import HeroLayout from '../layouts/heroLayout/heroLayout.astro';
-import HeroBackground from "../components/Hero.astro"
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<HeroLayout title="Home">
-	<div slot="hero" class="hero-slot">
-		<HeroBackground />
-		<div class="hero-content">
-			<div class="profile-image-container">
-				<div class="profile-ring"></div>
-				<img class="profile-image" src={`${import.meta.env.BASE_URL}favicon.png`} alt="Quinten Duijster" />
-			</div>
-			<div class="hero-text-content">
-				<h1 class="hero-title">quinten duijster</h1>
-				<p class="hero-subtitle">An energetic backend developer</p>
-			</div>
-		</div>
-	</div>
-	<div class="main-content">
-	</div>
-</HeroLayout>
+<BaseLayout title="Home">
+</BaseLayout>

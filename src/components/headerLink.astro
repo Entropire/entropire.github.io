@@ -16,10 +16,7 @@ const isActive = current === target || (current === '' && target === '');
 
 <style>
     .nav-link {
-        color: var(--color-text);
         text-decoration: none;
-        font-size: 1rem;
-        font-weight: 500;
         position: relative;
         padding: 0.5rem 0;
         transition: color 0.3s ease;
@@ -47,11 +44,5 @@ const isActive = current === target || (current === '' && target === '');
 
     .nav-link.active {
         color: var(--color-primary);
-    }
-
-    @media (max-width: 768px) {
-        .nav-link {
-            font-size: 0.9rem;
-        }
     }
 </style>
