@@ -36,11 +36,27 @@ import icon_linkedin from "../assets/icons/linkedin.svg?raw"
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .icons{
     display: flex;
     gap: 12px;
     margin-left: auto;
+}
+
+@media (max-width: 750px) {
+    .content {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .icons {
+        margin: 0;
+    }
+
+    .icons {
+        order: -1;
+    }
 }
 </style>
