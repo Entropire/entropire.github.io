@@ -5,7 +5,7 @@ export const About = () => {
     return(
         <div className={AboutCSS.AboutPage}>  
             <div className={ AboutCSS.Header}>
-                <h2>Hi my name is Quinten Duijster</h2>
+                <h2>About me</h2>
             </div>
             <div className={AboutCSS.Content}>
                 <div className={AboutCSS.GeneralInfo}>
@@ -13,9 +13,9 @@ export const About = () => {
                     <ul >
                         <li><strong>Name:</strong> Quinten Duijster</li>
                         <li><strong>Location:</strong> The Netherlands</li>
-                        <li><strong>Age:</strong> 19</li>
+                        <li><strong>Age:</strong> 20</li>
                         <li><strong>Hobbies:</strong> Game Development, Archery, Gaming</li>
-                        <li><strong>HardSkills:</strong> Unity, React, XD, c#, java, html, css, typescript</li>
+                        <li><strong>HardSkills:</strong> Unity, React, XD, c#, java, kotlin, html, css, typescript</li>
                         <li><strong>SoftSkills:</strong> Communication, Teamwork, Problem solving, Punctual, Helpful</li>
                         <li>
                             <strong>Socials:</strong>
@@ -63,13 +63,18 @@ export const About = () => {
                 </div>
                 <div className={AboutCSS.MainContent}>
                     <div>
-                        <p>I am a 19-year-old student from the Netherlands, currently studying Software and Game Development at Media College Amsterdam.</p>
+                        <p>Hi my name is Quinten Duijster. I am a backend software developer currently studying at Mediacollege Amsterdam. My focus is backend development for both software and games, but I also have experience with frontend development. At the moment, I am learning procedural generation and exploring the Rust programming language.</p>
 
-                        <h3>How I was introduced to programming</h3>
-                        <p>I was first introduced to programming when I was 12 years old. Where I needed to create a program in scratch. From this point on I took an interest in programming and started following tutorials about it. When I started middle school, we could choose for an extra subject, and I chose science and ICT. Here I dived even deeper into programming and realized that this was what I wanted to do later.</p>
+                        <h3>Tech Stack</h3>
+                        <p>Over the years, I have been programming throughout my studies and before that as well. I have worked with multiple languages, frameworks, and tools across software and game development. Here are some of the technologies I have used:</p>
 
-                        <h3>My vision for the future</h3>
-                        <p>I am overall a very day-to-day person and don’t really think years into the future about what I want to do. For now, my goal is to keep learning new things and improve. Right now, that means learning more about algorithms and procedural generation and how to apply them in games.</p>
+                        <p><b>Languages:</b> c#, java, kotlin, javascript, typescript, python, html, css</p>
+                        <p><b>Frameworks & Engines:</b> Unity, Unreal Engine, React, Astro, Spring Boot, .net</p>
+                        <p><b>Databases:</b> mysql, PostgreSQL</p>
+                        <p><b>Tools:</b> git, Docker, Azure</p>
+
+                        <h3>Hobbies</h3>
+                        <p>In my free time, I enjoy a mix of physical and technical activities. I practice archery and Jiu-Jitsu, and I also enjoy snowboarding during the winter. When I’m indoors, I like gaming, working on personal programming projects, and spending time socializing with friends.</p>
                     </div>
                 </div>  
             </div>
