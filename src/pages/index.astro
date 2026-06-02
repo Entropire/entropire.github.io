@@ -44,4 +44,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--color-text-muted);
 }
 
+@media (max-width: 750px) {
+    .hero{
+        flex-direction: column-reverse;
+    }
+
+    .hero-text,
+    .hero-img{
+        width: 80%;
+    }
+
+    .hero-text{
+        text-align: center;
+    }
+
+    .hero-img{
+        max-width: 300px;
+    }
+}
 </style>

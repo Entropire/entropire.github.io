@@ -52,4 +52,19 @@ main {
     display: flex;
     flex-direction: column;
 }
+
+@media (max-width: 750px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scroll-container {
+        scrollbar-width: none;
+    }
+
+    .scroll-container {
+        -ms-overflow-style: none;
+    }
+}
+
 </style>
