@@ -4,27 +4,64 @@ import HeaderLink from '../components/headerLink.astro'
 
 <header class="header">
     <nav class="nav">
-        <a href="" class="brand">
-            <img src="./favicon.png" alt="favicon">
+        <a href="/" class="brand">
+            <img src="./favicon.png" alt="favicon" />
             <p>Quinten Duijster</p>
         </a>
 
-        <div class="links">
-            <HeaderLink href="">Home</HeaderLink>
-            <HeaderLink href="projects">Projects</HeaderLink>
-            <HeaderLink href="about">About</HeaderLink>
-            <HeaderLink href="contact">Contact</HeaderLink>
+        <!-- DESKTOP NAV -->
+        <div class="nav-desktop">
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/projects">Projects</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="/contact">Contact</HeaderLink>
+        </div>
+
+        <!-- MOBILE NAV -->
+        <div class="nav-mobile">
+            <input
+                class="nav-mobile__checkbox"
+                type="checkbox"
+                id="mobile-menu"
+            />
+
+            <label for="mobile-menu" class="nav-mobile__toggle">
+                <span class="nav-mobile__line nav-mobile__line--1"></span>
+                <span class="nav-mobile__line nav-mobile__line--2"></span>
+                <span class="nav-mobile__line nav-mobile__line--3"></span>
+            </label>
+
+            <div class="nav-mobile__menu">
+                <HeaderLink href="/">Home</HeaderLink>
+                <HeaderLink href="/projects">Projects</HeaderLink>
+                <HeaderLink href="/about">About</HeaderLink>
+                <HeaderLink href="/contact">Contact</HeaderLink>
+            </div>
         </div>
     </nav>
 </header>
 
 
-<style>
+<script>
+    const checkbox = document.getElementById(
+    "mobile-menu"
+    ) as HTMLInputElement | null;
 
+    checkbox?.addEventListener("change", () => {
+    document.body.classList.toggle("menu-open", checkbox.checked);
+    });
+</script>
+
+<style>
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
     width: 100%;
     background-color: var(--color-forground);
     border-bottom: 2px solid var(--color-accent);
+
     display: flex;
     justify-content: center;
 }
@@ -34,6 +71,7 @@ import HeaderLink from '../components/headerLink.astro'
     max-width: var(--max-width);
     padding: 8px 24px;
     box-sizing: border-box;
+
     display: flex;
     align-items: center;
 }
@@ -49,10 +87,9 @@ import HeaderLink from '../components/headerLink.astro'
 
 .brand img {
     height: 38px;
-    width: auto;
 }
 
-.links {
+.nav-desktop {
     margin-left: auto;
 
     display: flex;
@@ -60,4 +97,138 @@ import HeaderLink from '../components/headerLink.astro'
     gap: 16px;
 }
 
+.nav-mobile {
+    display: none;
+    margin-left: auto;
+
+    position: relative;
+    z-index: 100;
+}
+
+.nav-mobile__checkbox {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 50%;
+    right: 0;
+
+    transform: translateY(-50%);
+    opacity: 0;
+
+    z-index: 102;
+    cursor: pointer;
+}
+
+.nav-mobile__toggle {
+    width: 32px;
+    height: 26px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+    position: relative;
+    z-index: 101;
+}
+
+.nav-mobile__line {
+    width: 100%;
+    height: 4px;
+
+    border-radius: 999px;
+    background: currentColor;
+
+    transition: transform 0.4s ease;
+}
+
+.nav-mobile__line--2 {
+    transition: transform 0.2s ease;
+}
+
+.nav-mobile__menu {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    background: var(--color-forground);
+
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 90;
+}
+
+.nav-mobile__menu :global(a) {
+    font-size: 2rem;
+
+    opacity: 0;
+    transform: translateY(-20px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-mobile__menu :global(a:nth-child(1)) { transition-delay: 0.15s; }
+.nav-mobile__menu :global(a:nth-child(2)) { transition-delay: 0.2s; }
+.nav-mobile__menu :global(a:nth-child(3)) { transition-delay: 0.25s; }
+.nav-mobile__menu :global(a:nth-child(4)) { transition-delay: 0.3s; }
+
+.nav-mobile__checkbox:checked ~ .nav-mobile__menu {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-mobile__checkbox:checked ~ .nav-mobile__menu :global(a) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-mobile__checkbox:checked + .nav-mobile__toggle .nav-mobile__line--1 {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.nav-mobile__checkbox:checked + .nav-mobile__toggle .nav-mobile__line--2 {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-mobile__checkbox:checked + .nav-mobile__toggle .nav-mobile__line--3 {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+
+body.menu-open {
+    overflow: hidden;
+}
+
+@media (max-width: 750px) {
+    .nav-desktop {
+        display: none;
+    }
+
+    .nav-mobile {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (min-width: 751px) {
+    .nav-mobile {
+        display: none;
+    }
+}
 </style>
