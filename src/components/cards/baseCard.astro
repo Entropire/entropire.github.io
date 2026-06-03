@@ -1,0 +1,36 @@
+---
+const {
+    href = '',
+    target = '',
+} = Astro.props;
+---
+
+<a class="card" href={href} target={target}>
+    <slot/>
+</a>
+
+
+<style>
+    .card {
+        width: 250px;
+        height: 350px;
+        background: var(--color-forground);
+        border-radius: 12px;
+        overflow: hidden;
+        border-top: 2px solid var(--color-accent);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    @media (max-width: 750px) {
+    .card {
+        width: 225px;
+        height: 325px;
+    }
+</style>
+

@@ -1,7 +1,57 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCard from '../components/cards/contactCard.astro';
+
+import icon_email from "../assets/icons/email.svg?raw"
+import icon_file from "../assets/icons/file.svg?raw"
+import icon_linkedin from "../assets/icons/linkedin.svg?raw"
 ---
 
 <BaseLayout title="Contact">
+    <section class="contact">
+        <h2 class="title">Contact me</h2>
+        <p class="subtitle">
+            Feel free to reach out through any of the channels below.
+        </p>
 
+        <div class="contact-cards">
+            <ContactCard img={icon_email} href="mailto:qduyster14@gmail.com" title="Email" description="Send me an email" />
+            <ContactCard img={icon_linkedin} href="https://www.linkedin.com/in/quinten-duijster" title="LinkedIn" description="Connect with me" />
+            <ContactCard img={icon_file} href="CV-QuintenDuijster.pdf" title="CV" description="Download my resume" />
+        </div>
+    </section>
 </BaseLayout>
+
+
+<style>
+.contact {
+    width: min(900px, 90%);
+    margin: auto auto;
+    padding: 4rem 0;
+
+    text-align: center;
+}
+
+.title{
+    color: var(--color-primary);
+}
+
+.subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+.contact-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+@media (max-width: 1000px) {
+    .contact-cards{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
