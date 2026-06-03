@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCart from '../components/projectCart.astro';
+import Icon from "../components/Icon.astro"
+
+import icon_email from "../assets/icons/email.svg?raw"
+import icon_file from "../assets/icons/file.svg?raw"
+import icon_github from "../assets/icons/github.svg?raw"
+import icon_linkedin from "../assets/icons/linkedin.svg?raw"
 ---
 
 <BaseLayout title="Home">
@@ -8,8 +14,15 @@ import ProjectCart from '../components/projectCart.astro';
         <div class="hero-text">
             <h1>Quinten Duijster</h1>
             <h3>An energetic backend developer</h3>
+            <div class="hero-links">
+                <Icon class="icon" img={icon_email} />
+                <Icon class="icon" img={icon_file}/>
+                <Icon class="icon" img={icon_github}/>
+                <Icon class="icon" img={icon_linkedin}/>
+            </div>
         </div>
         <img class="hero-img" src="./favicon.png" alt="favicon">
+        
     </div>
 
 
@@ -56,7 +69,15 @@ import ProjectCart from '../components/projectCart.astro';
     color: var(--color-text-muted);
 }
 
-@media (max-width: 750px) {
+.hero-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+
+@media (max-width: 1400px) {
     .hero{
         flex-direction: column-reverse;
     }
@@ -72,6 +93,10 @@ import ProjectCart from '../components/projectCart.astro';
 
     .hero-img{
         max-width: 300px;
+    }
+
+    .hero-links{
+        justify-content: center;
     }
 }
 
