@@ -45,6 +45,7 @@ import HeaderLink from '../components/headerLink.astro'
     "mobile-menu"
     ) as HTMLInputElement | null;
 
+    
     checkbox?.addEventListener("change", () => {
     document.body.classList.toggle("menu-open", checkbox.checked);
     });
@@ -132,7 +133,7 @@ import HeaderLink from '../components/headerLink.astro'
 
 .nav-mobile__line {
     width: 100%;
-    height: 4px;
+    height: 2px;
 
     border-radius: 999px;
     background: currentColor;
