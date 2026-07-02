@@ -1,6 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TechStackCard from '../components/cards/techStackCard.astro';
 ---
 
 <BaseLayout title="About">
+    <div class="about">
+        <div class="hero">
+            <img src="./favicon.png" alt="Quinten Duijster">
+            <p>
+                I'm Quinten, a software development student specializing in backend
+                systems, game development, and modern software architecture.
+            </p>
+        </div>
+    </div>
 </BaseLayout>
+
+<style>
+
+.about{
+    width: 80%;
+    margin: 0 auto;
+}
+
+</style>
